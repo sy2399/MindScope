@@ -1,0 +1,31 @@
+﻿feature_id,category,features,statement_high,statement_low,general_0,general_1
+0,activity,Duration STILL,평소에 비해 움직임이 적었어요,평소에 비해 움직임이 많았어요,"일반적으로 활동량이 많을 때, 스트레스가 낮아요","일반적으로 활동량이 적을 때, 스트레스가 높아요"
+1,activity,Duration WALKING,평소에 비해 움직임이 많았어요 (걷기),평소에 비해 움직임이 적었어요 (걷기),,
+2,activity,Duration RUNNING,평소에 비해 움직임이 많았어요 (뛰기),평소에 비해 움직임이 적었어요 (뛰기),,
+3,activity,Duration BICYCLE,평소에 비해 움직임이 많았어요 (자전거),평소에 비해 움직임이 적었어요 (자전거),,
+4,activity,Duration ON_FOOT,평소에 비해 움직임이 많았어요 (걷기),평소에 비해 움직임이 적었어요 (걷기),,
+5,activity,Duration VEHICLE,평소에 비해 차량 이동이 많았어요,평소에 비해 차량 이동이 적었어요,,
+6,social,Audio mean,평소에 비해 주변이 시끄러웠던 것 같아요,평소에 비해 주변이 조용했던 것 같아요,,
+7,social,Phonecall duration,평소에 비해 통화량이 많았어요,평소에 비해 통화량이 적었어요,"일반적으로 다른 사람들과의 교류가 많을 때, 스트레스가 낮아요","일반적으로  다른 사람들과의 교류가 적을 때, 스트레스가 높아요"
+8,social,Phonecall number,평소에 비해 통화량이 많았어요,평소에 비해 통화량이 적었어요,,
+9,social,Phonecall ratio,평소에 비해 통화량이 많았어요,평소에 비해 통화량이 적었어요,,
+10,social,Phonecall audio mean,평소에 비해 통화중 대화량이 많았어요,평소에 비해 통화 중 대화량이 적었어요,,
+11,social,Social & Communication,평소에 비해 SNS 앱 사용이 많았어요,평소에 비해 SNS 앱 사용이 적었어요,,
+12,loc,Total distance,평소에 비해 많이 이동했어요,평소에 비해 적게 이동했어요,"일반적으로  활동 반경이 클 때, 스트레스가 낮아요","일반적으로  활동 반경이 작을 때, 스트레스가 높아요"
+13,loc,Num. of places,평소에 비해 방문했던 장소가 많았어요,평소에 비해 방문했던 장소가 적었어요,,
+14,loc,Max. distance,평소에 비해 멀리 나갔어요,평소에 비해 멀리 나가지 않았어요,,
+15,loc,Max. dist.(HOME),평소에 비해 집에서 멀리 나갔어요,평소에 비해 집에서 멀리 나가지 않았어요,,
+16,loc,Duration(HOME),평소에 비해 집에 오래 머물렀어요,평소에 비해 집에 적게 머물렀어요,,
+17,app,Unlock dur.(HOME),평소에 비해 집에서 휴대폰 사용이 많았어요,평소에 비해 집에서 휴대폰 사용이 적었어요,,
+18,app,Unlock duration,평소에 비해 휴대폰 사용이 많았어요,평소에 비해 휴대폰 사용이 적었어요,"일반적으로  핸드폰 사용이 적으면, 스트레스가 낮아요","일반적으로  핸드폰 사용이 많으면, 스트레스가 높아요"
+19,app,Entertainment & Music,평소에 비해 Entertainment & Music 앱 사용이 많았어요,평소에 비해 Entertainment & Music 앱 사용이 적었어요,,
+20,app,Utilities,"평소에 비해 Utility 앱 사용(멤버십, 문서도구)이 많았어요","평소에 비해 Utility 앱 사용(멤버십, 문서도구)이 적었어요",,
+21,app,Shopping,"평소에 비해 Shopping 앱 사용(결제, 쇼핑몰)이 많았어요","평소에 비해 Shopping 앱 사용(결제, 쇼핑몰)이 적었어요",,
+22,app,Games & Comics,평소에 비해 게임 앱 사용이 많았어요,평소에 비해 게임 앱 사용이 적었어요,,
+23,app,Health & Wellness,"평소에 비해 Health 앱 사용(다이어트, 뷰티)이 많았어요  ","평소에 비해 Health 앱 사용(다이어트, 뷰티)이 적었어요",,
+24,app,Education,평소에 비해 Education 앱 사용(이북)이 많았어요,평소에 비해 Education 앱 사용(이북)이 적었어요,,
+25,app,Travel,"평소에 비해 Travel 앱 사용(교통, 여행)이 많았어요","평소에 비해 Travel 앱 사용(교통, 여행)이 적었어요",,
+26,app,Art & Design & Photo,"평소에 비해 Art & Photo 앱 사용(카메라, 그리기도구)이 많았어요","평소에 비해 Art & Photo 앱 사용(카메라, 그리기도구)이 적었어요",,
+27,app,News & Magazine,"평소에 비해 News 앱 사용(뉴스, 매거진)이 많았어요","평소에 비해 News 앱 사용(뉴스, 매거진)이 적었어요",,
+28,app,Food & Drink,"평소에 비해 Food 앱 사용(배달, 요리)이 많았어요","평소에 비해 Food 앱 사용(배달, 요리)이 적었어요",,
+29,sleep,Sleep dur.,평소에 비해 수면 시간이 많았어요,평소에 비해 수면 시간이 적었어요,"일반적으로  수면량이 많으면, 스트레스가 낮아요","일반적으로  수면량이 적으면, 스트레스가 높아요"
