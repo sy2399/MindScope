@@ -130,7 +130,7 @@ def prediction_task(i):
     # check if the study duration day is more one day to the SURVEY_DURATION day then do following
     # get SURVEY_EMA data of all participants and pass it to StreesModel.makeLabel() function
     # to initialize some stress thresholds
-    if fromNowToGivenTimeToDayNum(campaign_start_time) == SURVEY_DURATION - 1 and ema_order == 4:
+    if fromNowToGivenTimeToDayNum(campaign_start_time) == SURVEY_DURATION  and ema_order == 4:
         initStressThresholds(users_info, data_sources)
 
     users_total_cnt = users_info.__len__()
