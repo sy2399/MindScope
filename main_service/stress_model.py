@@ -127,8 +127,7 @@ class StressModel:
 
                 uinfo_df = uinfo_df.append({'User id': user_email, 'Day': day_num, 'EMA order': ema_order, 'Stress lvl': -1, 'Stress_label': -1}, ignore_index=True)
 
-            feature_scaled = pd.concat(
-                [uinfo_df, feature_scaled.reset_index(drop=True)], axis=1)
+            feature_scaled = pd.concat([uinfo_df, feature_scaled.reset_index(drop=True)], axis=1)
         except Exception as e:
             print(e)
 
@@ -150,8 +149,11 @@ class StressModel:
             X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.20, random_state=42)
 
             model = RandomForestClassifier(n_estimators=100, oob_score=True, random_state=100)
+            split_num = 2
+            if len(Y) < split_num:
+                split_num = len(Y_test)
 
-            kfold = KFold(n_splits=5)
+            kfold = KFold(n_splits=split_num)
             scoring = {'accuracy': 'accuracy',
                        'f1_micro': 'f1_micro',
                        'f1_macro': 'f1_macro'}
@@ -167,6 +169,7 @@ class StressModel:
             ## Model SAVE Path--> where?
             with open('model_result/' + str(self.uid) + "_model.p", 'wb') as file:
                 pickle.dump(model, file)
+                print("Model saved")
         except Exception as e:
             print(e)
 
@@ -182,7 +185,7 @@ class StressModel:
         feature_state_df = StressModel.feature_df_with_state
 
         shap_values = explainer.shap_values(new_row_norm[features])
-        print(shap_values)
+        #print(shap_values)
         expected_value = explainer.expected_value
 
         try:
