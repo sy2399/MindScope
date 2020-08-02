@@ -164,8 +164,12 @@ def prediction_task(i):
         sm = StressModel(user_email, day_num, ema_order, float(stress_lv0_max), float(stress_lv1_max), float(stress_lv2_min))
 
         # 1. Check if the users day num is 14 and job is for initial model training
+
+
         # TODO --> 실제 테스트에선 day_num == SURVEY_DURATION 으로 변경
         if day_num == SURVEY_DURATION and i == FLAG_INITIAL_MODEL_TRAIN:
+
+
             print("1. Initial model training...")
             from_time = 0  # from the very beginning of data collection
             data = grpc_handler.grpc_load_user_data(from_ts=from_time, uid=user_email, data_sources=data_sources,
@@ -200,11 +204,23 @@ def prediction_task(i):
                                          ema_order)
                 new_row_for_test = norm_df[
                     (norm_df['Day'] == day_num) & (norm_df['EMA order'] == ema_order)]  # get test data
+            except Exception as e: #Exception during get Feature
+                print("Exception during get Feature", e)
 
+            try:
 
                 with open('model_result/' + str(user_email) + "_model.p", 'rb') as file:
                     initModel = pickle.load(file)
                     print("User {} , Model load".format(user_email))
+
+            except Exception as e:
+                print("Excpetion during getInitModel", e)
+                from_time = 0  # from the very beginning of data collection
+                data = grpc_handler.grpc_load_user_data(from_ts=from_time, uid=user_email, data_sources=data_sources,
+                                                        data_src_for_sleep_detection=Features.SCREEN_ON_OFF)
+                initialModelTraining(data, user_email, id_jointime['joinedTime'], sm)
+
+            try:
                 features = StressModel.feature_df_with_state['features'].values
 
                 y_pred = initModel.predict(new_row_for_test[features])
@@ -241,7 +257,7 @@ def prediction_task(i):
                 check_and_handle_self_report(user_email, data, sm)
 
             except Exception as e:
-                print(e)
+                print("Exception during saving model result", e)
             # 7. Make prediction using current extracted features
 
 

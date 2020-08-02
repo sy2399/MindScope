@@ -230,15 +230,15 @@ class StressModel:
                 if check_label[i] == 0:
 
                     if i == 0 : # LOW General message
-                        feature_list = '0-general_0 7-general_0 12-general_0 18-general_0 29-general_0'
+                        feature_list = '0-general_0 7-general_0 12-general_0 18-general_0 29-general_0 '
                         model_result = ModelResult.objects.create(uid=self.uid, day_num=self.dayNo, ema_order=self.emaNo,
-                                                                  prediction_result=i, accuracy=0,feature_ids=[feature_list])
+                                                                  prediction_result=i, accuracy=0,feature_ids=feature_list)
                     else: #LITTLE HIGH, HIGH General message
-                        feature_list = '0-general_1 7-general_1 12-general_1 18-general_1 29-general_1'
+                        feature_list = '0-general_1 7-general_1 12-general_1 18-general_1 29-general_1 '
                         model_result = ModelResult.objects.create(uid=self.uid, day_num=self.dayNo,
                                                                   ema_order=self.emaNo,
                                                                   prediction_result=i, accuracy=0,
-                                                                  feature_ids=[feature_list])
+                                                                  feature_ids=feature_list)
                     model_results.append(model_result)
 
 
