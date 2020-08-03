@@ -835,7 +835,7 @@ class Features:
                     activities_total_dur = self.get_activities_dur_result(self.dataset[self.ACTIVITY_TRANSITION], start_time, end_time)
                     dif_activities = self.get_num_of_dif_activities_result(self.dataset[self.ACTIVITY_RECOGNITION], start_time, end_time)
                     audio_data = self.get_audio_data_result(self.dataset[self.AUDIO_LOUDNESS], start_time, end_time)
-                    time_at = self.get_time_at_location(self.dataset[self.GEOFENCE], start_time, end_time, self.LOCATION_HOME)
+                    time_at = self.get_timae_at_location(self.dataset[self.GEOFENCE], start_time, end_time, self.LOCATION_HOME)
                     coordinates = self.get_location_coordinates(self.dataset[self.LOCATIONS_MANUAL], self.LOCATION_HOME)
                     gps_data = self.get_gps_location_data(self.dataset[self.LOCATION_GPS], coordinates, start_time, end_time)
 

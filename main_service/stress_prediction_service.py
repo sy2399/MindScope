@@ -80,8 +80,7 @@ def service_routine():
     job_regular_at_23 = schedule.every().day.at("22:45").do(prediction_task, FLAG_EMA_ORDER_4)
     # TODO ----> 실제 테스트에선 23:15로 변경
     job_initial_train = schedule.every().day.at("23:15").do(prediction_task, FLAG_INITIAL_MODEL_TRAIN) # 23:15
-    ## TODO --> TEST
-    #job_regular_at_test = schedule.every().day.at("14:40").do(prediction_task, FLAG_EMA_ORDER_1)
+
 
     while run_service:
         try:
@@ -95,8 +94,6 @@ def service_routine():
     schedule.cancel_job(job=job_regular_at_19)
     schedule.cancel_job(job=job_regular_at_23)
     schedule.cancel_job(job=job_initial_train)
-    ##TODO --> TEST
-    #schedule.cancel_job(job=job_regular_at_test)
 
     exit(0)
 
@@ -143,7 +140,7 @@ def prediction_task(i):
 
     for user_email, id_jointime in users_info.items():
         # TODO: temporarily check for one user
-        #if user_email == "hrgoh@nsl.inha.ac.kr":
+       # if user_email == "honghwajung@gmail.com":
         user_current_cnt += 1
         user_id = id_jointime['uid']
         day_num = fromNowToGivenTimeToDayNum(id_jointime['joinedTime'])
@@ -178,7 +175,7 @@ def prediction_task(i):
 
             # 2. Check if users day num is more than 14 days, only then extract features and make prediction
         # TODO --> 실제 테스트에선 day_num > SURVEY_DURATION 으로 변경
-        if day_num >= SURVEY_DURATION:
+        if day_num > SURVEY_DURATION:
 
             # 6. Get trained stress prediction model
             try:
