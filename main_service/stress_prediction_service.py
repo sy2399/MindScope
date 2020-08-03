@@ -140,7 +140,7 @@ def prediction_task(i):
 
     for user_email, id_jointime in users_info.items():
         # TODO: temporarily check for one user
-       # if user_email == "honghwajung@gmail.com":
+        #if user_email == "fkdfkd98@nmsl.kaist.ac.kr":
         user_current_cnt += 1
         user_id = id_jointime['uid']
         day_num = fromNowToGivenTimeToDayNum(id_jointime['joinedTime'])
@@ -164,16 +164,15 @@ def prediction_task(i):
 
 
         # TODO --> 실제 테스트에선 day_num == SURVEY_DURATION 으로 변경
+        # 데이터 수집 마지막 날, feature extraction & Model init
         if day_num == SURVEY_DURATION and i == FLAG_INITIAL_MODEL_TRAIN:
-
-
             print("1. Initial model training...")
             from_time = 0  # from the very beginning of data collection
             data = grpc_handler.grpc_load_user_data(from_ts=from_time, uid=user_email, data_sources=data_sources,
                                                     data_src_for_sleep_detection=Features.SCREEN_ON_OFF)
             initialModelTraining(data, user_email, id_jointime['joinedTime'], sm)
 
-            # 2. Check if users day num is more than 14 days, only then extract features and make prediction
+        # 2. Check if users day num is more than SURVEY_DURATION, only then extract features and make prediction
         # TODO --> 실제 테스트에선 day_num > SURVEY_DURATION 으로 변경
         if day_num > SURVEY_DURATION:
 
@@ -191,6 +190,19 @@ def prediction_task(i):
                     step1_preprocessed = pickle.load(file)
                     print("User {} , features saved".format(user_email))
 
+                if step1_preprocessed.shape[0] == 0: ## feature extraction  이 제대로 안된 경우 대비, 한번 더 체크
+                    from_time = 0  # from the very beginning of data collection
+                    data = grpc_handler.grpc_load_user_data(from_ts=from_time, uid=user_email,
+                                                            data_sources=data_sources,
+                                                            data_src_for_sleep_detection=Features.SCREEN_ON_OFF)
+                    initialModelTraining(data, user_email, id_jointime['joinedTime'], sm)
+
+                    with open('data_result/' + str(user_email) + "_features.p", 'rb') as file:
+                        step1_preprocessed = pickle.load(file)
+                        print("User {} , features Reload ".format(user_email))
+
+
+
                 features = Features(uid=user_email, dataset=data, joinTimestamp=id_jointime['joinedTime'])
                 df = pd.DataFrame(
                     features.extract_regular(start_ts=from_time, end_ts=now_time, ema_order=ema_order))
@@ -202,7 +214,7 @@ def prediction_task(i):
                 new_row_for_test = norm_df[
                     (norm_df['Day'] == day_num) & (norm_df['EMA order'] == ema_order)]  # get test data
             except Exception as e: #Exception during get Feature
-                print("Exception during get Feature", e)
+                print("Exception during get Feature...maybe location related...", e)
 
             try:
 
@@ -211,6 +223,7 @@ def prediction_task(i):
                     print("User {} , Model load".format(user_email))
 
             except Exception as e:
+                # 모델이 저장 안된 경우 대비
                 print("Excpetion during getInitModel", e)
                 from_time = 0  # from the very beginning of data collection
                 data = grpc_handler.grpc_load_user_data(from_ts=from_time, uid=user_email, data_sources=data_sources,

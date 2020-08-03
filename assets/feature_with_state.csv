@@ -1,9 +1,9 @@
 ﻿feature_id,category,features,statement_high,statement_low,general_0,general_1
-0,activity,Duration STILL,평소에 비해 움직임이 적었어요,평소에 비해 움직임이 많았어요,"일반적으로 활동량이 많을 때, 스트레스가 낮아요","일반적으로 활동량이 적을 때, 스트레스가 높아요"
-1,activity,Duration WALKING,평소에 비해 움직임이 많았어요 (걷기),평소에 비해 움직임이 적었어요 (걷기),,
-2,activity,Duration RUNNING,평소에 비해 움직임이 많았어요 (뛰기),평소에 비해 움직임이 적었어요 (뛰기),,
-3,activity,Duration BICYCLE,평소에 비해 움직임이 많았어요 (자전거),평소에 비해 움직임이 적었어요 (자전거),,
-4,activity,Duration ON_FOOT,평소에 비해 움직임이 많았어요 (걷기),평소에 비해 움직임이 적었어요 (걷기),,
+0,activity,Duration STILL,한 자리에 오래 머무른 시간이 길어요,한 자리에 오래 머무른 시간이 적어요,"일반적으로 활동량이 많을 때, 스트레스가 낮아요","일반적으로 활동량이 적을 때, 스트레스가 높아요"
+1,activity,Duration WALKING,평소에 비해 움직임이 많았어요,평소에 비해 움직임이 적었어요,,
+2,activity,Duration RUNNING,평소에 비해 움직임이 많았어요,평소에 비해 움직임이 적었어요,,
+3,activity,Duration BICYCLE,평소에 비해 움직임이 많았어요,평소에 비해 움직임이 적었어요,,
+4,activity,Duration ON_FOOT,평소에 비해 움직임이 많았어요,평소에 비해 움직임이 적었어요,,
 5,activity,Duration VEHICLE,평소에 비해 차량 이동이 많았어요,평소에 비해 차량 이동이 적었어요,,
 6,social,Audio mean,평소에 비해 주변이 시끄러웠던 것 같아요,평소에 비해 주변이 조용했던 것 같아요,,
 7,social,Phonecall duration,평소에 비해 통화량이 많았어요,평소에 비해 통화량이 적었어요,"일반적으로 다른 사람들과의 교류가 많을 때, 스트레스가 낮아요","일반적으로  다른 사람들과의 교류가 적을 때, 스트레스가 높아요"

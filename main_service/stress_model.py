@@ -203,18 +203,28 @@ class StressModel:
                 shap_dict = dict(zip(features, shap_list[0]))
                 shap_dict_sorted = sorted(shap_dict.items(), key=(lambda x: x[1]), reverse=True)
 
+                act_features = ['Duration WALKING', 'Duration RUNNING', 'Duration BICYCLE', 'Duration ON_FOOT', 'Duration VEHICLE']
+                act_tmp = ""
                 for feature_name, s_value in shap_dict_sorted:
                     if s_value > 0:
                         feature_id = feature_state_df[feature_state_df['features'] == feature_name]['feature_id'].values[0]
                         feature_value = new_row_norm[feature_name].values[0]
 
-                        if feature_value >= 0.5:
-                            feature_list += str(feature_id) + '-high '
+                        if feature_name in act_features:
+                            if act_tmp == "":
+                                act_tmp += feature_name
 
+                                if feature_value >= 0.5:
+                                    feature_list += str(feature_id) + '-high '
+                                else:
+                                    feature_list += str(feature_id) + '-low '
                         else:
-                            feature_list += str(feature_id) + '-low '
+                            if feature_value >= 0.5:
+                                feature_list += str(feature_id) + '-high '
+                            else:
+                                feature_list += str(feature_id) + '-low '
 
-                print(feature_list)
+
 
                 if label == pred:
                     model_result = ModelResult.objects.create(uid=self.uid, day_num=self.dayNo, ema_order=self.emaNo,
@@ -223,7 +233,7 @@ class StressModel:
                 else:
                     model_result = ModelResult.objects.create(uid=self.uid, day_num=self.dayNo, ema_order=self.emaNo,
                                                               prediction_result=label, accuracy=shap_accuracy,
-                                                              feature_ids=feature_list)
+                                                              feature_ids=feature_list, model_tag = False)
 
                 model_results.append(model_result)
 
