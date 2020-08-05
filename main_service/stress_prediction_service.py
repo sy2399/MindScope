@@ -48,7 +48,7 @@ CAMPAIGN_ID = 15 ####### 변결될 부분
 
 MANAGER_ID = 21
 MANAGER_EMAIL = 'mindscope.nsl@gmail.com'
-# endregion
+# endregion444444444444444444444444444444
 
 
 # region Variables
@@ -72,22 +72,23 @@ def stop():
 
 
 def service_routine():
-    #prediction_task(FLAG_EMA_ORDER_3) ##for test
+    #prediction_task(FLAG_EMA_ORDER_1) ##for test
 
     job_regular_at_11 = schedule.every().day.at("10:45").do(prediction_task, FLAG_EMA_ORDER_1)
     job_regular_at_15 = schedule.every().day.at("14:45").do(prediction_task, FLAG_EMA_ORDER_2)
     job_regular_at_19 = schedule.every().day.at("18:45").do(prediction_task, FLAG_EMA_ORDER_3)
     job_regular_at_23 = schedule.every().day.at("22:45").do(prediction_task, FLAG_EMA_ORDER_4)
-    # TODO ----> 실제 테스트에선 23:15로 변경
+
+    #TODO ----> 실제 테스트에선 23:15로 변경
     job_initial_train = schedule.every().day.at("23:15").do(prediction_task, FLAG_INITIAL_MODEL_TRAIN) # 23:15
 
 
     while run_service:
-        try:
-            schedule.run_pending()
-            time.sleep(1)
-        except KeyboardInterrupt:
-            stop()
+       try:
+           schedule.run_pending()
+           time.sleep(1)
+       except KeyboardInterrupt:
+           stop()
 
     schedule.cancel_job(job=job_regular_at_11)
     schedule.cancel_job(job=job_regular_at_15)
@@ -140,13 +141,11 @@ def prediction_task(i):
 
     for user_email, id_jointime in users_info.items():
         # TODO: temporarily check for one user
-        #if user_email == "fkdfkd98@nmsl.kaist.ac.kr":
+        #if user_email == 'raon0172@gmail.com': #, "fkdfkd98@nmsl.kaist.ac.kr"]: #hyunsungcho@nmsl.kaist.ac.kr
         user_current_cnt += 1
         user_id = id_jointime['uid']
         day_num = fromNowToGivenTimeToDayNum(id_jointime['joinedTime'])
-        print("User {}/{} : {}, Day num : {}".format(user_current_cnt, users_total_cnt, user_email, day_num))
-
-
+        print("\n\nUser {}/{} : {}, Day num : {}".format(user_current_cnt, users_total_cnt, user_email, day_num))
 
         threshold_data = grpc_handler.grpc_load_user_data(from_ts=0, uid=user_email, data_sources={Features.STRESS_LVL_THRESHOLDS: data_sources[Features.STRESS_LVL_THRESHOLDS]}, data_src_for_sleep_detection=None)
         stress_lv0_max = 0
@@ -160,12 +159,17 @@ def prediction_task(i):
 
         sm = StressModel(user_email, day_num, ema_order, float(stress_lv0_max), float(stress_lv1_max), float(stress_lv2_min))
 
+
+
+        ## System
         # 1. Check if the users day num is 14 and job is for initial model training
 
 
-        # TODO --> 실제 테스트에선 day_num == SURVEY_DURATION 으로 변경
-        # 데이터 수집 마지막 날, feature extraction & Model init
+
+        # # TODO --> 실제 테스트에선 day_num == SURVEY_DURATION 으로 변경
+        # # 데이터 수집 마지막 날, feature extraction & Model init
         if day_num == SURVEY_DURATION and i == FLAG_INITIAL_MODEL_TRAIN:
+        #if day_num >= SURVEY_DURATION :
             print("1. Initial model training...")
             from_time = 0  # from the very beginning of data collection
             data = grpc_handler.grpc_load_user_data(from_ts=from_time, uid=user_email, data_sources=data_sources,
@@ -174,9 +178,33 @@ def prediction_task(i):
 
         # 2. Check if users day num is more than SURVEY_DURATION, only then extract features and make prediction
         # TODO --> 실제 테스트에선 day_num > SURVEY_DURATION 으로 변경
-        if day_num > SURVEY_DURATION:
+        elif day_num > SURVEY_DURATION and i != FLAG_INITIAL_MODEL_TRAIN:
 
-            # 6. Get trained stress prediction model
+        ## TODO : Test Update
+        ######TEST UPDATE ######################################################################
+        #     try:
+        #         data = grpc_handler.grpc_load_user_data(from_ts=from_time, uid=user_email, data_sources=data_sources,data_src_for_sleep_detection=Features.SCREEN_ON_OFF)
+        #         with open('data_result/' + str(user_email) + "_features.p", 'rb') as file:
+        #             step1_preprocessed = pickle.load(file)
+        #             print("User {} , features saved".format(user_email))
+        #
+        #             features = Features(uid=user_email, dataset=data, joinTimestamp=id_jointime['joinedTime'])
+        #             df = pd.DataFrame(
+        #                 features.extract_regular(start_ts=from_time, end_ts=now_time, ema_order=ema_order))
+        #             new_row_preprocessed = sm.preprocessing(df=df, prep_type=None)
+        #             new_row_preprocessed['Stress_label'] = 0
+        #             update_df = pd.concat([step1_preprocessed.reset_index(drop=True), new_row_preprocessed.reset_index(drop=True)])
+        #
+        #             with open('data_result/' + str(user_email) + "_features.p", 'wb') as file:
+        #                     pickle.dump(update_df, file)
+        #
+        #         check_and_handle_self_report(user_email, data, sm)
+        #     except Exception as e:
+        #         print(e)
+        # ###################################################################################################
+
+
+        #  6. Get trained stress prediction model
             try:
                 print("2. Regular prediction...")
                 print("User  {}, Day num : {}".format(user_email, day_num))
@@ -190,22 +218,16 @@ def prediction_task(i):
                     step1_preprocessed = pickle.load(file)
                     print("User {} , features saved".format(user_email))
 
-                if step1_preprocessed.shape[0] == 0: ## feature extraction  이 제대로 안된 경우 대비, 한번 더 체크
-                    from_time = 0  # from the very beginning of data collection
-                    data = grpc_handler.grpc_load_user_data(from_ts=from_time, uid=user_email,
-                                                            data_sources=data_sources,
-                                                            data_src_for_sleep_detection=Features.SCREEN_ON_OFF)
+                if step1_preprocessed.shape[0] == 0:  ## feature extraction  이 제대로 안된 경우 대비, 한번 더 체크
                     initialModelTraining(data, user_email, id_jointime['joinedTime'], sm)
 
                     with open('data_result/' + str(user_email) + "_features.p", 'rb') as file:
                         step1_preprocessed = pickle.load(file)
                         print("User {} , features Reload ".format(user_email))
 
-
-
                 features = Features(uid=user_email, dataset=data, joinTimestamp=id_jointime['joinedTime'])
                 df = pd.DataFrame(
-                    features.extract_regular(start_ts=from_time, end_ts=now_time, ema_order=ema_order))
+                    features.extract_regular(start_ts=from_time, end_ts=now_time, ema_order=ema_order, user_email = user_email, day_num=day_num))
 
                 # 5. Pre-process and normalize the extracted features
                 new_row_preprocessed = sm.preprocessing(df=df, prep_type=None)
@@ -213,7 +235,7 @@ def prediction_task(i):
                                          ema_order)
                 new_row_for_test = norm_df[
                     (norm_df['Day'] == day_num) & (norm_df['EMA order'] == ema_order)]  # get test data
-            except Exception as e: #Exception during get Feature
+            except Exception as e:  # Exception during get Feature
                 print("Exception during get Feature...maybe location related...", e)
 
             try:
@@ -226,27 +248,38 @@ def prediction_task(i):
                 # 모델이 저장 안된 경우 대비
                 print("Excpetion during getInitModel", e)
                 from_time = 0  # from the very beginning of data collection
-                data = grpc_handler.grpc_load_user_data(from_ts=from_time, uid=user_email, data_sources=data_sources,
+                data = grpc_handler.grpc_load_user_data(from_ts=from_time, uid=user_email,
+                                                        data_sources=data_sources,
                                                         data_src_for_sleep_detection=Features.SCREEN_ON_OFF)
-                initialModelTraining(data, user_email, id_jointime['joinedTime'], sm)
-
+                ## Check if EMA response is more than 3
+                if list(data[Features.SURVEY_EMA]).__len__() >= 3:
+                    initialModelTraining(data, user_email, id_jointime['joinedTime'], sm)
+                    with open('model_result/' + str(user_email) + "_model.p", 'rb') as file:
+                        initModel = pickle.load(file)
+                        print("User {} , Model load".format(user_email))
+                else:
+                    continue
             try:
                 features = StressModel.feature_df_with_state['features'].values
 
                 y_pred = initModel.predict(new_row_for_test[features])
+                if len(y_pred) > 1:
+                    y_pred = y_pred[0]
+
                 new_row_preprocessed['Stress_label'] = y_pred
 
                 # 8. Insert a new pre-processed feature entry together with it's predicted label in DB for further model re-train
-                update_df = pd.concat([step1_preprocessed.reset_index(drop=True), new_row_preprocessed.reset_index(drop=True)])
+                update_df = pd.concat(
+                    [step1_preprocessed.reset_index(drop=True), new_row_preprocessed.reset_index(drop=True)])
+                update_df = update_df.reset_index(drop=True)
 
                 with open('data_result/' + str(user_email) + "_features.p", 'wb') as file:
                     pickle.dump(update_df, file)
-                    print("User {} , Feature Update".format(user_email))
 
                 # 9. Save prediction and important features in DB
                 user_all_labels = list(set(step1_preprocessed['Stress_label']))
-                model_results = list(sm.saveAndGetSHAP(user_all_labels, y_pred, new_row_for_test,
-                                                       initModel))  # saves results on ModelResult table in DB
+                model_results = list(sm.saveAndGetSHAP(user_all_label=user_all_labels, pred=y_pred, new_row_raw = new_row_preprocessed, new_row_norm =new_row_for_test,
+                                                       initModel=initModel))  # saves results on ModelResult table in DB
 
                 # 10. Construct a result message and send it to gRPC server with "STRESS_PREDICTION" data source id
                 result_data = {}
@@ -258,9 +291,9 @@ def prediction_task(i):
                         "feature_ids": model_result.feature_ids,
                         "model_tag": model_result.model_tag
                     }
-                if result_data:
-                    grpc_handler.grpc_send_user_data(user_id, user_email, data_sources[Features.STRESS_PREDICTION],
-                                                     now_time, str(result_data))
+                # if result_data:
+                #     grpc_handler.grpc_send_user_data(user_id, user_email, data_sources[Features.STRESS_PREDICTION],
+                #                                     now_time, str(result_data))
 
                 # 11. Lastly, check if user self reported his stress, then update the DB of pre-processed features with reported stress label
 
@@ -290,7 +323,8 @@ def initialModelTraining(dataset, user_email, joined_timestamp, stress_model):
     #if df_preprocessed['']
     with open('data_result/' + str(user_email) + "_features.p", 'wb') as file:
         pickle.dump(df_preprocessed, file)
-
+    # with open('data_result/' + str(user_email) + "_features.p", 'rb') as file:
+    #     df_preprocessed = pickle.load(file)
     # normalizing
     norm_df = stress_model.normalizing("default", df_preprocessed, None, None, None, None)
 
@@ -305,8 +339,9 @@ def check_and_handle_self_report(user_email, data, stress_model):
     sr_value = -1  # self report value
     if data['SELF_STRESS_REPORT']:  # data['SELF_STRESS_REPORT'][-1][1] takes the value of the latest SELF_STRESS_REPORT data source
         if data['SELF_STRESS_REPORT'][-1][1]:
-            timestamp, sr_day_num, sr_ema_order, sr_value, prediction_lvl, accuracy, feature_ids, yes_no = [int(i) for i in data['SELF_STRESS_REPORT'][-1][1].split(" ")]
-
+            timestamp, sr_day_num, sr_ema_order, yes_no, sr_value = [int(i) for i in data['SELF_STRESS_REPORT'][-1][1].split(" ")]
+            #sr_vale == 유저가 응답한 스트레스 레벨
+            # timestamp, day_num, order, yesOrNo, reportAnswer
             model_result_to_update = ModelResult.objects.get(uid=user_email, day_num=sr_day_num, ema_order=sr_ema_order, prediction_result=sr_value)
             # check if this result was not already updated by the user, if it wasn't then update the user tag and re-train the model
             if model_result_to_update.user_tag == False:

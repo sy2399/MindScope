@@ -4,6 +4,7 @@ from urllib.request import urlopen
 from urllib.request import HTTPError
 from bs4 import BeautifulSoup
 import math
+from main_service.models import AppUsed
 
 
 def number_in_range(number, start, end):
@@ -319,7 +320,9 @@ class Features:
 
         return result if result > 0 else "-"
 
-    def get_app_category_usage(self, dataset, start_time, end_time):
+    def get_app_category_usage(self, dataset, start_time, end_time, user_email, day_num, ema_no):
+        print("get_app_category_usage", day_num, user_email, ema_no)
+
         result = {
             "Entertainment & Music": 0,
             "Utilities": 0,
@@ -337,6 +340,10 @@ class Features:
         }
 
         data = list(dataset)
+        app_pkg_dict = {"Entertainment_Music":{}, "Utilities" : {}, "Shopping": {}, "Games_Comics": {}, "Others" : {}, "Health_Wellness":{},
+                        "Social_Communication":{}, "Education":{}, "Travel": {}, "Art_Photo":{}, "News_Magazine": {}, "Food_Drink":{}}
+       #d[x] = d.get(x, 0) + 1
+        # TODO : Application package
         if data.__len__() > 0:
             for item in data:
                 start, end, pckg_name = item[1].split(" ")
@@ -349,31 +356,107 @@ class Features:
                         self.pckg_to_cat_map[pckg_name] = category
 
                     if category == "Entertainment & Music":
+                        tmp_dict = app_pkg_dict['Entertainment_Music']
+                        tmp_dict[pckg_name] = tmp_dict.get(pckg_name, 0) + duration
+                        app_pkg_dict['Entertainment_Music'] = tmp_dict
+
                         result['Entertainment & Music'] += duration
                     elif category == "Utilities":
+                        tmp_dict = app_pkg_dict['Utilities']
+                        tmp_dict[pckg_name] = tmp_dict.get(pckg_name, 0) + duration
+                        app_pkg_dict['Utilities'] = tmp_dict
+
                         result['Utilities'] += duration
                     elif category == "Shopping":
+                        tmp_dict = app_pkg_dict['Shopping']
+                        tmp_dict[pckg_name] = tmp_dict.get(pckg_name, 0) + duration
+                        app_pkg_dict['Shopping'] = tmp_dict
+
                         result['Shopping'] += duration
                     elif category == "Games & Comics":
+                        tmp_dict = app_pkg_dict['Games_Comics']
+                        tmp_dict[pckg_name] = tmp_dict.get(pckg_name, 0) + duration
+                        app_pkg_dict['Games_Comics'] = tmp_dict
+
                         result['Games & Comics'] += duration
                     elif category == "Others":
+                        tmp_dict = app_pkg_dict['Others']
+                        tmp_dict[pckg_name] = tmp_dict.get(pckg_name, 0) + duration
+                        app_pkg_dict['Others'] = tmp_dict
+
                         result['Others'] += duration
                     elif category == "Health & Wellness":
+                        tmp_dict = app_pkg_dict['Health_Wellness']
+                        tmp_dict[pckg_name] = tmp_dict.get(pckg_name, 0) + duration
+                        app_pkg_dict['Health_Wellness'] = tmp_dict
+
                         result['Health & Wellness'] += duration
                     elif category == "Social & Communication":
+
+                        tmp_dict = app_pkg_dict['Social_Communication']
+                        tmp_dict[pckg_name] = tmp_dict.get(pckg_name, 0) + duration
+                        app_pkg_dict['Social_Communication'] = tmp_dict
+
+
                         result['Social & Communication'] += duration
                     elif category == "Education":
+                        tmp_dict = app_pkg_dict['Education']
+                        tmp_dict[pckg_name] = tmp_dict.get(pckg_name, 0) + duration
+                        app_pkg_dict['Education'] = tmp_dict
+
                         result['Education'] += duration
                     elif category == "Travel":
+                        tmp_dict = app_pkg_dict['Travel']
+                        tmp_dict[pckg_name] = tmp_dict.get(pckg_name, 0) + duration
+                        app_pkg_dict['Travel'] = tmp_dict
+
                         result['Travel'] += duration
                     elif category == "Art & Design & Photo":
+                        tmp_dict = app_pkg_dict['Art_Photo']
+                        tmp_dict[pckg_name] = tmp_dict.get(pckg_name, 0) + duration
+                        app_pkg_dict['Art_Photo'] = tmp_dict
+
                         result['Art & Design & Photo'] += duration
                     elif category == "News & Magazine":
+                        tmp_dict = app_pkg_dict['News_Magazine']
+                        tmp_dict[pckg_name] = tmp_dict.get(pckg_name, 0) + duration
+                        app_pkg_dict['News_Magazine'] = tmp_dict
+
                         result['News & Magazine'] += duration
                     elif category == "Food & Drink":
+                        tmp_dict = app_pkg_dict['Food_Drink']
+                        tmp_dict[pckg_name] = tmp_dict.get(pckg_name, 0) + duration
+                        app_pkg_dict['Food & Drink'] = tmp_dict
+
                         result['Food & Drink'] += duration
                     elif category == "Unknown & Background":
                         result['Unknown & Background'] += duration
+
+            ## TODO : get app packge of biggest duration
+            pkg_most = {"Entertainment_Music": "음악_및_영상", "Utilities": "클라우드_및_문서도구", "Shopping": "결제_및_쇼핑", "Games_Comics": "게임_및_웹툰",
+                            "Others": "비즈니스_도구(취업_및_화상미팅)", "Health_Wellness": "건강_관리_도구",
+                            "Social_Communication": "SNS_및_메일", "Education": "교육_관련_앱", "Travel": "교통_도구(지도)", "Art_Photo": "사진 ",
+                            "News_Magazine": "뉴스", "Food_Drink": "배달_및_음식_관련_앱"}
+
+            for category, apps in app_pkg_dict.items():
+                try:
+                    if bool(apps):
+                        all_apps = sorted(apps, key = (lambda x : x[1]), reverse = True)
+                        pkg_most[category] =all_apps[0]
+
+                except Exception as e:
+                    print(e)
+            try:
+                AppUsed.objects.create(uid=self.uid, day_num=day_num, ema_order=ema_no,
+                                           Entertainment_Music=pkg_most['Entertainment_Music'],Utilities=pkg_most['Utilities'], Shopping=pkg_most['Shopping'],
+                                       Games_Comics=pkg_most['Games_Comics'], Others=pkg_most['Others'], Health_Wellness=pkg_most['Health_Wellness'],
+                                       Social_Communication=pkg_most['Social_Communication'], Education=pkg_most['Education'],
+                                       Travel=pkg_most['Travel'], Art_Photo=pkg_most['Art_Photo'], News_Magazine= pkg_most['News_Magazine'],
+                                       Food_Drink=pkg_most['Food_Drink'])
+            except Exception as e:
+                print(e)
+
+
 
         if result['Entertainment & Music'] == 0:
             result['Entertainment & Music'] = "-"
@@ -609,7 +692,7 @@ class Features:
                     ema_data.append(int(answer4))
         return ema_data
 
-    def extract_regular(self, start_ts, end_ts, ema_order):
+    def extract_regular(self, start_ts, end_ts, ema_order, user_email, day_num):
         global df
         try:
             columns = ['User id',
@@ -684,8 +767,8 @@ class Features:
                 self.dataset[self.CALLS],
                 self.dataset[self.AUDIO_LOUDNESS],
                 start_ts, end_ts)
-
-            app_usage = self.get_app_category_usage(self.dataset[self.APPLICATION_USAGE], start_ts, end_ts)
+            #self, dataset, start_time, end_time, user_email, day_num, ema_no
+            app_usage = self.get_app_category_usage(dataset = self.dataset[self.APPLICATION_USAGE],start_time =  start_ts, end_time = end_ts, user_email = user_email, day_num = day_num, ema_no = ema_order)
 
             day_hour_start = 18
             day_hour_end = 10
@@ -835,7 +918,7 @@ class Features:
                     activities_total_dur = self.get_activities_dur_result(self.dataset[self.ACTIVITY_TRANSITION], start_time, end_time)
                     dif_activities = self.get_num_of_dif_activities_result(self.dataset[self.ACTIVITY_RECOGNITION], start_time, end_time)
                     audio_data = self.get_audio_data_result(self.dataset[self.AUDIO_LOUDNESS], start_time, end_time)
-                    time_at = self.get_timae_at_location(self.dataset[self.GEOFENCE], start_time, end_time, self.LOCATION_HOME)
+                    time_at = self.get_time_at_location(self.dataset[self.GEOFENCE], start_time, end_time, self.LOCATION_HOME)
                     coordinates = self.get_location_coordinates(self.dataset[self.LOCATIONS_MANUAL], self.LOCATION_HOME)
                     gps_data = self.get_gps_location_data(self.dataset[self.LOCATION_GPS], coordinates, start_time, end_time)
 

@@ -14,3 +14,26 @@ class ModelResult(models.Model):
 
     class Meta:
         unique_together = (('uid', 'day_num', 'ema_order', 'prediction_result'),)
+
+class AppUsed(models.Model):
+    uid = models.TextField()
+    day_num = models.IntegerField(default=0)
+    ema_order = models.IntegerField(default=0)
+
+    Entertainment_Music = models.TextField()
+    Utilities = models.TextField()
+    Shopping  = models.TextField()
+    Games_Comics = models.TextField()
+    Others = models.TextField()
+    Health_Wellness = models.TextField()
+    Social_Communication = models.TextField()
+    Education = models.TextField()
+    Travel = models.TextField()
+    Art_Photo = models.TextField()
+    News_Magazine = models.TextField()
+    Food_Drink = models.TextField()
+
+
+
+    class Meta:
+        unique_together = (('uid', 'day_num', 'ema_order'),)

@@ -15,6 +15,7 @@ import shap
 import pandas as pd
 
 from main_service.models import ModelResult
+from main_service.models import AppUsed
 
 
 ## CASE 1 : Right after the end of step1
@@ -149,6 +150,7 @@ class StressModel:
             X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.20, random_state=42)
 
             model = RandomForestClassifier(n_estimators=100, oob_score=True, random_state=100)
+            # TODO split_num is 2 ==> related to stress prediction check(3)
             split_num = 2
             if len(Y) < split_num:
                 split_num = len(Y_test)
@@ -166,14 +168,16 @@ class StressModel:
             print("===================Model Result : ", model_result)
 
             model.fit(X_train, Y_train)
-            ## Model SAVE Path--> where?
+
             with open('model_result/' + str(self.uid) + "_model.p", 'wb') as file:
                 pickle.dump(model, file)
                 print("Model saved")
+
+
         except Exception as e:
             print(e)
 
-    def saveAndGetSHAP(self, user_all_label, pred, new_row_norm, initModel):
+    def saveAndGetSHAP(self, user_all_label, pred, new_row_raw, new_row_norm, initModel):
 
         model_results = []
 
@@ -204,25 +208,62 @@ class StressModel:
                 shap_dict_sorted = sorted(shap_dict.items(), key=(lambda x: x[1]), reverse=True)
 
                 act_features = ['Duration WALKING', 'Duration RUNNING', 'Duration BICYCLE', 'Duration ON_FOOT', 'Duration VEHICLE']
+                app_features = ['Entertainment & Music','Utilities','Shopping', 'Games & Comics', 'Health & Wellness', 'Education', 'Travel', 'Art & Design & Photo', 'News & Magazine', 'Food & Drink']
+
                 act_tmp = ""
                 for feature_name, s_value in shap_dict_sorted:
                     if s_value > 0:
                         feature_id = feature_state_df[feature_state_df['features'] == feature_name]['feature_id'].values[0]
                         feature_value = new_row_norm[feature_name].values[0]
+                        if new_row_raw[feature_name].values[0] != 0:
+                            if feature_name in act_features:
+                                if act_tmp == "":
+                                    act_tmp += feature_name
 
-                        if feature_name in act_features:
-                            if act_tmp == "":
-                                act_tmp += feature_name
+                                    if feature_value >= 0.5:
+                                        feature_list += str(feature_id) + '-high '
+                                    else:
+                                        feature_list += str(feature_id) + '-low '
+                            elif feature_name in app_features:
+                                # Add package
+                                pkg_result = AppUsed.objects.get(uid=self.uid, day_num=self.dayNo,
+                                                                       ema_order=self.emaNo)
+                                print(pkg_result)
+                                pkg_text = ""
+                                if feature_name == "Entertainment & Music":
+                                    pkg_text = pkg_result.Entertainment_Music
+                                elif feature_name == "Utilities":
+                                    pkg_text = pkg_result.Utilities
+                                elif feature_name == "Shopping":
+                                    pkg_text = pkg_result.Shopping
+                                elif feature_name == "Games & Comics":
+                                    pkg_text = pkg_result.Games_Comics
+                                elif feature_name == "Others":
+                                    pkg_text = pkg_result.Others
+                                elif feature_name == "Health & Wellness":
+                                    pkg_text = pkg_result.Health_Wellness
+                                elif feature_name == "Social & Communication":
+                                    pkg_text = pkg_result.Social_Communication
+                                elif feature_name == "Education":
+                                    pkg_text = pkg_result.Education
+                                elif feature_name == "Travel":
+                                    pkg_text = pkg_result.Travel
+                                elif feature_name == "Art & Design & Photo":
+                                    pkg_text = pkg_result.Art_Photo
+                                elif feature_name == "News & Magazine":
+                                    pkg_text = pkg_result.News_Magazine
+                                elif feature_name == "Food & Drink":
+                                    pkg_text = pkg_result.Food_Drink
 
+                                if feature_value >= 0.5:
+                                    feature_list += str(feature_id) + '-high&' + pkg_text
+                                else:
+                                    feature_list += str(feature_id) + '-low&' + pkg_text
+                            else:
                                 if feature_value >= 0.5:
                                     feature_list += str(feature_id) + '-high '
                                 else:
                                     feature_list += str(feature_id) + '-low '
-                        else:
-                            if feature_value >= 0.5:
-                                feature_list += str(feature_id) + '-high '
-                            else:
-                                feature_list += str(feature_id) + '-low '
 
 
 
@@ -233,7 +274,7 @@ class StressModel:
                 else:
                     model_result = ModelResult.objects.create(uid=self.uid, day_num=self.dayNo, ema_order=self.emaNo,
                                                               prediction_result=label, accuracy=shap_accuracy,
-                                                              feature_ids=feature_list, model_tag = False)
+                                                              feature_ids=feature_list)
 
                 model_results.append(model_result)
 
@@ -264,12 +305,20 @@ class StressModel:
         # update Dataframe
         with open('data_result/' + str(self.uid) + "_features.p", 'rb') as file:
             preprocessed = pickle.load(file)
-            preprocessed[(preprocessed['Day'] == day_num) & (preprocessed['EMA order'] == ema_order)][
-                'Stress_label'] = user_response
 
-            with open('data_result/' + str(self.uid) + "_features.p", 'wb') as file:
-                pickle.dump(preprocessed, file)
+            # TODO : iloc 이나 다른 방법 사용해보기
+            #preprocessed[(preprocessed['Day'] == day_num) and (preprocessed['EMA order'] == ema_order)]['Stress_label'] = user_response
+            try:
 
+                preprocessed.loc[(preprocessed['Day'] == day_num) & (preprocessed['EMA order'] == ema_order), 'Stress_label'] = user_response
+
+                print("Changed!!!!!")
+
+                with open('data_result/' + str(self.uid) + "_features.p", 'wb') as file:
+                    pickle.dump(preprocessed, file)
+
+            except Exception as e:
+                print(e)
         # retrain the model
         norm_df = StressModel.normalizing(self, "default", preprocessed, None, None, None, None)
         StressModel.initModel(self, norm_df)
