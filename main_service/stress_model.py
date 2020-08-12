@@ -192,6 +192,24 @@ class StressModel:
         #print(shap_values)
         expected_value = explainer.expected_value
 
+        if len(expected_value) != len(user_all_label):
+            with open('data_result/' + str(self.uid) + "_features.p", 'rb') as file:
+                preprocessed = pickle.load(file)
+
+            norm_df = StressModel.normalizing(self, "default", preprocessed, None, None, None, None)
+            StressModel.initModel(self, norm_df)
+
+            explainer = shap.TreeExplainer(initModel)
+            explainer.feature_perturbation = "tree_path_dependent"
+
+            features = StressModel.feature_df_with_state['features'].values
+            feature_state_df = StressModel.feature_df_with_state
+
+            shap_values = explainer.shap_values(new_row_norm[features], check_additivity = False)
+            # print(shap_values)
+            expected_value = explainer.expected_value
+
+
         try:
             ## changed 0723
             check_label = [0 for i in range(3)]
@@ -208,7 +226,7 @@ class StressModel:
                 shap_dict_sorted = sorted(shap_dict.items(), key=(lambda x: x[1]), reverse=True)
 
                 act_features = ['Duration WALKING', 'Duration RUNNING', 'Duration BICYCLE', 'Duration ON_FOOT', 'Duration VEHICLE']
-                app_features = ['Entertainment & Music','Utilities','Shopping', 'Games & Comics', 'Health & Wellness', 'Education', 'Travel', 'Art & Design & Photo', 'News & Magazine', 'Food & Drink']
+                app_features = ['Social & Communication','Entertainment & Music','Utilities','Shopping', 'Games & Comics', 'Health & Wellness', 'Education', 'Travel', 'Art & Design & Photo', 'News & Magazine', 'Food & Drink']
 
                 act_tmp = ""
                 for feature_name, s_value in shap_dict_sorted:
@@ -226,46 +244,54 @@ class StressModel:
                                         feature_list += str(feature_id) + '-low '
                             elif feature_name in app_features:
                                 # Add package
-                                pkg_result = AppUsed.objects.get(uid=self.uid, day_num=self.dayNo,
-                                                                       ema_order=self.emaNo)
-                                print(pkg_result)
-                                pkg_text = ""
-                                if feature_name == "Entertainment & Music":
-                                    pkg_text = pkg_result.Entertainment_Music
-                                elif feature_name == "Utilities":
-                                    pkg_text = pkg_result.Utilities
-                                elif feature_name == "Shopping":
-                                    pkg_text = pkg_result.Shopping
-                                elif feature_name == "Games & Comics":
-                                    pkg_text = pkg_result.Games_Comics
-                                elif feature_name == "Others":
-                                    pkg_text = pkg_result.Others
-                                elif feature_name == "Health & Wellness":
-                                    pkg_text = pkg_result.Health_Wellness
-                                elif feature_name == "Social & Communication":
-                                    pkg_text = pkg_result.Social_Communication
-                                elif feature_name == "Education":
-                                    pkg_text = pkg_result.Education
-                                elif feature_name == "Travel":
-                                    pkg_text = pkg_result.Travel
-                                elif feature_name == "Art & Design & Photo":
-                                    pkg_text = pkg_result.Art_Photo
-                                elif feature_name == "News & Magazine":
-                                    pkg_text = pkg_result.News_Magazine
-                                elif feature_name == "Food & Drink":
-                                    pkg_text = pkg_result.Food_Drink
+                                try:
+                                    pkg_result = AppUsed.objects.get(uid=self.uid, day_num=self.dayNo,
+                                                                           ema_order=self.emaNo)
+                                    pkg_text = ""
+                                    if feature_name == "Entertainment & Music":
+                                        pkg_text = pkg_result.Entertainment_Music
+                                    elif feature_name == "Utilities":
+                                        pkg_text = pkg_result.Utilities
+                                    elif feature_name == "Shopping":
+                                        pkg_text = pkg_result.Shopping
+                                    elif feature_name == "Games & Comics":
+                                        pkg_text = pkg_result.Games_Comics
+                                    elif feature_name == "Others":
+                                        pkg_text = pkg_result.Others
+                                    elif feature_name == "Health & Wellness":
+                                        pkg_text = pkg_result.Health_Wellness
+                                    elif feature_name == "Social & Communication":
+                                        pkg_text = pkg_result.Social_Communication
+                                    elif feature_name == "Education":
+                                        pkg_text = pkg_result.Education
+                                    elif feature_name == "Travel":
+                                        pkg_text = pkg_result.Travel
+                                    elif feature_name == "Art & Design & Photo":
+                                        pkg_text = pkg_result.Art_Photo
+                                    elif feature_name == "News & Magazine":
+                                        pkg_text = pkg_result.News_Magazine
+                                    elif feature_name == "Food & Drink":
+                                        pkg_text = pkg_result.Food_Drink
 
-                                if feature_value >= 0.5:
-                                    feature_list += str(feature_id) + '-high&' + pkg_text
-                                else:
-                                    feature_list += str(feature_id) + '-low&' + pkg_text
+                                    if pkg_text != "":
+                                        if feature_value >= 0.5:
+                                            feature_list += str(feature_id) + '-high&' + pkg_text + " "
+                                        else:
+                                            feature_list += str(feature_id) + '-low '
+
+                                except Exception as e:
+                                    print("Exception during making feature_list of app...get AppUsed db", e)
+
+
+
                             else:
                                 if feature_value >= 0.5:
                                     feature_list += str(feature_id) + '-high '
                                 else:
                                     feature_list += str(feature_id) + '-low '
 
-
+                if feature_list == "":
+                    feature_list = "NO_FEATURES"
 
                 if label == pred:
                     model_result = ModelResult.objects.create(uid=self.uid, day_num=self.dayNo, ema_order=self.emaNo,
@@ -297,7 +323,7 @@ class StressModel:
 
 
         except Exception as e:
-            print(e)
+            print("Exception at saveAndGetSHAP",e)
 
         return model_results
 

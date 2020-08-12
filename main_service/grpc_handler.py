@@ -20,13 +20,13 @@ class GrpcHandler:
     def grpc_load_user_emails(self):
         user_info = {}
         # retrieve participant emails
-        request = et_service_pb2.RetrieveParticipantsRequestMessage(
+        request = et_service_pb2.RetrieveParticipants.Request(  # Kevin
             userId=self.manager_id,
             email=self.manager_email,
             campaignId=self.campaign_id
         )
         response = self.stub.retrieveParticipants(request)
-        if not response.doneSuccessfully:
+        if not response.success:
             return False
         for idx, email in enumerate(response.email):
             user_info[email] = {}
@@ -34,17 +34,15 @@ class GrpcHandler:
             # user_info.append((email, response.userId[idx]))
 
         for email, id in user_info.items():
-            request = et_service_pb2.RetrieveParticipantStatisticsRequestMessage(
+            request = et_service_pb2.RetrieveParticipantStats.Request(  # Kevin
                 userId=self.manager_id,
                 email=self.manager_email,
                 targetEmail=email,
                 targetCampaignId=self.campaign_id
             )
-            response = self.stub.retrieveParticipantStatistics(request)
-            if not response.doneSuccessfully:
+            response = self.stub.retrieveParticipantStats(request)  # Kevin
+            if not response.success:
                 return False
-
-
 
             user_info[email]['joinedTime'] = response.campaignJoinTimestamp
 
@@ -52,13 +50,13 @@ class GrpcHandler:
 
     def grpc_get_campaign_info(self):
         # retrieve campaign details --> data source ids
-        request = et_service_pb2.RetrieveCampaignRequestMessage(
+        request = et_service_pb2.RetrieveCampaign.Request(  # Kevin
             userId=self.manager_id,
             email=self.manager_email,
             campaignId=self.campaign_id
         )
         response = self.stub.retrieveCampaign(request)
-        if not response.doneSuccessfully:
+        if not response.success:
             return None
 
         return response
@@ -78,7 +76,7 @@ class GrpcHandler:
             data[data_source_name] = []
             data_available = True
             while data_available:
-                grpc_req = et_service_pb2.Retrieve100DataRecordsRequestMessage(
+                grpc_req = et_service_pb2.Retrieve100DataRecords.Request(  # Kevin
                     userId=self.manager_id,
                     email=self.manager_email,
                     targetEmail=uid,
@@ -87,15 +85,15 @@ class GrpcHandler:
                     fromTimestamp=from_time
                 )
                 grpc_res = self.stub.retrieve100DataRecords(grpc_req)
-                if grpc_res.doneSuccessfully:
+                if grpc_res.success:
                     for timestamp, value in zip(grpc_res.timestamp, grpc_res.value):
                         from_time = timestamp
                         data[data_source_name] += [(timestamp, value)]
-                data_available = grpc_res.doneSuccessfully and grpc_res.moreDataAvailable
+                data_available = grpc_res.success and grpc_res.moreDataAvailable
         return data
 
     def grpc_send_user_data(self, user_id, user_email, data_src, timestamp, value):
-        req = et_service_pb2.SubmitDataRecordsRequestMessage(
+        req = et_service_pb2.SubmitDataRecords.Request(  # Kevin
             userId=user_id,
             email=user_email,
             campaignId=self.campaign_id

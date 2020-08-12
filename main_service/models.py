@@ -20,6 +20,7 @@ class AppUsed(models.Model):
     day_num = models.IntegerField(default=0)
     ema_order = models.IntegerField(default=0)
 
+
     Entertainment_Music = models.TextField()
     Utilities = models.TextField()
     Shopping  = models.TextField()

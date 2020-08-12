@@ -320,6 +320,98 @@ class Features:
 
         return result if result > 0 else "-"
 
+    def get_app_category_usage_at_first(self, dataset, start_time, end_time):
+        result = {
+            "Entertainment & Music": 0,
+            "Utilities": 0,
+            "Shopping": 0,
+            "Games & Comics": 0,
+            "Others": 0,
+            "Health & Wellness": 0,
+            "Social & Communication": 0,
+            "Education": 0,
+            "Travel": 0,
+            "Art & Design & Photo": 0,
+            "News & Magazine": 0,
+            "Food & Drink": 0,
+            "Unknown & Background": 0
+        }
+
+        data = list(dataset)
+
+        # d[x] = d.get(x, 0) + 1
+        # TODO : Application package
+        if data.__len__() > 0:
+            for item in data:
+                start, end, pckg_name = item[1].split(" ")
+                duration = (int(end) - int(start)) / 1000
+                if number_in_range(int(start), start_time, end_time) and number_in_range(int(end), start_time,
+                                                                                         end_time):
+                    if pckg_name in self.pckg_to_cat_map:
+                        category = self.pckg_to_cat_map[pckg_name]
+                    else:
+                        category = self.get_google_category(pckg_name)
+                        self.pckg_to_cat_map[pckg_name] = category
+
+                    if category == "Entertainment & Music":
+                        result['Entertainment & Music'] += duration
+                    elif category == "Utilities":
+                        result['Utilities'] += duration
+                    elif category == "Shopping":
+                        result['Shopping'] += duration
+                    elif category == "Games & Comics":
+                        result['Games & Comics'] += duration
+                    elif category == "Others":
+                        result['Others'] += duration
+                    elif category == "Health & Wellness":
+                        result['Health & Wellness'] += duration
+                    elif category == "Social & Communication":
+                        result['Social & Communication'] += duration
+                    elif category == "Education":
+                        result['Education'] += duration
+                    elif category == "Travel":
+                        result['Travel'] += duration
+                    elif category == "Art & Design & Photo":
+                        result['Art & Design & Photo'] += duration
+                    elif category == "News & Magazine":
+                        result['News & Magazine'] += duration
+                    elif category == "Food & Drink":
+                        result['Food & Drink'] += duration
+                    elif category == "Unknown & Background":
+                        result['Unknown & Background'] += duration
+
+
+
+
+        if result['Entertainment & Music'] == 0:
+            result['Entertainment & Music'] = "-"
+        if result['Utilities'] == 0:
+            result['Utilities'] = "-"
+        if result['Shopping'] == 0:
+            result['Shopping'] = "-"
+        if result['Games & Comics'] == 0:
+            result['Games & Comics'] = "-"
+        if result['Others'] == 0:
+            result['Others'] = "-"
+        if result['Health & Wellness'] == 0:
+            result['Health & Wellness'] = "-"
+        if result['Social & Communication'] == 0:
+            result['Social & Communication'] = "-"
+        if result['Education'] == 0:
+            result['Education'] = "-"
+        if result['Travel'] == 0:
+            result['Travel'] = "-"
+        if result['Art & Design & Photo'] == 0:
+            result['Art & Design & Photo'] = "-"
+        if result['News & Magazine'] == 0:
+            result['News & Magazine'] = "-"
+        if result['Food & Drink'] == 0:
+            result['Food & Drink'] = "-"
+        if result['Unknown & Background'] == 0:
+            result['Unknown & Background'] = "-"
+
+        return result
+
     def get_app_category_usage(self, dataset, start_time, end_time, user_email, day_num, ema_no):
         print("get_app_category_usage", day_num, user_email, ema_no)
 
@@ -454,7 +546,7 @@ class Features:
                                        Travel=pkg_most['Travel'], Art_Photo=pkg_most['Art_Photo'], News_Magazine= pkg_most['News_Magazine'],
                                        Food_Drink=pkg_most['Food_Drink'])
             except Exception as e:
-                print(e)
+                print("Exception during creating Appused", e)
 
 
 
@@ -932,7 +1024,7 @@ class Features:
                         self.dataset[self.AUDIO_LOUDNESS],
                         start_time, end_time)
 
-                    app_usage = self.get_app_category_usage(self.dataset[self.APPLICATION_USAGE], start_time, end_time)
+                    app_usage = self.get_app_category_usage_at_first(self.dataset[self.APPLICATION_USAGE], start_time, end_time)
 
                     day_hour_start = 18
                     day_hour_end = 10

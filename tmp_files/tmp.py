@@ -12,7 +12,7 @@ server_ip_port = '165.246.21.202:50051'
 channel = grpc.insecure_channel(server_ip_port)
 stub = et_service_pb2_grpc.ETServiceStub(channel)
 
-request = et_service_pb2.RetrieveCampaignRequestMessage(
+request = et_service_pb2.RetrieveCampaign.Request(  # Kevin
     userId=manager_id,
     email=manager_email,
     campaignId=campaign_id

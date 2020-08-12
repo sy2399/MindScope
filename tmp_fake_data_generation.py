@@ -95,7 +95,7 @@ values = [
 
 print("User 1")
 for index, value in enumerate(values):
-    req = et_service_pb2.SubmitDataRecordsRequestMessage(
+    req = et_service_pb2.SubmitDataRecords.Request(  # Kevin
         userId=user_id1,
         email=user_email1,
         campaignId=campaign_id
@@ -114,7 +114,7 @@ for index, value in enumerate(values):
 
 print("User 2")
 for index, value in enumerate(values):
-    req = et_service_pb2.SubmitDataRecordsRequestMessage(
+    req = et_service_pb2.SubmitDataRecords.Request(  # Kevin
         userId=user_id2,
         email=user_email2,
         campaignId=campaign_id

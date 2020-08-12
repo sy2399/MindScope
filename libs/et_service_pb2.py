@@ -16,48 +16,18 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     package='',
     syntax='proto3',
     serialized_options=b'\n\022inha.nsl.easytrack',
-    serialized_pb=b'\n\x10\x65t_service.proto\"2\n\x16\x44\x65\x66\x61ultResponseMessage\x12\x18\n\x10\x64oneSuccessfully\x18\x01 \x01(\x08\"7\n$LoginWithGoogleIdTokenRequestMessage\x12\x0f\n\x07idToken\x18\x01 \x01(\t\"U\n BindUserToCampaignRequestMessage\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x12\n\ncampaignId\x18\x03 \x01(\x05\"y\n!BindUserToCampaignResponseMessage\x12\x18\n\x10\x64oneSuccessfully\x18\x01 \x01(\x08\x12\x1a\n\x12isFirstTimeBinding\x18\x02 \x01(\x08\x12\x1e\n\x16\x63\x61mpaignStartTimestamp\x18\x03 \x01(\x03\"Z\n%DashboardLoginWithEmailRequestMessage\x12\r\n\x05\x65mail\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x14\n\x0c\x64\x61shboardKey\x18\x03 \x01(\t\"@\n\x14LoginResponseMessage\x12\x18\n\x10\x64oneSuccessfully\x18\x01 \x01(\x08\x12\x0e\n\x06userId\x18\x02 \x01(\x05\"\xd6\x01\n\x1eRegisterCampaignRequestMessage\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x12\n\ncampaignId\x18\x03 \x01(\x05\x12\x0c\n\x04name\x18\x04 \x01(\t\x12\r\n\x05notes\x18\x05 \x01(\t\x12\x12\n\nconfigJson\x18\x06 \x01(\t\x12\x16\n\x0estartTimestamp\x18\x07 \x01(\x03\x12\x14\n\x0c\x65ndTimestamp\x18\x08 \x01(\x03\x12\"\n\x1aremoveInactiveUsersTimeout\x18\t \x01(\x05\"O\n\x1fRegisterCampaignResponseMessage\x12\x18\n\x10\x64oneSuccessfully\x18\x01 \x01(\x08\x12\x12\n\ncampaignId\x18\x02 \x01(\x05\"Q\n\x1c\x44\x65leteCampaignRequestMessage\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x12\n\ncampaignId\x18\x03 \x01(\x05\"Y\n\x1fRetrieveCampaignsRequestMessage\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x17\n\x0fmyCampaignsOnly\x18\x03 \x01(\x08\"\x83\x02\n RetrieveCampaignsResponseMessage\x12\x18\n\x10\x64oneSuccessfully\x18\x01 \x01(\x08\x12\x12\n\ncampaignId\x18\x02 \x03(\x05\x12\x0c\n\x04name\x18\x03 \x03(\t\x12\r\n\x05notes\x18\x04 \x03(\t\x12\x16\n\x0estartTimestamp\x18\x05 \x03(\x03\x12\x14\n\x0c\x65ndTimestamp\x18\x06 \x03(\x03\x12\"\n\x1aremoveInactiveUsersTimeout\x18\x07 \x03(\x05\x12\x14\n\x0c\x63reatorEmail\x18\x08 \x03(\t\x12\x12\n\nconfigJson\x18\t \x03(\t\x12\x18\n\x10participantCount\x18\n \x03(\x05\"S\n\x1eRetrieveCampaignRequestMessage\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x12\n\ncampaignId\x18\x03 \x01(\x05\"\xca\x01\n\x1fRetrieveCampaignResponseMessage\x12\x18\n\x10\x64oneSuccessfully\x18\x01 \x01(\x08\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\r\n\x05notes\x18\x04 \x01(\t\x12\x16\n\x0estartTimestamp\x18\x05 \x01(\x03\x12\x14\n\x0c\x65ndTimestamp\x18\x06 \x01(\x03\x12\x14\n\x0c\x63reatorEmail\x18\x07 \x01(\t\x12\x12\n\nconfigJson\x18\x08 \x01(\t\x12\x18\n\x10participantCount\x18\t \x01(\x05\"\x9c\x01\n\x1eSubmitDataRecordRequestMessage\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x12\n\ncampaignId\x18\x03 \x01(\x05\x12\x11\n\ttimestamp\x18\x04 \x01(\x03\x12\x12\n\ndataSource\x18\x05 \x01(\x05\x12\x10\n\x08\x61\x63\x63uracy\x18\x06 \x01(\x02\x12\x0e\n\x06values\x18\x07 \x01(\t\"\x9d\x01\n\x1fSubmitDataRecordsRequestMessage\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x12\n\ncampaignId\x18\x03 \x01(\x05\x12\x11\n\ttimestamp\x18\x04 \x03(\x03\x12\x12\n\ndataSource\x18\x05 \x03(\x05\x12\x10\n\x08\x61\x63\x63uracy\x18\x06 \x03(\x02\x12\x0e\n\x06values\x18\x07 \x03(\t\"R\n\x1dSubmitHeartbeatRequestMessage\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x12\n\ncampaignId\x18\x03 \x01(\x05\"y\n!SubmitDirectMessageRequestMessage\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x13\n\x0btargetEmail\x18\x03 \x01(\t\x12\x0f\n\x07subject\x18\x04 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x05 \x01(\t\"W\n\"RetrieveParticipantsRequestMessage\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x12\n\ncampaignId\x18\x03 \x01(\x05\"l\n#RetrieveParticipantsResponseMessage\x12\x18\n\x10\x64oneSuccessfully\x18\x01 \x01(\x08\x12\x0e\n\x06userId\x18\x02 \x03(\x05\x12\r\n\x05\x65mail\x18\x03 \x03(\t\x12\x0c\n\x04name\x18\x04 \x03(\t\"{\n+RetrieveParticipantStatisticsRequestMessage\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x13\n\x0btargetEmail\x18\x03 \x01(\t\x12\x18\n\x10targetCampaignId\x18\x04 \x01(\x05\"\xc3\x02\n,RetrieveParticipantStatisticsResponseMessage\x12\x18\n\x10\x64oneSuccessfully\x18\x01 \x01(\x08\x12\x18\n\x10\x61\x63tiveCampaignId\x18\x02 \x01(\x05\x12\x1d\n\x15\x63\x61mpaignJoinTimestamp\x18\x03 \x01(\x03\x12\x19\n\x11lastSyncTimestamp\x18\x04 \x01(\x03\x12\x1e\n\x16lastHeartbeatTimestamp\x18\x05 \x01(\x03\x12$\n\x1c\x61mountOfSubmittedDataSamples\x18\x06 \x01(\x05\x12\x14\n\x0c\x64\x61taSourceId\x18\x07 \x03(\x05\x12!\n\x19perDataSourceAmountOfData\x18\x08 \x03(\x05\x12&\n\x1eperDataSourceLastSyncTimestamp\x18\t \x03(\x03\"\xa7\x01\n$Retrieve100DataRecordsRequestMessage\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x13\n\x0btargetEmail\x18\x03 \x01(\t\x12\x18\n\x10targetCampaignId\x18\x04 \x01(\x05\x12\x1a\n\x12targetDataSourceId\x18\x05 \x01(\x05\x12\x15\n\rfromTimestamp\x18\x06 \x01(\x03\"\x92\x01\n%Retrieve100DataRecordsResponseMessage\x12\x18\n\x10\x64oneSuccessfully\x18\x01 \x01(\x08\x12\x11\n\ttimestamp\x18\x02 \x03(\x03\x12\x12\n\ndataSource\x18\x03 \x03(\x05\x12\r\n\x05value\x18\x04 \x03(\t\x12\x19\n\x11moreDataAvailable\x18\x05 \x01(\x08\"\xc3\x01\n)RetrieveFilteredDataRecordsRequestMessage\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x13\n\x0btargetEmail\x18\x03 \x01(\t\x12\x18\n\x10targetCampaignId\x18\x04 \x01(\x05\x12\x1a\n\x12targetDataSourceId\x18\x05 \x01(\x05\x12\x15\n\rfromTimestamp\x18\x06 \x01(\x03\x12\x15\n\rtillTimestamp\x18\x07 \x01(\x03\"|\n*RetrieveFilteredDataRecordsResponseMessage\x12\x18\n\x10\x64oneSuccessfully\x18\x01 \x01(\x08\x12\x11\n\ttimestamp\x18\x02 \x03(\x03\x12\x12\n\ndataSource\x18\x03 \x03(\x05\x12\r\n\x05value\x18\x04 \x03(\t\"K\n*RetrieveUnreadDirectMessagesRequestMessage\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\r\n\x05\x65mail\x18\x02 \x01(\t\"\x91\x01\n+RetrieveUnreadDirectMessagesResponseMessage\x12\x18\n\x10\x64oneSuccessfully\x18\x01 \x01(\x08\x12\x13\n\x0bsourceEmail\x18\x02 \x03(\t\x12\x11\n\ttimestamp\x18\x03 \x03(\x03\x12\x0f\n\x07subject\x18\x04 \x03(\t\x12\x0f\n\x07\x63ontent\x18\x05 \x03(\t\"J\n)RetrieveUnreadNotificationsRequestMessage\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\r\n\x05\x65mail\x18\x02 \x01(\t\"\xa7\x01\n*RetrieveUnreadNotificationsResponseMessage\x12\x18\n\x10\x64oneSuccessfully\x18\x01 \x01(\x08\x12\x16\n\x0enotificationId\x18\x02 \x03(\x05\x12\x12\n\ncampaignId\x18\x03 \x03(\x05\x12\x11\n\ttimestamp\x18\x04 \x03(\x03\x12\x0f\n\x07subject\x18\x05 \x03(\t\x12\x0f\n\x07\x63ontent\x18\x06 \x03(\t\"]\n\x1c\x42indDataSourceRequestMessage\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x10\n\x08iconName\x18\x04 \x01(\t\"a\n\x1d\x42indDataSourceResponseMessage\x12\x18\n\x10\x64oneSuccessfully\x18\x01 \x01(\x08\x12\x14\n\x0c\x64\x61taSourceId\x18\x02 \x01(\x05\x12\x10\n\x08iconName\x18\x03 \x01(\t\"E\n$RetrieveAllDataSourcesRequestMessage\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\r\n\x05\x65mail\x18\x02 \x01(\t\"\x8d\x01\n%RetrieveAllDataSourcesResponseMessage\x12\x18\n\x10\x64oneSuccessfully\x18\x01 \x01(\x08\x12\x14\n\x0c\x64\x61taSourceId\x18\x02 \x03(\x05\x12\x0c\n\x04name\x18\x03 \x03(\t\x12\x14\n\x0c\x63reatorEmail\x18\x04 \x03(\t\x12\x10\n\x08iconName\x18\x05 \x03(\t2\xba\x0e\n\tETService\x12S\n\x11loginWithGoogleId\x12%.LoginWithGoogleIdTokenRequestMessage\x1a\x15.LoginResponseMessage\"\x00\x12]\n\x12\x62indUserToCampaign\x12!.BindUserToCampaignRequestMessage\x1a\".BindUserToCampaignResponseMessage\"\x00\x12Z\n\x17\x64\x61shboardLoginWithEmail\x12&.DashboardLoginWithEmailRequestMessage\x1a\x15.LoginResponseMessage\"\x00\x12W\n\x10registerCampaign\x12\x1f.RegisterCampaignRequestMessage\x1a .RegisterCampaignResponseMessage\"\x00\x12J\n\x0e\x64\x65leteCampaign\x12\x1d.DeleteCampaignRequestMessage\x1a\x17.DefaultResponseMessage\"\x00\x12Z\n\x11retrieveCampaigns\x12 .RetrieveCampaignsRequestMessage\x1a!.RetrieveCampaignsResponseMessage\"\x00\x12W\n\x10retrieveCampaign\x12\x1f.RetrieveCampaignRequestMessage\x1a .RetrieveCampaignResponseMessage\"\x00\x12N\n\x10submitDataRecord\x12\x1f.SubmitDataRecordRequestMessage\x1a\x17.DefaultResponseMessage\"\x00\x12P\n\x11submitDataRecords\x12 .SubmitDataRecordsRequestMessage\x1a\x17.DefaultResponseMessage\"\x00\x12L\n\x0fsubmitHeartbeat\x12\x1e.SubmitHeartbeatRequestMessage\x1a\x17.DefaultResponseMessage\"\x00\x12T\n\x13submitDirectMessage\x12\".SubmitDirectMessageRequestMessage\x1a\x17.DefaultResponseMessage\"\x00\x12\x63\n\x14retrieveParticipants\x12#.RetrieveParticipantsRequestMessage\x1a$.RetrieveParticipantsResponseMessage\"\x00\x12~\n\x1dretrieveParticipantStatistics\x12,.RetrieveParticipantStatisticsRequestMessage\x1a-.RetrieveParticipantStatisticsResponseMessage\"\x00\x12i\n\x16retrieve100DataRecords\x12%.Retrieve100DataRecordsRequestMessage\x1a&.Retrieve100DataRecordsResponseMessage\"\x00\x12x\n\x1bretrieveFilteredDataRecords\x12*.RetrieveFilteredDataRecordsRequestMessage\x1a+.RetrieveFilteredDataRecordsResponseMessage\"\x00\x12{\n\x1cretrieveUnreadDirectMessages\x12+.RetrieveUnreadDirectMessagesRequestMessage\x1a,.RetrieveUnreadDirectMessagesResponseMessage\"\x00\x12x\n\x1bretrieveUnreadNotifications\x12*.RetrieveUnreadNotificationsRequestMessage\x1a+.RetrieveUnreadNotificationsResponseMessage\"\x00\x12Q\n\x0e\x62indDataSource\x12\x1d.BindDataSourceRequestMessage\x1a\x1e.BindDataSourceResponseMessage\"\x00\x12i\n\x16retrieveAllDataSources\x12%.RetrieveAllDataSourcesRequestMessage\x1a&.RetrieveAllDataSourcesResponseMessage\"\x00\x42\x14\n\x12inha.nsl.easytrackb\x06proto3'
+    serialized_pb=b'\n\x10\x65t_service.proto\"Z\n\x0fLoginWithGoogle\x1a\x1a\n\x07Request\x12\x0f\n\x07idToken\x18\x01 \x01(\t\x1a+\n\x08Response\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x0e\n\x06userId\x18\x02 \x01(\x05\"{\n\x0eLoginDashboard\x1a<\n\x07Request\x12\r\n\x05\x65mail\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x14\n\x0c\x64\x61shboardKey\x18\x03 \x01(\t\x1a+\n\x08Response\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x0e\n\x06userId\x18\x02 \x01(\x05\"\xab\x01\n\x12\x42indUserToCampaign\x1a<\n\x07Request\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x12\n\ncampaignId\x18\x03 \x01(\x05\x1aW\n\x08Response\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x1a\n\x12isFirstTimeBinding\x18\x02 \x01(\x08\x12\x1e\n\x16\x63\x61mpaignStartTimestamp\x18\x03 \x01(\x03\"\x9e\x01\n\x14RetrieveParticipants\x1a<\n\x07Request\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x12\n\ncampaignId\x18\x03 \x01(\x05\x1aH\n\x08Response\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x0e\n\x06userId\x18\x02 \x03(\x05\x12\r\n\x05\x65mail\x18\x03 \x03(\t\x12\x0c\n\x04name\x18\x04 \x03(\t\"\x8c\x03\n\x18RetrieveParticipantStats\x1aW\n\x07Request\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x13\n\x0btargetEmail\x18\x03 \x01(\t\x12\x18\n\x10targetCampaignId\x18\x04 \x01(\x05\x1a\x96\x02\n\x08Response\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x18\n\x10\x61\x63tiveCampaignId\x18\x02 \x01(\x05\x12\x1d\n\x15\x63\x61mpaignJoinTimestamp\x18\x03 \x01(\x03\x12\x19\n\x11lastSyncTimestamp\x18\x04 \x01(\x03\x12\x1e\n\x16lastHeartbeatTimestamp\x18\x05 \x01(\x03\x12$\n\x1c\x61mountOfSubmittedDataSamples\x18\x06 \x01(\x05\x12\x14\n\x0c\x64\x61taSourceId\x18\x07 \x03(\x05\x12!\n\x19perDataSourceAmountOfData\x18\x08 \x03(\x05\x12&\n\x1eperDataSourceLastSyncTimestamp\x18\t \x03(\x03\"\x85\x02\n\x10RegisterCampaign\x1a\xbf\x01\n\x07Request\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x12\n\ncampaignId\x18\x03 \x01(\x05\x12\x0c\n\x04name\x18\x04 \x01(\t\x12\r\n\x05notes\x18\x05 \x01(\t\x12\x12\n\nconfigJson\x18\x06 \x01(\t\x12\x16\n\x0estartTimestamp\x18\x07 \x01(\x03\x12\x14\n\x0c\x65ndTimestamp\x18\x08 \x01(\x03\x12\"\n\x1aremoveInactiveUsersTimeout\x18\t \x01(\x05\x1a/\n\x08Response\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x12\n\ncampaignId\x18\x02 \x01(\x05\"k\n\x0e\x44\x65leteCampaign\x1a<\n\x07Request\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x12\n\ncampaignId\x18\x03 \x01(\x05\x1a\x1b\n\x08Response\x12\x0f\n\x07success\x18\x01 \x01(\x08\"\xbb\x02\n\x11RetrieveCampaigns\x1a\x41\n\x07Request\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x17\n\x0fmyCampaignsOnly\x18\x03 \x01(\x08\x1a\xe2\x01\n\x08Response\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x12\n\ncampaignId\x18\x02 \x03(\x05\x12\x0c\n\x04name\x18\x03 \x03(\t\x12\r\n\x05notes\x18\x04 \x03(\t\x12\x16\n\x0estartTimestamp\x18\x05 \x03(\x03\x12\x14\n\x0c\x65ndTimestamp\x18\x06 \x03(\x03\x12\"\n\x1aremoveInactiveUsersTimeout\x18\x07 \x03(\x05\x12\x14\n\x0c\x63reatorEmail\x18\x08 \x03(\t\x12\x12\n\nconfigJson\x18\t \x03(\t\x12\x18\n\x10participantCount\x18\n \x03(\x05\"\xfd\x01\n\x10RetrieveCampaign\x1a<\n\x07Request\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x12\n\ncampaignId\x18\x03 \x01(\x05\x1a\xaa\x01\n\x08Response\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\r\n\x05notes\x18\x03 \x01(\t\x12\x16\n\x0estartTimestamp\x18\x04 \x01(\x03\x12\x14\n\x0c\x65ndTimestamp\x18\x05 \x01(\x03\x12\x14\n\x0c\x63reatorEmail\x18\x06 \x01(\t\x12\x12\n\nconfigJson\x18\x07 \x01(\t\x12\x18\n\x10participantCount\x18\x08 \x01(\x05\"\x9f\x01\n\x0e\x42indDataSource\x1aH\n\x07Request\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x0c\n\x04name\x18\x03 \x01(\t\x12\x10\n\x08iconName\x18\x04 \x01(\t\x1a\x43\n\x08Response\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x14\n\x0c\x64\x61taSourceId\x18\x02 \x01(\x05\x12\x10\n\x08iconName\x18\x03 \x01(\t\"\xa8\x01\n\x13RetrieveDataSources\x1a(\n\x07Request\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x1ag\n\x08Response\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x14\n\x0c\x64\x61taSourceId\x18\x02 \x03(\x05\x12\x0c\n\x04name\x18\x03 \x03(\t\x12\x14\n\x0c\x63reatorEmail\x18\x04 \x03(\t\x12\x10\n\x08iconName\x18\x05 \x03(\t\"\xb7\x01\n\x10SubmitDataRecord\x1a\x85\x01\n\x07Request\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x12\n\ncampaignId\x18\x03 \x01(\x05\x12\x11\n\ttimestamp\x18\x04 \x01(\x03\x12\x12\n\ndataSource\x18\x05 \x01(\x05\x12\x10\n\x08\x61\x63\x63uracy\x18\x06 \x01(\x02\x12\x0e\n\x06values\x18\x07 \x01(\t\x1a\x1b\n\x08Response\x12\x0f\n\x07success\x18\x01 \x01(\x08\"\xb8\x01\n\x11SubmitDataRecords\x1a\x85\x01\n\x07Request\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x12\n\ncampaignId\x18\x03 \x01(\x05\x12\x11\n\ttimestamp\x18\x04 \x03(\x03\x12\x12\n\ndataSource\x18\x05 \x03(\x05\x12\x10\n\x08\x61\x63\x63uracy\x18\x06 \x03(\x02\x12\x0e\n\x06values\x18\x07 \x03(\t\x1a\x1b\n\x08Response\x12\x0f\n\x07success\x18\x01 \x01(\x08\"\x93\x02\n\x16Retrieve100DataRecords\x1a\x8a\x01\n\x07Request\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x13\n\x0btargetEmail\x18\x03 \x01(\t\x12\x18\n\x10targetCampaignId\x18\x04 \x01(\x05\x12\x1a\n\x12targetDataSourceId\x18\x05 \x01(\x05\x12\x15\n\rfromTimestamp\x18\x06 \x01(\x03\x1al\n\x08Response\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x11\n\ttimestamp\x18\x02 \x03(\x03\x12\x12\n\ndataSource\x18\x03 \x03(\x05\x12\r\n\x05value\x18\x04 \x03(\t\x12\x19\n\x11moreDataAvailable\x18\x05 \x01(\x08\"\x94\x02\n\x1bRetrieveFilteredDataRecords\x1a\xa1\x01\n\x07Request\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x13\n\x0btargetEmail\x18\x03 \x01(\t\x12\x18\n\x10targetCampaignId\x18\x04 \x01(\x05\x12\x1a\n\x12targetDataSourceId\x18\x05 \x01(\x05\x12\x15\n\rfromTimestamp\x18\x06 \x01(\x03\x12\x15\n\rtillTimestamp\x18\x07 \x01(\x03\x1aQ\n\x08Response\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x11\n\ttimestamp\x18\x02 \x03(\x03\x12\x12\n\ndataSource\x18\x03 \x03(\x05\x12\r\n\x05value\x18\x04 \x03(\t\"l\n\x0fSubmitHeartbeat\x1a<\n\x07Request\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x12\n\ncampaignId\x18\x03 \x01(\x05\x1a\x1b\n\x08Response\x12\x0f\n\x07success\x18\x01 \x01(\x08\"\x93\x01\n\x13SubmitDirectMessage\x1a_\n\x07Request\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x12\x13\n\x0btargetEmail\x18\x03 \x01(\t\x12\x0f\n\x07subject\x18\x04 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x05 \x01(\t\x1a\x1b\n\x08Response\x12\x0f\n\x07success\x18\x01 \x01(\x08\"\xaf\x01\n\x1cRetrieveUnreadDirectMessages\x1a(\n\x07Request\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x1a\x65\n\x08Response\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x13\n\x0bsourceEmail\x18\x02 \x03(\t\x12\x11\n\ttimestamp\x18\x03 \x03(\x03\x12\x0f\n\x07subject\x18\x04 \x03(\t\x12\x0f\n\x07\x63ontent\x18\x05 \x03(\t\"\xc5\x01\n\x1bRetrieveUnreadNotifications\x1a(\n\x07Request\x12\x0e\n\x06userId\x18\x01 \x01(\x05\x12\r\n\x05\x65mail\x18\x02 \x01(\t\x1a|\n\x08Response\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x16\n\x0enotificationId\x18\x02 \x03(\x05\x12\x12\n\ncampaignId\x18\x03 \x03(\x05\x12\x11\n\ttimestamp\x18\x04 \x03(\x03\x12\x0f\n\x07subject\x18\x05 \x03(\t\x12\x0f\n\x07\x63ontent\x18\x06 \x03(\t2\xe4\x0c\n\tETService\x12H\n\x0floginWithGoogle\x12\x18.LoginWithGoogle.Request\x1a\x19.LoginWithGoogle.Response\"\x00\x12\x45\n\x0eloginDashboard\x12\x17.LoginDashboard.Request\x1a\x18.LoginDashboard.Response\"\x00\x12Q\n\x12\x62indUserToCampaign\x12\x1b.BindUserToCampaign.Request\x1a\x1c.BindUserToCampaign.Response\"\x00\x12W\n\x14retrieveParticipants\x12\x1d.RetrieveParticipants.Request\x1a\x1e.RetrieveParticipants.Response\"\x00\x12\x63\n\x18retrieveParticipantStats\x12!.RetrieveParticipantStats.Request\x1a\".RetrieveParticipantStats.Response\"\x00\x12K\n\x10registerCampaign\x12\x19.RegisterCampaign.Request\x1a\x1a.RegisterCampaign.Response\"\x00\x12\x45\n\x0e\x64\x65leteCampaign\x12\x17.DeleteCampaign.Request\x1a\x18.DeleteCampaign.Response\"\x00\x12N\n\x11retrieveCampaigns\x12\x1a.RetrieveCampaigns.Request\x1a\x1b.RetrieveCampaigns.Response\"\x00\x12K\n\x10retrieveCampaign\x12\x19.RetrieveCampaign.Request\x1a\x1a.RetrieveCampaign.Response\"\x00\x12\x45\n\x0e\x62indDataSource\x12\x17.BindDataSource.Request\x1a\x18.BindDataSource.Response\"\x00\x12T\n\x13retrieveDataSources\x12\x1c.RetrieveDataSources.Request\x1a\x1d.RetrieveDataSources.Response\"\x00\x12K\n\x10submitDataRecord\x12\x19.SubmitDataRecord.Request\x1a\x1a.SubmitDataRecord.Response\"\x00\x12N\n\x11submitDataRecords\x12\x1a.SubmitDataRecords.Request\x1a\x1b.SubmitDataRecords.Response\"\x00\x12]\n\x16retrieve100DataRecords\x12\x1f.Retrieve100DataRecords.Request\x1a .Retrieve100DataRecords.Response\"\x00\x12l\n\x1bretrieveFilteredDataRecords\x12$.RetrieveFilteredDataRecords.Request\x1a%.RetrieveFilteredDataRecords.Response\"\x00\x12H\n\x0fsubmitHeartbeat\x12\x18.SubmitHeartbeat.Request\x1a\x19.SubmitHeartbeat.Response\"\x00\x12T\n\x13submitDirectMessage\x12\x1c.SubmitDirectMessage.Request\x1a\x1d.SubmitDirectMessage.Response\"\x00\x12o\n\x1cretrieveUnreadDirectMessages\x12%.RetrieveUnreadDirectMessages.Request\x1a&.RetrieveUnreadDirectMessages.Response\"\x00\x12l\n\x1bretrieveUnreadNotifications\x12$.RetrieveUnreadNotifications.Request\x1a%.RetrieveUnreadNotifications.Response\"\x00\x42\x14\n\x12inha.nsl.easytrackb\x06proto3'
 )
 
-_DEFAULTRESPONSEMESSAGE = _descriptor.Descriptor(
-    name='DefaultResponseMessage',
-    full_name='DefaultResponseMessage',
+_LOGINWITHGOOGLE_REQUEST = _descriptor.Descriptor(
+    name='Request',
+    full_name='LoginWithGoogle.Request',
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     fields=[
         _descriptor.FieldDescriptor(
-            name='doneSuccessfully', full_name='DefaultResponseMessage.doneSuccessfully', index=0,
-            number=1, type=8, cpp_type=7, label=1,
-            has_default_value=False, default_value=False,
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-    ],
-    extensions=[
-    ],
-    nested_types=[],
-    enum_types=[
-    ],
-    serialized_options=None,
-    is_extendable=False,
-    syntax='proto3',
-    extension_ranges=[],
-    oneofs=[
-    ],
-    serialized_start=20,
-    serialized_end=70,
-)
-
-_LOGINWITHGOOGLEIDTOKENREQUESTMESSAGE = _descriptor.Descriptor(
-    name='LoginWithGoogleIdTokenRequestMessage',
-    full_name='LoginWithGoogleIdTokenRequestMessage',
-    filename=None,
-    file=DESCRIPTOR,
-    containing_type=None,
-    fields=[
-        _descriptor.FieldDescriptor(
-            name='idToken', full_name='LoginWithGoogleIdTokenRequestMessage.idToken', index=0,
+            name='idToken', full_name='LoginWithGoogle.Request.idToken', index=0,
             number=1, type=9, cpp_type=9, label=1,
             has_default_value=False, default_value=b"".decode('utf-8'),
             message_type=None, enum_type=None, containing_type=None,
@@ -75,33 +45,197 @@ _LOGINWITHGOOGLEIDTOKENREQUESTMESSAGE = _descriptor.Descriptor(
     extension_ranges=[],
     oneofs=[
     ],
-    serialized_start=72,
-    serialized_end=127,
+    serialized_start=39,
+    serialized_end=65,
 )
 
-_BINDUSERTOCAMPAIGNREQUESTMESSAGE = _descriptor.Descriptor(
-    name='BindUserToCampaignRequestMessage',
-    full_name='BindUserToCampaignRequestMessage',
+_LOGINWITHGOOGLE_RESPONSE = _descriptor.Descriptor(
+    name='Response',
+    full_name='LoginWithGoogle.Response',
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     fields=[
         _descriptor.FieldDescriptor(
-            name='userId', full_name='BindUserToCampaignRequestMessage.userId', index=0,
-            number=1, type=5, cpp_type=1, label=1,
-            has_default_value=False, default_value=0,
+            name='success', full_name='LoginWithGoogle.Response.success', index=0,
+            number=1, type=8, cpp_type=7, label=1,
+            has_default_value=False, default_value=False,
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='email', full_name='BindUserToCampaignRequestMessage.email', index=1,
+            name='userId', full_name='LoginWithGoogle.Response.userId', index=1,
+            number=2, type=5, cpp_type=1, label=1,
+            has_default_value=False, default_value=0,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+    ],
+    extensions=[
+    ],
+    nested_types=[],
+    enum_types=[
+    ],
+    serialized_options=None,
+    is_extendable=False,
+    syntax='proto3',
+    extension_ranges=[],
+    oneofs=[
+    ],
+    serialized_start=67,
+    serialized_end=110,
+)
+
+_LOGINWITHGOOGLE = _descriptor.Descriptor(
+    name='LoginWithGoogle',
+    full_name='LoginWithGoogle',
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+    ],
+    extensions=[
+    ],
+    nested_types=[_LOGINWITHGOOGLE_REQUEST, _LOGINWITHGOOGLE_RESPONSE, ],
+    enum_types=[
+    ],
+    serialized_options=None,
+    is_extendable=False,
+    syntax='proto3',
+    extension_ranges=[],
+    oneofs=[
+    ],
+    serialized_start=20,
+    serialized_end=110,
+)
+
+_LOGINDASHBOARD_REQUEST = _descriptor.Descriptor(
+    name='Request',
+    full_name='LoginDashboard.Request',
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name='email', full_name='LoginDashboard.Request.email', index=0,
+            number=1, type=9, cpp_type=9, label=1,
+            has_default_value=False, default_value=b"".decode('utf-8'),
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='name', full_name='LoginDashboard.Request.name', index=1,
             number=2, type=9, cpp_type=9, label=1,
             has_default_value=False, default_value=b"".decode('utf-8'),
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='campaignId', full_name='BindUserToCampaignRequestMessage.campaignId', index=2,
+            name='dashboardKey', full_name='LoginDashboard.Request.dashboardKey', index=2,
+            number=3, type=9, cpp_type=9, label=1,
+            has_default_value=False, default_value=b"".decode('utf-8'),
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+    ],
+    extensions=[
+    ],
+    nested_types=[],
+    enum_types=[
+    ],
+    serialized_options=None,
+    is_extendable=False,
+    syntax='proto3',
+    extension_ranges=[],
+    oneofs=[
+    ],
+    serialized_start=130,
+    serialized_end=190,
+)
+
+_LOGINDASHBOARD_RESPONSE = _descriptor.Descriptor(
+    name='Response',
+    full_name='LoginDashboard.Response',
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name='success', full_name='LoginDashboard.Response.success', index=0,
+            number=1, type=8, cpp_type=7, label=1,
+            has_default_value=False, default_value=False,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='userId', full_name='LoginDashboard.Response.userId', index=1,
+            number=2, type=5, cpp_type=1, label=1,
+            has_default_value=False, default_value=0,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+    ],
+    extensions=[
+    ],
+    nested_types=[],
+    enum_types=[
+    ],
+    serialized_options=None,
+    is_extendable=False,
+    syntax='proto3',
+    extension_ranges=[],
+    oneofs=[
+    ],
+    serialized_start=67,
+    serialized_end=110,
+)
+
+_LOGINDASHBOARD = _descriptor.Descriptor(
+    name='LoginDashboard',
+    full_name='LoginDashboard',
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+    ],
+    extensions=[
+    ],
+    nested_types=[_LOGINDASHBOARD_REQUEST, _LOGINDASHBOARD_RESPONSE, ],
+    enum_types=[
+    ],
+    serialized_options=None,
+    is_extendable=False,
+    syntax='proto3',
+    extension_ranges=[],
+    oneofs=[
+    ],
+    serialized_start=112,
+    serialized_end=235,
+)
+
+_BINDUSERTOCAMPAIGN_REQUEST = _descriptor.Descriptor(
+    name='Request',
+    full_name='BindUserToCampaign.Request',
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name='userId', full_name='BindUserToCampaign.Request.userId', index=0,
+            number=1, type=5, cpp_type=1, label=1,
+            has_default_value=False, default_value=0,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='email', full_name='BindUserToCampaign.Request.email', index=1,
+            number=2, type=9, cpp_type=9, label=1,
+            has_default_value=False, default_value=b"".decode('utf-8'),
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='campaignId', full_name='BindUserToCampaign.Request.campaignId', index=2,
             number=3, type=5, cpp_type=1, label=1,
             has_default_value=False, default_value=0,
             message_type=None, enum_type=None, containing_type=None,
@@ -119,33 +253,33 @@ _BINDUSERTOCAMPAIGNREQUESTMESSAGE = _descriptor.Descriptor(
     extension_ranges=[],
     oneofs=[
     ],
-    serialized_start=129,
-    serialized_end=214,
+    serialized_start=260,
+    serialized_end=320,
 )
 
-_BINDUSERTOCAMPAIGNRESPONSEMESSAGE = _descriptor.Descriptor(
-    name='BindUserToCampaignResponseMessage',
-    full_name='BindUserToCampaignResponseMessage',
+_BINDUSERTOCAMPAIGN_RESPONSE = _descriptor.Descriptor(
+    name='Response',
+    full_name='BindUserToCampaign.Response',
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     fields=[
         _descriptor.FieldDescriptor(
-            name='doneSuccessfully', full_name='BindUserToCampaignResponseMessage.doneSuccessfully', index=0,
+            name='success', full_name='BindUserToCampaign.Response.success', index=0,
             number=1, type=8, cpp_type=7, label=1,
             has_default_value=False, default_value=False,
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='isFirstTimeBinding', full_name='BindUserToCampaignResponseMessage.isFirstTimeBinding', index=1,
+            name='isFirstTimeBinding', full_name='BindUserToCampaign.Response.isFirstTimeBinding', index=1,
             number=2, type=8, cpp_type=7, label=1,
             has_default_value=False, default_value=False,
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='campaignStartTimestamp', full_name='BindUserToCampaignResponseMessage.campaignStartTimestamp', index=2,
+            name='campaignStartTimestamp', full_name='BindUserToCampaign.Response.campaignStartTimestamp', index=2,
             number=3, type=3, cpp_type=2, label=1,
             has_default_value=False, default_value=0,
             message_type=None, enum_type=None, containing_type=None,
@@ -163,42 +297,21 @@ _BINDUSERTOCAMPAIGNRESPONSEMESSAGE = _descriptor.Descriptor(
     extension_ranges=[],
     oneofs=[
     ],
-    serialized_start=216,
-    serialized_end=337,
+    serialized_start=322,
+    serialized_end=409,
 )
 
-_DASHBOARDLOGINWITHEMAILREQUESTMESSAGE = _descriptor.Descriptor(
-    name='DashboardLoginWithEmailRequestMessage',
-    full_name='DashboardLoginWithEmailRequestMessage',
+_BINDUSERTOCAMPAIGN = _descriptor.Descriptor(
+    name='BindUserToCampaign',
+    full_name='BindUserToCampaign',
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     fields=[
-        _descriptor.FieldDescriptor(
-            name='email', full_name='DashboardLoginWithEmailRequestMessage.email', index=0,
-            number=1, type=9, cpp_type=9, label=1,
-            has_default_value=False, default_value=b"".decode('utf-8'),
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='name', full_name='DashboardLoginWithEmailRequestMessage.name', index=1,
-            number=2, type=9, cpp_type=9, label=1,
-            has_default_value=False, default_value=b"".decode('utf-8'),
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='dashboardKey', full_name='DashboardLoginWithEmailRequestMessage.dashboardKey', index=2,
-            number=3, type=9, cpp_type=9, label=1,
-            has_default_value=False, default_value=b"".decode('utf-8'),
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
     ],
     extensions=[
     ],
-    nested_types=[],
+    nested_types=[_BINDUSERTOCAMPAIGN_REQUEST, _BINDUSERTOCAMPAIGN_RESPONSE, ],
     enum_types=[
     ],
     serialized_options=None,
@@ -207,114 +320,86 @@ _DASHBOARDLOGINWITHEMAILREQUESTMESSAGE = _descriptor.Descriptor(
     extension_ranges=[],
     oneofs=[
     ],
-    serialized_start=339,
-    serialized_end=429,
+    serialized_start=238,
+    serialized_end=409,
 )
 
-_LOGINRESPONSEMESSAGE = _descriptor.Descriptor(
-    name='LoginResponseMessage',
-    full_name='LoginResponseMessage',
+_RETRIEVEPARTICIPANTS_REQUEST = _descriptor.Descriptor(
+    name='Request',
+    full_name='RetrieveParticipants.Request',
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     fields=[
         _descriptor.FieldDescriptor(
-            name='doneSuccessfully', full_name='LoginResponseMessage.doneSuccessfully', index=0,
-            number=1, type=8, cpp_type=7, label=1,
-            has_default_value=False, default_value=False,
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='userId', full_name='LoginResponseMessage.userId', index=1,
-            number=2, type=5, cpp_type=1, label=1,
-            has_default_value=False, default_value=0,
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-    ],
-    extensions=[
-    ],
-    nested_types=[],
-    enum_types=[
-    ],
-    serialized_options=None,
-    is_extendable=False,
-    syntax='proto3',
-    extension_ranges=[],
-    oneofs=[
-    ],
-    serialized_start=431,
-    serialized_end=495,
-)
-
-_REGISTERCAMPAIGNREQUESTMESSAGE = _descriptor.Descriptor(
-    name='RegisterCampaignRequestMessage',
-    full_name='RegisterCampaignRequestMessage',
-    filename=None,
-    file=DESCRIPTOR,
-    containing_type=None,
-    fields=[
-        _descriptor.FieldDescriptor(
-            name='userId', full_name='RegisterCampaignRequestMessage.userId', index=0,
+            name='userId', full_name='RetrieveParticipants.Request.userId', index=0,
             number=1, type=5, cpp_type=1, label=1,
             has_default_value=False, default_value=0,
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='email', full_name='RegisterCampaignRequestMessage.email', index=1,
+            name='email', full_name='RetrieveParticipants.Request.email', index=1,
             number=2, type=9, cpp_type=9, label=1,
             has_default_value=False, default_value=b"".decode('utf-8'),
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='campaignId', full_name='RegisterCampaignRequestMessage.campaignId', index=2,
+            name='campaignId', full_name='RetrieveParticipants.Request.campaignId', index=2,
             number=3, type=5, cpp_type=1, label=1,
             has_default_value=False, default_value=0,
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
+    ],
+    extensions=[
+    ],
+    nested_types=[],
+    enum_types=[
+    ],
+    serialized_options=None,
+    is_extendable=False,
+    syntax='proto3',
+    extension_ranges=[],
+    oneofs=[
+    ],
+    serialized_start=260,
+    serialized_end=320,
+)
+
+_RETRIEVEPARTICIPANTS_RESPONSE = _descriptor.Descriptor(
+    name='Response',
+    full_name='RetrieveParticipants.Response',
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
         _descriptor.FieldDescriptor(
-            name='name', full_name='RegisterCampaignRequestMessage.name', index=3,
-            number=4, type=9, cpp_type=9, label=1,
-            has_default_value=False, default_value=b"".decode('utf-8'),
+            name='success', full_name='RetrieveParticipants.Response.success', index=0,
+            number=1, type=8, cpp_type=7, label=1,
+            has_default_value=False, default_value=False,
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='notes', full_name='RegisterCampaignRequestMessage.notes', index=4,
-            number=5, type=9, cpp_type=9, label=1,
-            has_default_value=False, default_value=b"".decode('utf-8'),
+            name='userId', full_name='RetrieveParticipants.Response.userId', index=1,
+            number=2, type=5, cpp_type=1, label=3,
+            has_default_value=False, default_value=[],
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='configJson', full_name='RegisterCampaignRequestMessage.configJson', index=5,
-            number=6, type=9, cpp_type=9, label=1,
-            has_default_value=False, default_value=b"".decode('utf-8'),
+            name='email', full_name='RetrieveParticipants.Response.email', index=2,
+            number=3, type=9, cpp_type=9, label=3,
+            has_default_value=False, default_value=[],
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='startTimestamp', full_name='RegisterCampaignRequestMessage.startTimestamp', index=6,
-            number=7, type=3, cpp_type=2, label=1,
-            has_default_value=False, default_value=0,
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='endTimestamp', full_name='RegisterCampaignRequestMessage.endTimestamp', index=7,
-            number=8, type=3, cpp_type=2, label=1,
-            has_default_value=False, default_value=0,
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='removeInactiveUsersTimeout', full_name='RegisterCampaignRequestMessage.removeInactiveUsersTimeout', index=8,
-            number=9, type=5, cpp_type=1, label=1,
-            has_default_value=False, default_value=0,
+            name='name', full_name='RetrieveParticipants.Response.name', index=3,
+            number=4, type=9, cpp_type=9, label=3,
+            has_default_value=False, default_value=[],
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
@@ -331,34 +416,20 @@ _REGISTERCAMPAIGNREQUESTMESSAGE = _descriptor.Descriptor(
     oneofs=[
     ],
     serialized_start=498,
-    serialized_end=712,
+    serialized_end=570,
 )
 
-_REGISTERCAMPAIGNRESPONSEMESSAGE = _descriptor.Descriptor(
-    name='RegisterCampaignResponseMessage',
-    full_name='RegisterCampaignResponseMessage',
+_RETRIEVEPARTICIPANTS = _descriptor.Descriptor(
+    name='RetrieveParticipants',
+    full_name='RetrieveParticipants',
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     fields=[
-        _descriptor.FieldDescriptor(
-            name='doneSuccessfully', full_name='RegisterCampaignResponseMessage.doneSuccessfully', index=0,
-            number=1, type=8, cpp_type=7, label=1,
-            has_default_value=False, default_value=False,
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='campaignId', full_name='RegisterCampaignResponseMessage.campaignId', index=1,
-            number=2, type=5, cpp_type=1, label=1,
-            has_default_value=False, default_value=0,
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
     ],
     extensions=[
     ],
-    nested_types=[],
+    nested_types=[_RETRIEVEPARTICIPANTS_REQUEST, _RETRIEVEPARTICIPANTS_RESPONSE, ],
     enum_types=[
     ],
     serialized_options=None,
@@ -367,685 +438,40 @@ _REGISTERCAMPAIGNRESPONSEMESSAGE = _descriptor.Descriptor(
     extension_ranges=[],
     oneofs=[
     ],
-    serialized_start=714,
-    serialized_end=793,
+    serialized_start=412,
+    serialized_end=570,
 )
 
-_DELETECAMPAIGNREQUESTMESSAGE = _descriptor.Descriptor(
-    name='DeleteCampaignRequestMessage',
-    full_name='DeleteCampaignRequestMessage',
+_RETRIEVEPARTICIPANTSTATS_REQUEST = _descriptor.Descriptor(
+    name='Request',
+    full_name='RetrieveParticipantStats.Request',
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     fields=[
         _descriptor.FieldDescriptor(
-            name='userId', full_name='DeleteCampaignRequestMessage.userId', index=0,
+            name='userId', full_name='RetrieveParticipantStats.Request.userId', index=0,
             number=1, type=5, cpp_type=1, label=1,
             has_default_value=False, default_value=0,
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='email', full_name='DeleteCampaignRequestMessage.email', index=1,
+            name='email', full_name='RetrieveParticipantStats.Request.email', index=1,
             number=2, type=9, cpp_type=9, label=1,
             has_default_value=False, default_value=b"".decode('utf-8'),
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='campaignId', full_name='DeleteCampaignRequestMessage.campaignId', index=2,
-            number=3, type=5, cpp_type=1, label=1,
-            has_default_value=False, default_value=0,
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-    ],
-    extensions=[
-    ],
-    nested_types=[],
-    enum_types=[
-    ],
-    serialized_options=None,
-    is_extendable=False,
-    syntax='proto3',
-    extension_ranges=[],
-    oneofs=[
-    ],
-    serialized_start=795,
-    serialized_end=876,
-)
-
-_RETRIEVECAMPAIGNSREQUESTMESSAGE = _descriptor.Descriptor(
-    name='RetrieveCampaignsRequestMessage',
-    full_name='RetrieveCampaignsRequestMessage',
-    filename=None,
-    file=DESCRIPTOR,
-    containing_type=None,
-    fields=[
-        _descriptor.FieldDescriptor(
-            name='userId', full_name='RetrieveCampaignsRequestMessage.userId', index=0,
-            number=1, type=5, cpp_type=1, label=1,
-            has_default_value=False, default_value=0,
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='email', full_name='RetrieveCampaignsRequestMessage.email', index=1,
-            number=2, type=9, cpp_type=9, label=1,
-            has_default_value=False, default_value=b"".decode('utf-8'),
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='myCampaignsOnly', full_name='RetrieveCampaignsRequestMessage.myCampaignsOnly', index=2,
-            number=3, type=8, cpp_type=7, label=1,
-            has_default_value=False, default_value=False,
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-    ],
-    extensions=[
-    ],
-    nested_types=[],
-    enum_types=[
-    ],
-    serialized_options=None,
-    is_extendable=False,
-    syntax='proto3',
-    extension_ranges=[],
-    oneofs=[
-    ],
-    serialized_start=878,
-    serialized_end=967,
-)
-
-_RETRIEVECAMPAIGNSRESPONSEMESSAGE = _descriptor.Descriptor(
-    name='RetrieveCampaignsResponseMessage',
-    full_name='RetrieveCampaignsResponseMessage',
-    filename=None,
-    file=DESCRIPTOR,
-    containing_type=None,
-    fields=[
-        _descriptor.FieldDescriptor(
-            name='doneSuccessfully', full_name='RetrieveCampaignsResponseMessage.doneSuccessfully', index=0,
-            number=1, type=8, cpp_type=7, label=1,
-            has_default_value=False, default_value=False,
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='campaignId', full_name='RetrieveCampaignsResponseMessage.campaignId', index=1,
-            number=2, type=5, cpp_type=1, label=3,
-            has_default_value=False, default_value=[],
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='name', full_name='RetrieveCampaignsResponseMessage.name', index=2,
-            number=3, type=9, cpp_type=9, label=3,
-            has_default_value=False, default_value=[],
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='notes', full_name='RetrieveCampaignsResponseMessage.notes', index=3,
-            number=4, type=9, cpp_type=9, label=3,
-            has_default_value=False, default_value=[],
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='startTimestamp', full_name='RetrieveCampaignsResponseMessage.startTimestamp', index=4,
-            number=5, type=3, cpp_type=2, label=3,
-            has_default_value=False, default_value=[],
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='endTimestamp', full_name='RetrieveCampaignsResponseMessage.endTimestamp', index=5,
-            number=6, type=3, cpp_type=2, label=3,
-            has_default_value=False, default_value=[],
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='removeInactiveUsersTimeout', full_name='RetrieveCampaignsResponseMessage.removeInactiveUsersTimeout', index=6,
-            number=7, type=5, cpp_type=1, label=3,
-            has_default_value=False, default_value=[],
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='creatorEmail', full_name='RetrieveCampaignsResponseMessage.creatorEmail', index=7,
-            number=8, type=9, cpp_type=9, label=3,
-            has_default_value=False, default_value=[],
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='configJson', full_name='RetrieveCampaignsResponseMessage.configJson', index=8,
-            number=9, type=9, cpp_type=9, label=3,
-            has_default_value=False, default_value=[],
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='participantCount', full_name='RetrieveCampaignsResponseMessage.participantCount', index=9,
-            number=10, type=5, cpp_type=1, label=3,
-            has_default_value=False, default_value=[],
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-    ],
-    extensions=[
-    ],
-    nested_types=[],
-    enum_types=[
-    ],
-    serialized_options=None,
-    is_extendable=False,
-    syntax='proto3',
-    extension_ranges=[],
-    oneofs=[
-    ],
-    serialized_start=970,
-    serialized_end=1229,
-)
-
-_RETRIEVECAMPAIGNREQUESTMESSAGE = _descriptor.Descriptor(
-    name='RetrieveCampaignRequestMessage',
-    full_name='RetrieveCampaignRequestMessage',
-    filename=None,
-    file=DESCRIPTOR,
-    containing_type=None,
-    fields=[
-        _descriptor.FieldDescriptor(
-            name='userId', full_name='RetrieveCampaignRequestMessage.userId', index=0,
-            number=1, type=5, cpp_type=1, label=1,
-            has_default_value=False, default_value=0,
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='email', full_name='RetrieveCampaignRequestMessage.email', index=1,
-            number=2, type=9, cpp_type=9, label=1,
-            has_default_value=False, default_value=b"".decode('utf-8'),
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='campaignId', full_name='RetrieveCampaignRequestMessage.campaignId', index=2,
-            number=3, type=5, cpp_type=1, label=1,
-            has_default_value=False, default_value=0,
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-    ],
-    extensions=[
-    ],
-    nested_types=[],
-    enum_types=[
-    ],
-    serialized_options=None,
-    is_extendable=False,
-    syntax='proto3',
-    extension_ranges=[],
-    oneofs=[
-    ],
-    serialized_start=1231,
-    serialized_end=1314,
-)
-
-_RETRIEVECAMPAIGNRESPONSEMESSAGE = _descriptor.Descriptor(
-    name='RetrieveCampaignResponseMessage',
-    full_name='RetrieveCampaignResponseMessage',
-    filename=None,
-    file=DESCRIPTOR,
-    containing_type=None,
-    fields=[
-        _descriptor.FieldDescriptor(
-            name='doneSuccessfully', full_name='RetrieveCampaignResponseMessage.doneSuccessfully', index=0,
-            number=1, type=8, cpp_type=7, label=1,
-            has_default_value=False, default_value=False,
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='name', full_name='RetrieveCampaignResponseMessage.name', index=1,
+            name='targetEmail', full_name='RetrieveParticipantStats.Request.targetEmail', index=2,
             number=3, type=9, cpp_type=9, label=1,
             has_default_value=False, default_value=b"".decode('utf-8'),
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='notes', full_name='RetrieveCampaignResponseMessage.notes', index=2,
-            number=4, type=9, cpp_type=9, label=1,
-            has_default_value=False, default_value=b"".decode('utf-8'),
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='startTimestamp', full_name='RetrieveCampaignResponseMessage.startTimestamp', index=3,
-            number=5, type=3, cpp_type=2, label=1,
-            has_default_value=False, default_value=0,
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='endTimestamp', full_name='RetrieveCampaignResponseMessage.endTimestamp', index=4,
-            number=6, type=3, cpp_type=2, label=1,
-            has_default_value=False, default_value=0,
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='creatorEmail', full_name='RetrieveCampaignResponseMessage.creatorEmail', index=5,
-            number=7, type=9, cpp_type=9, label=1,
-            has_default_value=False, default_value=b"".decode('utf-8'),
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='configJson', full_name='RetrieveCampaignResponseMessage.configJson', index=6,
-            number=8, type=9, cpp_type=9, label=1,
-            has_default_value=False, default_value=b"".decode('utf-8'),
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='participantCount', full_name='RetrieveCampaignResponseMessage.participantCount', index=7,
-            number=9, type=5, cpp_type=1, label=1,
-            has_default_value=False, default_value=0,
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-    ],
-    extensions=[
-    ],
-    nested_types=[],
-    enum_types=[
-    ],
-    serialized_options=None,
-    is_extendable=False,
-    syntax='proto3',
-    extension_ranges=[],
-    oneofs=[
-    ],
-    serialized_start=1317,
-    serialized_end=1519,
-)
-
-_SUBMITDATARECORDREQUESTMESSAGE = _descriptor.Descriptor(
-    name='SubmitDataRecordRequestMessage',
-    full_name='SubmitDataRecordRequestMessage',
-    filename=None,
-    file=DESCRIPTOR,
-    containing_type=None,
-    fields=[
-        _descriptor.FieldDescriptor(
-            name='userId', full_name='SubmitDataRecordRequestMessage.userId', index=0,
-            number=1, type=5, cpp_type=1, label=1,
-            has_default_value=False, default_value=0,
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='email', full_name='SubmitDataRecordRequestMessage.email', index=1,
-            number=2, type=9, cpp_type=9, label=1,
-            has_default_value=False, default_value=b"".decode('utf-8'),
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='campaignId', full_name='SubmitDataRecordRequestMessage.campaignId', index=2,
-            number=3, type=5, cpp_type=1, label=1,
-            has_default_value=False, default_value=0,
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='timestamp', full_name='SubmitDataRecordRequestMessage.timestamp', index=3,
-            number=4, type=3, cpp_type=2, label=1,
-            has_default_value=False, default_value=0,
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='dataSource', full_name='SubmitDataRecordRequestMessage.dataSource', index=4,
-            number=5, type=5, cpp_type=1, label=1,
-            has_default_value=False, default_value=0,
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='accuracy', full_name='SubmitDataRecordRequestMessage.accuracy', index=5,
-            number=6, type=2, cpp_type=6, label=1,
-            has_default_value=False, default_value=float(0),
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='values', full_name='SubmitDataRecordRequestMessage.values', index=6,
-            number=7, type=9, cpp_type=9, label=1,
-            has_default_value=False, default_value=b"".decode('utf-8'),
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-    ],
-    extensions=[
-    ],
-    nested_types=[],
-    enum_types=[
-    ],
-    serialized_options=None,
-    is_extendable=False,
-    syntax='proto3',
-    extension_ranges=[],
-    oneofs=[
-    ],
-    serialized_start=1522,
-    serialized_end=1678,
-)
-
-_SUBMITDATARECORDSREQUESTMESSAGE = _descriptor.Descriptor(
-    name='SubmitDataRecordsRequestMessage',
-    full_name='SubmitDataRecordsRequestMessage',
-    filename=None,
-    file=DESCRIPTOR,
-    containing_type=None,
-    fields=[
-        _descriptor.FieldDescriptor(
-            name='userId', full_name='SubmitDataRecordsRequestMessage.userId', index=0,
-            number=1, type=5, cpp_type=1, label=1,
-            has_default_value=False, default_value=0,
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='email', full_name='SubmitDataRecordsRequestMessage.email', index=1,
-            number=2, type=9, cpp_type=9, label=1,
-            has_default_value=False, default_value=b"".decode('utf-8'),
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='campaignId', full_name='SubmitDataRecordsRequestMessage.campaignId', index=2,
-            number=3, type=5, cpp_type=1, label=1,
-            has_default_value=False, default_value=0,
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='timestamp', full_name='SubmitDataRecordsRequestMessage.timestamp', index=3,
-            number=4, type=3, cpp_type=2, label=3,
-            has_default_value=False, default_value=[],
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='dataSource', full_name='SubmitDataRecordsRequestMessage.dataSource', index=4,
-            number=5, type=5, cpp_type=1, label=3,
-            has_default_value=False, default_value=[],
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='accuracy', full_name='SubmitDataRecordsRequestMessage.accuracy', index=5,
-            number=6, type=2, cpp_type=6, label=3,
-            has_default_value=False, default_value=[],
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='values', full_name='SubmitDataRecordsRequestMessage.values', index=6,
-            number=7, type=9, cpp_type=9, label=3,
-            has_default_value=False, default_value=[],
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-    ],
-    extensions=[
-    ],
-    nested_types=[],
-    enum_types=[
-    ],
-    serialized_options=None,
-    is_extendable=False,
-    syntax='proto3',
-    extension_ranges=[],
-    oneofs=[
-    ],
-    serialized_start=1681,
-    serialized_end=1838,
-)
-
-_SUBMITHEARTBEATREQUESTMESSAGE = _descriptor.Descriptor(
-    name='SubmitHeartbeatRequestMessage',
-    full_name='SubmitHeartbeatRequestMessage',
-    filename=None,
-    file=DESCRIPTOR,
-    containing_type=None,
-    fields=[
-        _descriptor.FieldDescriptor(
-            name='userId', full_name='SubmitHeartbeatRequestMessage.userId', index=0,
-            number=1, type=5, cpp_type=1, label=1,
-            has_default_value=False, default_value=0,
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='email', full_name='SubmitHeartbeatRequestMessage.email', index=1,
-            number=2, type=9, cpp_type=9, label=1,
-            has_default_value=False, default_value=b"".decode('utf-8'),
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='campaignId', full_name='SubmitHeartbeatRequestMessage.campaignId', index=2,
-            number=3, type=5, cpp_type=1, label=1,
-            has_default_value=False, default_value=0,
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-    ],
-    extensions=[
-    ],
-    nested_types=[],
-    enum_types=[
-    ],
-    serialized_options=None,
-    is_extendable=False,
-    syntax='proto3',
-    extension_ranges=[],
-    oneofs=[
-    ],
-    serialized_start=1840,
-    serialized_end=1922,
-)
-
-_SUBMITDIRECTMESSAGEREQUESTMESSAGE = _descriptor.Descriptor(
-    name='SubmitDirectMessageRequestMessage',
-    full_name='SubmitDirectMessageRequestMessage',
-    filename=None,
-    file=DESCRIPTOR,
-    containing_type=None,
-    fields=[
-        _descriptor.FieldDescriptor(
-            name='userId', full_name='SubmitDirectMessageRequestMessage.userId', index=0,
-            number=1, type=5, cpp_type=1, label=1,
-            has_default_value=False, default_value=0,
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='email', full_name='SubmitDirectMessageRequestMessage.email', index=1,
-            number=2, type=9, cpp_type=9, label=1,
-            has_default_value=False, default_value=b"".decode('utf-8'),
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='targetEmail', full_name='SubmitDirectMessageRequestMessage.targetEmail', index=2,
-            number=3, type=9, cpp_type=9, label=1,
-            has_default_value=False, default_value=b"".decode('utf-8'),
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='subject', full_name='SubmitDirectMessageRequestMessage.subject', index=3,
-            number=4, type=9, cpp_type=9, label=1,
-            has_default_value=False, default_value=b"".decode('utf-8'),
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='content', full_name='SubmitDirectMessageRequestMessage.content', index=4,
-            number=5, type=9, cpp_type=9, label=1,
-            has_default_value=False, default_value=b"".decode('utf-8'),
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-    ],
-    extensions=[
-    ],
-    nested_types=[],
-    enum_types=[
-    ],
-    serialized_options=None,
-    is_extendable=False,
-    syntax='proto3',
-    extension_ranges=[],
-    oneofs=[
-    ],
-    serialized_start=1924,
-    serialized_end=2045,
-)
-
-_RETRIEVEPARTICIPANTSREQUESTMESSAGE = _descriptor.Descriptor(
-    name='RetrieveParticipantsRequestMessage',
-    full_name='RetrieveParticipantsRequestMessage',
-    filename=None,
-    file=DESCRIPTOR,
-    containing_type=None,
-    fields=[
-        _descriptor.FieldDescriptor(
-            name='userId', full_name='RetrieveParticipantsRequestMessage.userId', index=0,
-            number=1, type=5, cpp_type=1, label=1,
-            has_default_value=False, default_value=0,
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='email', full_name='RetrieveParticipantsRequestMessage.email', index=1,
-            number=2, type=9, cpp_type=9, label=1,
-            has_default_value=False, default_value=b"".decode('utf-8'),
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='campaignId', full_name='RetrieveParticipantsRequestMessage.campaignId', index=2,
-            number=3, type=5, cpp_type=1, label=1,
-            has_default_value=False, default_value=0,
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-    ],
-    extensions=[
-    ],
-    nested_types=[],
-    enum_types=[
-    ],
-    serialized_options=None,
-    is_extendable=False,
-    syntax='proto3',
-    extension_ranges=[],
-    oneofs=[
-    ],
-    serialized_start=2047,
-    serialized_end=2134,
-)
-
-_RETRIEVEPARTICIPANTSRESPONSEMESSAGE = _descriptor.Descriptor(
-    name='RetrieveParticipantsResponseMessage',
-    full_name='RetrieveParticipantsResponseMessage',
-    filename=None,
-    file=DESCRIPTOR,
-    containing_type=None,
-    fields=[
-        _descriptor.FieldDescriptor(
-            name='doneSuccessfully', full_name='RetrieveParticipantsResponseMessage.doneSuccessfully', index=0,
-            number=1, type=8, cpp_type=7, label=1,
-            has_default_value=False, default_value=False,
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='userId', full_name='RetrieveParticipantsResponseMessage.userId', index=1,
-            number=2, type=5, cpp_type=1, label=3,
-            has_default_value=False, default_value=[],
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='email', full_name='RetrieveParticipantsResponseMessage.email', index=2,
-            number=3, type=9, cpp_type=9, label=3,
-            has_default_value=False, default_value=[],
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='name', full_name='RetrieveParticipantsResponseMessage.name', index=3,
-            number=4, type=9, cpp_type=9, label=3,
-            has_default_value=False, default_value=[],
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-    ],
-    extensions=[
-    ],
-    nested_types=[],
-    enum_types=[
-    ],
-    serialized_options=None,
-    is_extendable=False,
-    syntax='proto3',
-    extension_ranges=[],
-    oneofs=[
-    ],
-    serialized_start=2136,
-    serialized_end=2244,
-)
-
-_RETRIEVEPARTICIPANTSTATISTICSREQUESTMESSAGE = _descriptor.Descriptor(
-    name='RetrieveParticipantStatisticsRequestMessage',
-    full_name='RetrieveParticipantStatisticsRequestMessage',
-    filename=None,
-    file=DESCRIPTOR,
-    containing_type=None,
-    fields=[
-        _descriptor.FieldDescriptor(
-            name='userId', full_name='RetrieveParticipantStatisticsRequestMessage.userId', index=0,
-            number=1, type=5, cpp_type=1, label=1,
-            has_default_value=False, default_value=0,
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='email', full_name='RetrieveParticipantStatisticsRequestMessage.email', index=1,
-            number=2, type=9, cpp_type=9, label=1,
-            has_default_value=False, default_value=b"".decode('utf-8'),
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='targetEmail', full_name='RetrieveParticipantStatisticsRequestMessage.targetEmail', index=2,
-            number=3, type=9, cpp_type=9, label=1,
-            has_default_value=False, default_value=b"".decode('utf-8'),
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='targetCampaignId', full_name='RetrieveParticipantStatisticsRequestMessage.targetCampaignId', index=3,
+            name='targetCampaignId', full_name='RetrieveParticipantStats.Request.targetCampaignId', index=3,
             number=4, type=5, cpp_type=1, label=1,
             has_default_value=False, default_value=0,
             message_type=None, enum_type=None, containing_type=None,
@@ -1063,75 +489,75 @@ _RETRIEVEPARTICIPANTSTATISTICSREQUESTMESSAGE = _descriptor.Descriptor(
     extension_ranges=[],
     oneofs=[
     ],
-    serialized_start=2246,
-    serialized_end=2369,
+    serialized_start=601,
+    serialized_end=688,
 )
 
-_RETRIEVEPARTICIPANTSTATISTICSRESPONSEMESSAGE = _descriptor.Descriptor(
-    name='RetrieveParticipantStatisticsResponseMessage',
-    full_name='RetrieveParticipantStatisticsResponseMessage',
+_RETRIEVEPARTICIPANTSTATS_RESPONSE = _descriptor.Descriptor(
+    name='Response',
+    full_name='RetrieveParticipantStats.Response',
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     fields=[
         _descriptor.FieldDescriptor(
-            name='doneSuccessfully', full_name='RetrieveParticipantStatisticsResponseMessage.doneSuccessfully', index=0,
+            name='success', full_name='RetrieveParticipantStats.Response.success', index=0,
             number=1, type=8, cpp_type=7, label=1,
             has_default_value=False, default_value=False,
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='activeCampaignId', full_name='RetrieveParticipantStatisticsResponseMessage.activeCampaignId', index=1,
+            name='activeCampaignId', full_name='RetrieveParticipantStats.Response.activeCampaignId', index=1,
             number=2, type=5, cpp_type=1, label=1,
             has_default_value=False, default_value=0,
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='campaignJoinTimestamp', full_name='RetrieveParticipantStatisticsResponseMessage.campaignJoinTimestamp', index=2,
+            name='campaignJoinTimestamp', full_name='RetrieveParticipantStats.Response.campaignJoinTimestamp', index=2,
             number=3, type=3, cpp_type=2, label=1,
             has_default_value=False, default_value=0,
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='lastSyncTimestamp', full_name='RetrieveParticipantStatisticsResponseMessage.lastSyncTimestamp', index=3,
+            name='lastSyncTimestamp', full_name='RetrieveParticipantStats.Response.lastSyncTimestamp', index=3,
             number=4, type=3, cpp_type=2, label=1,
             has_default_value=False, default_value=0,
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='lastHeartbeatTimestamp', full_name='RetrieveParticipantStatisticsResponseMessage.lastHeartbeatTimestamp', index=4,
+            name='lastHeartbeatTimestamp', full_name='RetrieveParticipantStats.Response.lastHeartbeatTimestamp', index=4,
             number=5, type=3, cpp_type=2, label=1,
             has_default_value=False, default_value=0,
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='amountOfSubmittedDataSamples', full_name='RetrieveParticipantStatisticsResponseMessage.amountOfSubmittedDataSamples', index=5,
+            name='amountOfSubmittedDataSamples', full_name='RetrieveParticipantStats.Response.amountOfSubmittedDataSamples', index=5,
             number=6, type=5, cpp_type=1, label=1,
             has_default_value=False, default_value=0,
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='dataSourceId', full_name='RetrieveParticipantStatisticsResponseMessage.dataSourceId', index=6,
+            name='dataSourceId', full_name='RetrieveParticipantStats.Response.dataSourceId', index=6,
             number=7, type=5, cpp_type=1, label=3,
             has_default_value=False, default_value=[],
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='perDataSourceAmountOfData', full_name='RetrieveParticipantStatisticsResponseMessage.perDataSourceAmountOfData', index=7,
+            name='perDataSourceAmountOfData', full_name='RetrieveParticipantStats.Response.perDataSourceAmountOfData', index=7,
             number=8, type=5, cpp_type=1, label=3,
             has_default_value=False, default_value=[],
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='perDataSourceLastSyncTimestamp', full_name='RetrieveParticipantStatisticsResponseMessage.perDataSourceLastSyncTimestamp', index=8,
+            name='perDataSourceLastSyncTimestamp', full_name='RetrieveParticipantStats.Response.perDataSourceLastSyncTimestamp', index=8,
             number=9, type=3, cpp_type=2, label=3,
             has_default_value=False, default_value=[],
             message_type=None, enum_type=None, containing_type=None,
@@ -1149,63 +575,21 @@ _RETRIEVEPARTICIPANTSTATISTICSRESPONSEMESSAGE = _descriptor.Descriptor(
     extension_ranges=[],
     oneofs=[
     ],
-    serialized_start=2372,
-    serialized_end=2695,
+    serialized_start=691,
+    serialized_end=969,
 )
 
-_RETRIEVE100DATARECORDSREQUESTMESSAGE = _descriptor.Descriptor(
-    name='Retrieve100DataRecordsRequestMessage',
-    full_name='Retrieve100DataRecordsRequestMessage',
+_RETRIEVEPARTICIPANTSTATS = _descriptor.Descriptor(
+    name='RetrieveParticipantStats',
+    full_name='RetrieveParticipantStats',
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     fields=[
-        _descriptor.FieldDescriptor(
-            name='userId', full_name='Retrieve100DataRecordsRequestMessage.userId', index=0,
-            number=1, type=5, cpp_type=1, label=1,
-            has_default_value=False, default_value=0,
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='email', full_name='Retrieve100DataRecordsRequestMessage.email', index=1,
-            number=2, type=9, cpp_type=9, label=1,
-            has_default_value=False, default_value=b"".decode('utf-8'),
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='targetEmail', full_name='Retrieve100DataRecordsRequestMessage.targetEmail', index=2,
-            number=3, type=9, cpp_type=9, label=1,
-            has_default_value=False, default_value=b"".decode('utf-8'),
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='targetCampaignId', full_name='Retrieve100DataRecordsRequestMessage.targetCampaignId', index=3,
-            number=4, type=5, cpp_type=1, label=1,
-            has_default_value=False, default_value=0,
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='targetDataSourceId', full_name='Retrieve100DataRecordsRequestMessage.targetDataSourceId', index=4,
-            number=5, type=5, cpp_type=1, label=1,
-            has_default_value=False, default_value=0,
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='fromTimestamp', full_name='Retrieve100DataRecordsRequestMessage.fromTimestamp', index=5,
-            number=6, type=3, cpp_type=2, label=1,
-            has_default_value=False, default_value=0,
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
     ],
     extensions=[
     ],
-    nested_types=[],
+    nested_types=[_RETRIEVEPARTICIPANTSTATS_REQUEST, _RETRIEVEPARTICIPANTSTATS_RESPONSE, ],
     enum_types=[
     ],
     serialized_options=None,
@@ -1214,124 +598,80 @@ _RETRIEVE100DATARECORDSREQUESTMESSAGE = _descriptor.Descriptor(
     extension_ranges=[],
     oneofs=[
     ],
-    serialized_start=2698,
-    serialized_end=2865,
+    serialized_start=573,
+    serialized_end=969,
 )
 
-_RETRIEVE100DATARECORDSRESPONSEMESSAGE = _descriptor.Descriptor(
-    name='Retrieve100DataRecordsResponseMessage',
-    full_name='Retrieve100DataRecordsResponseMessage',
+_REGISTERCAMPAIGN_REQUEST = _descriptor.Descriptor(
+    name='Request',
+    full_name='RegisterCampaign.Request',
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     fields=[
         _descriptor.FieldDescriptor(
-            name='doneSuccessfully', full_name='Retrieve100DataRecordsResponseMessage.doneSuccessfully', index=0,
-            number=1, type=8, cpp_type=7, label=1,
-            has_default_value=False, default_value=False,
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='timestamp', full_name='Retrieve100DataRecordsResponseMessage.timestamp', index=1,
-            number=2, type=3, cpp_type=2, label=3,
-            has_default_value=False, default_value=[],
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='dataSource', full_name='Retrieve100DataRecordsResponseMessage.dataSource', index=2,
-            number=3, type=5, cpp_type=1, label=3,
-            has_default_value=False, default_value=[],
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='value', full_name='Retrieve100DataRecordsResponseMessage.value', index=3,
-            number=4, type=9, cpp_type=9, label=3,
-            has_default_value=False, default_value=[],
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='moreDataAvailable', full_name='Retrieve100DataRecordsResponseMessage.moreDataAvailable', index=4,
-            number=5, type=8, cpp_type=7, label=1,
-            has_default_value=False, default_value=False,
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-    ],
-    extensions=[
-    ],
-    nested_types=[],
-    enum_types=[
-    ],
-    serialized_options=None,
-    is_extendable=False,
-    syntax='proto3',
-    extension_ranges=[],
-    oneofs=[
-    ],
-    serialized_start=2868,
-    serialized_end=3014,
-)
-
-_RETRIEVEFILTEREDDATARECORDSREQUESTMESSAGE = _descriptor.Descriptor(
-    name='RetrieveFilteredDataRecordsRequestMessage',
-    full_name='RetrieveFilteredDataRecordsRequestMessage',
-    filename=None,
-    file=DESCRIPTOR,
-    containing_type=None,
-    fields=[
-        _descriptor.FieldDescriptor(
-            name='userId', full_name='RetrieveFilteredDataRecordsRequestMessage.userId', index=0,
+            name='userId', full_name='RegisterCampaign.Request.userId', index=0,
             number=1, type=5, cpp_type=1, label=1,
             has_default_value=False, default_value=0,
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='email', full_name='RetrieveFilteredDataRecordsRequestMessage.email', index=1,
+            name='email', full_name='RegisterCampaign.Request.email', index=1,
             number=2, type=9, cpp_type=9, label=1,
             has_default_value=False, default_value=b"".decode('utf-8'),
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='targetEmail', full_name='RetrieveFilteredDataRecordsRequestMessage.targetEmail', index=2,
-            number=3, type=9, cpp_type=9, label=1,
+            name='campaignId', full_name='RegisterCampaign.Request.campaignId', index=2,
+            number=3, type=5, cpp_type=1, label=1,
+            has_default_value=False, default_value=0,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='name', full_name='RegisterCampaign.Request.name', index=3,
+            number=4, type=9, cpp_type=9, label=1,
             has_default_value=False, default_value=b"".decode('utf-8'),
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='targetCampaignId', full_name='RetrieveFilteredDataRecordsRequestMessage.targetCampaignId', index=3,
-            number=4, type=5, cpp_type=1, label=1,
-            has_default_value=False, default_value=0,
+            name='notes', full_name='RegisterCampaign.Request.notes', index=4,
+            number=5, type=9, cpp_type=9, label=1,
+            has_default_value=False, default_value=b"".decode('utf-8'),
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='targetDataSourceId', full_name='RetrieveFilteredDataRecordsRequestMessage.targetDataSourceId', index=4,
-            number=5, type=5, cpp_type=1, label=1,
-            has_default_value=False, default_value=0,
+            name='configJson', full_name='RegisterCampaign.Request.configJson', index=5,
+            number=6, type=9, cpp_type=9, label=1,
+            has_default_value=False, default_value=b"".decode('utf-8'),
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='fromTimestamp', full_name='RetrieveFilteredDataRecordsRequestMessage.fromTimestamp', index=5,
-            number=6, type=3, cpp_type=2, label=1,
-            has_default_value=False, default_value=0,
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='tillTimestamp', full_name='RetrieveFilteredDataRecordsRequestMessage.tillTimestamp', index=6,
+            name='startTimestamp', full_name='RegisterCampaign.Request.startTimestamp', index=6,
             number=7, type=3, cpp_type=2, label=1,
             has_default_value=False, default_value=0,
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='endTimestamp', full_name='RegisterCampaign.Request.endTimestamp', index=7,
+            number=8, type=3, cpp_type=2, label=1,
+            has_default_value=False, default_value=0,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='removeInactiveUsersTimeout', full_name='RegisterCampaign.Request.removeInactiveUsersTimeout', index=8,
+            number=9, type=5, cpp_type=1, label=1,
+            has_default_value=False, default_value=0,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
     ],
     extensions=[
     ],
@@ -1344,42 +684,28 @@ _RETRIEVEFILTEREDDATARECORDSREQUESTMESSAGE = _descriptor.Descriptor(
     extension_ranges=[],
     oneofs=[
     ],
-    serialized_start=3017,
-    serialized_end=3212,
+    serialized_start=993,
+    serialized_end=1184,
 )
 
-_RETRIEVEFILTEREDDATARECORDSRESPONSEMESSAGE = _descriptor.Descriptor(
-    name='RetrieveFilteredDataRecordsResponseMessage',
-    full_name='RetrieveFilteredDataRecordsResponseMessage',
+_REGISTERCAMPAIGN_RESPONSE = _descriptor.Descriptor(
+    name='Response',
+    full_name='RegisterCampaign.Response',
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     fields=[
         _descriptor.FieldDescriptor(
-            name='doneSuccessfully', full_name='RetrieveFilteredDataRecordsResponseMessage.doneSuccessfully', index=0,
+            name='success', full_name='RegisterCampaign.Response.success', index=0,
             number=1, type=8, cpp_type=7, label=1,
             has_default_value=False, default_value=False,
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='timestamp', full_name='RetrieveFilteredDataRecordsResponseMessage.timestamp', index=1,
-            number=2, type=3, cpp_type=2, label=3,
-            has_default_value=False, default_value=[],
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='dataSource', full_name='RetrieveFilteredDataRecordsResponseMessage.dataSource', index=2,
-            number=3, type=5, cpp_type=1, label=3,
-            has_default_value=False, default_value=[],
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='value', full_name='RetrieveFilteredDataRecordsResponseMessage.value', index=3,
-            number=4, type=9, cpp_type=9, label=3,
-            has_default_value=False, default_value=[],
+            name='campaignId', full_name='RegisterCampaign.Response.campaignId', index=1,
+            number=2, type=5, cpp_type=1, label=1,
+            has_default_value=False, default_value=0,
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
@@ -1395,31 +721,61 @@ _RETRIEVEFILTEREDDATARECORDSRESPONSEMESSAGE = _descriptor.Descriptor(
     extension_ranges=[],
     oneofs=[
     ],
-    serialized_start=3214,
-    serialized_end=3338,
+    serialized_start=1186,
+    serialized_end=1233,
 )
 
-_RETRIEVEUNREADDIRECTMESSAGESREQUESTMESSAGE = _descriptor.Descriptor(
-    name='RetrieveUnreadDirectMessagesRequestMessage',
-    full_name='RetrieveUnreadDirectMessagesRequestMessage',
+_REGISTERCAMPAIGN = _descriptor.Descriptor(
+    name='RegisterCampaign',
+    full_name='RegisterCampaign',
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+    ],
+    extensions=[
+    ],
+    nested_types=[_REGISTERCAMPAIGN_REQUEST, _REGISTERCAMPAIGN_RESPONSE, ],
+    enum_types=[
+    ],
+    serialized_options=None,
+    is_extendable=False,
+    syntax='proto3',
+    extension_ranges=[],
+    oneofs=[
+    ],
+    serialized_start=972,
+    serialized_end=1233,
+)
+
+_DELETECAMPAIGN_REQUEST = _descriptor.Descriptor(
+    name='Request',
+    full_name='DeleteCampaign.Request',
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     fields=[
         _descriptor.FieldDescriptor(
-            name='userId', full_name='RetrieveUnreadDirectMessagesRequestMessage.userId', index=0,
+            name='userId', full_name='DeleteCampaign.Request.userId', index=0,
             number=1, type=5, cpp_type=1, label=1,
             has_default_value=False, default_value=0,
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='email', full_name='RetrieveUnreadDirectMessagesRequestMessage.email', index=1,
+            name='email', full_name='DeleteCampaign.Request.email', index=1,
             number=2, type=9, cpp_type=9, label=1,
             has_default_value=False, default_value=b"".decode('utf-8'),
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='campaignId', full_name='DeleteCampaign.Request.campaignId', index=2,
+            number=3, type=5, cpp_type=1, label=1,
+            has_default_value=False, default_value=0,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
     ],
     extensions=[
     ],
@@ -1432,52 +788,24 @@ _RETRIEVEUNREADDIRECTMESSAGESREQUESTMESSAGE = _descriptor.Descriptor(
     extension_ranges=[],
     oneofs=[
     ],
-    serialized_start=3340,
-    serialized_end=3415,
+    serialized_start=260,
+    serialized_end=320,
 )
 
-_RETRIEVEUNREADDIRECTMESSAGESRESPONSEMESSAGE = _descriptor.Descriptor(
-    name='RetrieveUnreadDirectMessagesResponseMessage',
-    full_name='RetrieveUnreadDirectMessagesResponseMessage',
+_DELETECAMPAIGN_RESPONSE = _descriptor.Descriptor(
+    name='Response',
+    full_name='DeleteCampaign.Response',
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     fields=[
         _descriptor.FieldDescriptor(
-            name='doneSuccessfully', full_name='RetrieveUnreadDirectMessagesResponseMessage.doneSuccessfully', index=0,
+            name='success', full_name='DeleteCampaign.Response.success', index=0,
             number=1, type=8, cpp_type=7, label=1,
             has_default_value=False, default_value=False,
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='sourceEmail', full_name='RetrieveUnreadDirectMessagesResponseMessage.sourceEmail', index=1,
-            number=2, type=9, cpp_type=9, label=3,
-            has_default_value=False, default_value=[],
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='timestamp', full_name='RetrieveUnreadDirectMessagesResponseMessage.timestamp', index=2,
-            number=3, type=3, cpp_type=2, label=3,
-            has_default_value=False, default_value=[],
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='subject', full_name='RetrieveUnreadDirectMessagesResponseMessage.subject', index=3,
-            number=4, type=9, cpp_type=9, label=3,
-            has_default_value=False, default_value=[],
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
-        _descriptor.FieldDescriptor(
-            name='content', full_name='RetrieveUnreadDirectMessagesResponseMessage.content', index=4,
-            number=5, type=9, cpp_type=9, label=3,
-            has_default_value=False, default_value=[],
-            message_type=None, enum_type=None, containing_type=None,
-            is_extension=False, extension_scope=None,
-            serialized_options=None, file=DESCRIPTOR),
     ],
     extensions=[
     ],
@@ -1490,28 +818,58 @@ _RETRIEVEUNREADDIRECTMESSAGESRESPONSEMESSAGE = _descriptor.Descriptor(
     extension_ranges=[],
     oneofs=[
     ],
-    serialized_start=3418,
-    serialized_end=3563,
+    serialized_start=67,
+    serialized_end=94,
 )
 
-_RETRIEVEUNREADNOTIFICATIONSREQUESTMESSAGE = _descriptor.Descriptor(
-    name='RetrieveUnreadNotificationsRequestMessage',
-    full_name='RetrieveUnreadNotificationsRequestMessage',
+_DELETECAMPAIGN = _descriptor.Descriptor(
+    name='DeleteCampaign',
+    full_name='DeleteCampaign',
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+    ],
+    extensions=[
+    ],
+    nested_types=[_DELETECAMPAIGN_REQUEST, _DELETECAMPAIGN_RESPONSE, ],
+    enum_types=[
+    ],
+    serialized_options=None,
+    is_extendable=False,
+    syntax='proto3',
+    extension_ranges=[],
+    oneofs=[
+    ],
+    serialized_start=1235,
+    serialized_end=1342,
+)
+
+_RETRIEVECAMPAIGNS_REQUEST = _descriptor.Descriptor(
+    name='Request',
+    full_name='RetrieveCampaigns.Request',
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     fields=[
         _descriptor.FieldDescriptor(
-            name='userId', full_name='RetrieveUnreadNotificationsRequestMessage.userId', index=0,
+            name='userId', full_name='RetrieveCampaigns.Request.userId', index=0,
             number=1, type=5, cpp_type=1, label=1,
             has_default_value=False, default_value=0,
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='email', full_name='RetrieveUnreadNotificationsRequestMessage.email', index=1,
+            name='email', full_name='RetrieveCampaigns.Request.email', index=1,
             number=2, type=9, cpp_type=9, label=1,
             has_default_value=False, default_value=b"".decode('utf-8'),
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='myCampaignsOnly', full_name='RetrieveCampaigns.Request.myCampaignsOnly', index=2,
+            number=3, type=8, cpp_type=7, label=1,
+            has_default_value=False, default_value=False,
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
@@ -1527,55 +885,83 @@ _RETRIEVEUNREADNOTIFICATIONSREQUESTMESSAGE = _descriptor.Descriptor(
     extension_ranges=[],
     oneofs=[
     ],
-    serialized_start=3565,
-    serialized_end=3639,
+    serialized_start=1366,
+    serialized_end=1431,
 )
 
-_RETRIEVEUNREADNOTIFICATIONSRESPONSEMESSAGE = _descriptor.Descriptor(
-    name='RetrieveUnreadNotificationsResponseMessage',
-    full_name='RetrieveUnreadNotificationsResponseMessage',
+_RETRIEVECAMPAIGNS_RESPONSE = _descriptor.Descriptor(
+    name='Response',
+    full_name='RetrieveCampaigns.Response',
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     fields=[
         _descriptor.FieldDescriptor(
-            name='doneSuccessfully', full_name='RetrieveUnreadNotificationsResponseMessage.doneSuccessfully', index=0,
+            name='success', full_name='RetrieveCampaigns.Response.success', index=0,
             number=1, type=8, cpp_type=7, label=1,
             has_default_value=False, default_value=False,
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='notificationId', full_name='RetrieveUnreadNotificationsResponseMessage.notificationId', index=1,
+            name='campaignId', full_name='RetrieveCampaigns.Response.campaignId', index=1,
             number=2, type=5, cpp_type=1, label=3,
             has_default_value=False, default_value=[],
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='campaignId', full_name='RetrieveUnreadNotificationsResponseMessage.campaignId', index=2,
-            number=3, type=5, cpp_type=1, label=3,
+            name='name', full_name='RetrieveCampaigns.Response.name', index=2,
+            number=3, type=9, cpp_type=9, label=3,
             has_default_value=False, default_value=[],
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='timestamp', full_name='RetrieveUnreadNotificationsResponseMessage.timestamp', index=3,
-            number=4, type=3, cpp_type=2, label=3,
+            name='notes', full_name='RetrieveCampaigns.Response.notes', index=3,
+            number=4, type=9, cpp_type=9, label=3,
             has_default_value=False, default_value=[],
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='subject', full_name='RetrieveUnreadNotificationsResponseMessage.subject', index=4,
-            number=5, type=9, cpp_type=9, label=3,
+            name='startTimestamp', full_name='RetrieveCampaigns.Response.startTimestamp', index=4,
+            number=5, type=3, cpp_type=2, label=3,
             has_default_value=False, default_value=[],
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='content', full_name='RetrieveUnreadNotificationsResponseMessage.content', index=5,
-            number=6, type=9, cpp_type=9, label=3,
+            name='endTimestamp', full_name='RetrieveCampaigns.Response.endTimestamp', index=5,
+            number=6, type=3, cpp_type=2, label=3,
+            has_default_value=False, default_value=[],
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='removeInactiveUsersTimeout', full_name='RetrieveCampaigns.Response.removeInactiveUsersTimeout', index=6,
+            number=7, type=5, cpp_type=1, label=3,
+            has_default_value=False, default_value=[],
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='creatorEmail', full_name='RetrieveCampaigns.Response.creatorEmail', index=7,
+            number=8, type=9, cpp_type=9, label=3,
+            has_default_value=False, default_value=[],
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='configJson', full_name='RetrieveCampaigns.Response.configJson', index=8,
+            number=9, type=9, cpp_type=9, label=3,
+            has_default_value=False, default_value=[],
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='participantCount', full_name='RetrieveCampaigns.Response.participantCount', index=9,
+            number=10, type=5, cpp_type=1, label=3,
             has_default_value=False, default_value=[],
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
@@ -1592,40 +978,209 @@ _RETRIEVEUNREADNOTIFICATIONSRESPONSEMESSAGE = _descriptor.Descriptor(
     extension_ranges=[],
     oneofs=[
     ],
-    serialized_start=3642,
-    serialized_end=3809,
+    serialized_start=1434,
+    serialized_end=1660,
 )
 
-_BINDDATASOURCEREQUESTMESSAGE = _descriptor.Descriptor(
-    name='BindDataSourceRequestMessage',
-    full_name='BindDataSourceRequestMessage',
+_RETRIEVECAMPAIGNS = _descriptor.Descriptor(
+    name='RetrieveCampaigns',
+    full_name='RetrieveCampaigns',
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+    ],
+    extensions=[
+    ],
+    nested_types=[_RETRIEVECAMPAIGNS_REQUEST, _RETRIEVECAMPAIGNS_RESPONSE, ],
+    enum_types=[
+    ],
+    serialized_options=None,
+    is_extendable=False,
+    syntax='proto3',
+    extension_ranges=[],
+    oneofs=[
+    ],
+    serialized_start=1345,
+    serialized_end=1660,
+)
+
+_RETRIEVECAMPAIGN_REQUEST = _descriptor.Descriptor(
+    name='Request',
+    full_name='RetrieveCampaign.Request',
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     fields=[
         _descriptor.FieldDescriptor(
-            name='userId', full_name='BindDataSourceRequestMessage.userId', index=0,
+            name='userId', full_name='RetrieveCampaign.Request.userId', index=0,
             number=1, type=5, cpp_type=1, label=1,
             has_default_value=False, default_value=0,
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='email', full_name='BindDataSourceRequestMessage.email', index=1,
+            name='email', full_name='RetrieveCampaign.Request.email', index=1,
             number=2, type=9, cpp_type=9, label=1,
             has_default_value=False, default_value=b"".decode('utf-8'),
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='name', full_name='BindDataSourceRequestMessage.name', index=2,
+            name='campaignId', full_name='RetrieveCampaign.Request.campaignId', index=2,
+            number=3, type=5, cpp_type=1, label=1,
+            has_default_value=False, default_value=0,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+    ],
+    extensions=[
+    ],
+    nested_types=[],
+    enum_types=[
+    ],
+    serialized_options=None,
+    is_extendable=False,
+    syntax='proto3',
+    extension_ranges=[],
+    oneofs=[
+    ],
+    serialized_start=260,
+    serialized_end=320,
+)
+
+_RETRIEVECAMPAIGN_RESPONSE = _descriptor.Descriptor(
+    name='Response',
+    full_name='RetrieveCampaign.Response',
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name='success', full_name='RetrieveCampaign.Response.success', index=0,
+            number=1, type=8, cpp_type=7, label=1,
+            has_default_value=False, default_value=False,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='name', full_name='RetrieveCampaign.Response.name', index=1,
+            number=2, type=9, cpp_type=9, label=1,
+            has_default_value=False, default_value=b"".decode('utf-8'),
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='notes', full_name='RetrieveCampaign.Response.notes', index=2,
             number=3, type=9, cpp_type=9, label=1,
             has_default_value=False, default_value=b"".decode('utf-8'),
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='iconName', full_name='BindDataSourceRequestMessage.iconName', index=3,
+            name='startTimestamp', full_name='RetrieveCampaign.Response.startTimestamp', index=3,
+            number=4, type=3, cpp_type=2, label=1,
+            has_default_value=False, default_value=0,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='endTimestamp', full_name='RetrieveCampaign.Response.endTimestamp', index=4,
+            number=5, type=3, cpp_type=2, label=1,
+            has_default_value=False, default_value=0,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='creatorEmail', full_name='RetrieveCampaign.Response.creatorEmail', index=5,
+            number=6, type=9, cpp_type=9, label=1,
+            has_default_value=False, default_value=b"".decode('utf-8'),
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='configJson', full_name='RetrieveCampaign.Response.configJson', index=6,
+            number=7, type=9, cpp_type=9, label=1,
+            has_default_value=False, default_value=b"".decode('utf-8'),
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='participantCount', full_name='RetrieveCampaign.Response.participantCount', index=7,
+            number=8, type=5, cpp_type=1, label=1,
+            has_default_value=False, default_value=0,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+    ],
+    extensions=[
+    ],
+    nested_types=[],
+    enum_types=[
+    ],
+    serialized_options=None,
+    is_extendable=False,
+    syntax='proto3',
+    extension_ranges=[],
+    oneofs=[
+    ],
+    serialized_start=1746,
+    serialized_end=1916,
+)
+
+_RETRIEVECAMPAIGN = _descriptor.Descriptor(
+    name='RetrieveCampaign',
+    full_name='RetrieveCampaign',
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+    ],
+    extensions=[
+    ],
+    nested_types=[_RETRIEVECAMPAIGN_REQUEST, _RETRIEVECAMPAIGN_RESPONSE, ],
+    enum_types=[
+    ],
+    serialized_options=None,
+    is_extendable=False,
+    syntax='proto3',
+    extension_ranges=[],
+    oneofs=[
+    ],
+    serialized_start=1663,
+    serialized_end=1916,
+)
+
+_BINDDATASOURCE_REQUEST = _descriptor.Descriptor(
+    name='Request',
+    full_name='BindDataSource.Request',
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name='userId', full_name='BindDataSource.Request.userId', index=0,
+            number=1, type=5, cpp_type=1, label=1,
+            has_default_value=False, default_value=0,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='email', full_name='BindDataSource.Request.email', index=1,
+            number=2, type=9, cpp_type=9, label=1,
+            has_default_value=False, default_value=b"".decode('utf-8'),
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='name', full_name='BindDataSource.Request.name', index=2,
+            number=3, type=9, cpp_type=9, label=1,
+            has_default_value=False, default_value=b"".decode('utf-8'),
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='iconName', full_name='BindDataSource.Request.iconName', index=3,
             number=4, type=9, cpp_type=9, label=1,
             has_default_value=False, default_value=b"".decode('utf-8'),
             message_type=None, enum_type=None, containing_type=None,
@@ -1643,33 +1198,33 @@ _BINDDATASOURCEREQUESTMESSAGE = _descriptor.Descriptor(
     extension_ranges=[],
     oneofs=[
     ],
-    serialized_start=3811,
-    serialized_end=3904,
+    serialized_start=1937,
+    serialized_end=2009,
 )
 
-_BINDDATASOURCERESPONSEMESSAGE = _descriptor.Descriptor(
-    name='BindDataSourceResponseMessage',
-    full_name='BindDataSourceResponseMessage',
+_BINDDATASOURCE_RESPONSE = _descriptor.Descriptor(
+    name='Response',
+    full_name='BindDataSource.Response',
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     fields=[
         _descriptor.FieldDescriptor(
-            name='doneSuccessfully', full_name='BindDataSourceResponseMessage.doneSuccessfully', index=0,
+            name='success', full_name='BindDataSource.Response.success', index=0,
             number=1, type=8, cpp_type=7, label=1,
             has_default_value=False, default_value=False,
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='dataSourceId', full_name='BindDataSourceResponseMessage.dataSourceId', index=1,
+            name='dataSourceId', full_name='BindDataSource.Response.dataSourceId', index=1,
             number=2, type=5, cpp_type=1, label=1,
             has_default_value=False, default_value=0,
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='iconName', full_name='BindDataSourceResponseMessage.iconName', index=2,
+            name='iconName', full_name='BindDataSource.Response.iconName', index=2,
             number=3, type=9, cpp_type=9, label=1,
             has_default_value=False, default_value=b"".decode('utf-8'),
             message_type=None, enum_type=None, containing_type=None,
@@ -1687,26 +1242,49 @@ _BINDDATASOURCERESPONSEMESSAGE = _descriptor.Descriptor(
     extension_ranges=[],
     oneofs=[
     ],
-    serialized_start=3906,
-    serialized_end=4003,
+    serialized_start=2011,
+    serialized_end=2078,
 )
 
-_RETRIEVEALLDATASOURCESREQUESTMESSAGE = _descriptor.Descriptor(
-    name='RetrieveAllDataSourcesRequestMessage',
-    full_name='RetrieveAllDataSourcesRequestMessage',
+_BINDDATASOURCE = _descriptor.Descriptor(
+    name='BindDataSource',
+    full_name='BindDataSource',
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+    ],
+    extensions=[
+    ],
+    nested_types=[_BINDDATASOURCE_REQUEST, _BINDDATASOURCE_RESPONSE, ],
+    enum_types=[
+    ],
+    serialized_options=None,
+    is_extendable=False,
+    syntax='proto3',
+    extension_ranges=[],
+    oneofs=[
+    ],
+    serialized_start=1919,
+    serialized_end=2078,
+)
+
+_RETRIEVEDATASOURCES_REQUEST = _descriptor.Descriptor(
+    name='Request',
+    full_name='RetrieveDataSources.Request',
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     fields=[
         _descriptor.FieldDescriptor(
-            name='userId', full_name='RetrieveAllDataSourcesRequestMessage.userId', index=0,
+            name='userId', full_name='RetrieveDataSources.Request.userId', index=0,
             number=1, type=5, cpp_type=1, label=1,
             has_default_value=False, default_value=0,
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='email', full_name='RetrieveAllDataSourcesRequestMessage.email', index=1,
+            name='email', full_name='RetrieveDataSources.Request.email', index=1,
             number=2, type=9, cpp_type=9, label=1,
             has_default_value=False, default_value=b"".decode('utf-8'),
             message_type=None, enum_type=None, containing_type=None,
@@ -1724,47 +1302,47 @@ _RETRIEVEALLDATASOURCESREQUESTMESSAGE = _descriptor.Descriptor(
     extension_ranges=[],
     oneofs=[
     ],
-    serialized_start=4005,
-    serialized_end=4074,
+    serialized_start=260,
+    serialized_end=300,
 )
 
-_RETRIEVEALLDATASOURCESRESPONSEMESSAGE = _descriptor.Descriptor(
-    name='RetrieveAllDataSourcesResponseMessage',
-    full_name='RetrieveAllDataSourcesResponseMessage',
+_RETRIEVEDATASOURCES_RESPONSE = _descriptor.Descriptor(
+    name='Response',
+    full_name='RetrieveDataSources.Response',
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     fields=[
         _descriptor.FieldDescriptor(
-            name='doneSuccessfully', full_name='RetrieveAllDataSourcesResponseMessage.doneSuccessfully', index=0,
+            name='success', full_name='RetrieveDataSources.Response.success', index=0,
             number=1, type=8, cpp_type=7, label=1,
             has_default_value=False, default_value=False,
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='dataSourceId', full_name='RetrieveAllDataSourcesResponseMessage.dataSourceId', index=1,
+            name='dataSourceId', full_name='RetrieveDataSources.Response.dataSourceId', index=1,
             number=2, type=5, cpp_type=1, label=3,
             has_default_value=False, default_value=[],
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='name', full_name='RetrieveAllDataSourcesResponseMessage.name', index=2,
+            name='name', full_name='RetrieveDataSources.Response.name', index=2,
             number=3, type=9, cpp_type=9, label=3,
             has_default_value=False, default_value=[],
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='creatorEmail', full_name='RetrieveAllDataSourcesResponseMessage.creatorEmail', index=3,
+            name='creatorEmail', full_name='RetrieveDataSources.Response.creatorEmail', index=3,
             number=4, type=9, cpp_type=9, label=3,
             has_default_value=False, default_value=[],
             message_type=None, enum_type=None, containing_type=None,
             is_extension=False, extension_scope=None,
             serialized_options=None, file=DESCRIPTOR),
         _descriptor.FieldDescriptor(
-            name='iconName', full_name='RetrieveAllDataSourcesResponseMessage.iconName', index=4,
+            name='iconName', full_name='RetrieveDataSources.Response.iconName', index=4,
             number=5, type=9, cpp_type=9, label=3,
             has_default_value=False, default_value=[],
             message_type=None, enum_type=None, containing_type=None,
@@ -1782,275 +1360,1521 @@ _RETRIEVEALLDATASOURCESRESPONSEMESSAGE = _descriptor.Descriptor(
     extension_ranges=[],
     oneofs=[
     ],
-    serialized_start=4077,
-    serialized_end=4218,
+    serialized_start=2146,
+    serialized_end=2249,
 )
 
-DESCRIPTOR.message_types_by_name['DefaultResponseMessage'] = _DEFAULTRESPONSEMESSAGE
-DESCRIPTOR.message_types_by_name['LoginWithGoogleIdTokenRequestMessage'] = _LOGINWITHGOOGLEIDTOKENREQUESTMESSAGE
-DESCRIPTOR.message_types_by_name['BindUserToCampaignRequestMessage'] = _BINDUSERTOCAMPAIGNREQUESTMESSAGE
-DESCRIPTOR.message_types_by_name['BindUserToCampaignResponseMessage'] = _BINDUSERTOCAMPAIGNRESPONSEMESSAGE
-DESCRIPTOR.message_types_by_name['DashboardLoginWithEmailRequestMessage'] = _DASHBOARDLOGINWITHEMAILREQUESTMESSAGE
-DESCRIPTOR.message_types_by_name['LoginResponseMessage'] = _LOGINRESPONSEMESSAGE
-DESCRIPTOR.message_types_by_name['RegisterCampaignRequestMessage'] = _REGISTERCAMPAIGNREQUESTMESSAGE
-DESCRIPTOR.message_types_by_name['RegisterCampaignResponseMessage'] = _REGISTERCAMPAIGNRESPONSEMESSAGE
-DESCRIPTOR.message_types_by_name['DeleteCampaignRequestMessage'] = _DELETECAMPAIGNREQUESTMESSAGE
-DESCRIPTOR.message_types_by_name['RetrieveCampaignsRequestMessage'] = _RETRIEVECAMPAIGNSREQUESTMESSAGE
-DESCRIPTOR.message_types_by_name['RetrieveCampaignsResponseMessage'] = _RETRIEVECAMPAIGNSRESPONSEMESSAGE
-DESCRIPTOR.message_types_by_name['RetrieveCampaignRequestMessage'] = _RETRIEVECAMPAIGNREQUESTMESSAGE
-DESCRIPTOR.message_types_by_name['RetrieveCampaignResponseMessage'] = _RETRIEVECAMPAIGNRESPONSEMESSAGE
-DESCRIPTOR.message_types_by_name['SubmitDataRecordRequestMessage'] = _SUBMITDATARECORDREQUESTMESSAGE
-DESCRIPTOR.message_types_by_name['SubmitDataRecordsRequestMessage'] = _SUBMITDATARECORDSREQUESTMESSAGE
-DESCRIPTOR.message_types_by_name['SubmitHeartbeatRequestMessage'] = _SUBMITHEARTBEATREQUESTMESSAGE
-DESCRIPTOR.message_types_by_name['SubmitDirectMessageRequestMessage'] = _SUBMITDIRECTMESSAGEREQUESTMESSAGE
-DESCRIPTOR.message_types_by_name['RetrieveParticipantsRequestMessage'] = _RETRIEVEPARTICIPANTSREQUESTMESSAGE
-DESCRIPTOR.message_types_by_name['RetrieveParticipantsResponseMessage'] = _RETRIEVEPARTICIPANTSRESPONSEMESSAGE
-DESCRIPTOR.message_types_by_name['RetrieveParticipantStatisticsRequestMessage'] = _RETRIEVEPARTICIPANTSTATISTICSREQUESTMESSAGE
-DESCRIPTOR.message_types_by_name['RetrieveParticipantStatisticsResponseMessage'] = _RETRIEVEPARTICIPANTSTATISTICSRESPONSEMESSAGE
-DESCRIPTOR.message_types_by_name['Retrieve100DataRecordsRequestMessage'] = _RETRIEVE100DATARECORDSREQUESTMESSAGE
-DESCRIPTOR.message_types_by_name['Retrieve100DataRecordsResponseMessage'] = _RETRIEVE100DATARECORDSRESPONSEMESSAGE
-DESCRIPTOR.message_types_by_name['RetrieveFilteredDataRecordsRequestMessage'] = _RETRIEVEFILTEREDDATARECORDSREQUESTMESSAGE
-DESCRIPTOR.message_types_by_name['RetrieveFilteredDataRecordsResponseMessage'] = _RETRIEVEFILTEREDDATARECORDSRESPONSEMESSAGE
-DESCRIPTOR.message_types_by_name['RetrieveUnreadDirectMessagesRequestMessage'] = _RETRIEVEUNREADDIRECTMESSAGESREQUESTMESSAGE
-DESCRIPTOR.message_types_by_name['RetrieveUnreadDirectMessagesResponseMessage'] = _RETRIEVEUNREADDIRECTMESSAGESRESPONSEMESSAGE
-DESCRIPTOR.message_types_by_name['RetrieveUnreadNotificationsRequestMessage'] = _RETRIEVEUNREADNOTIFICATIONSREQUESTMESSAGE
-DESCRIPTOR.message_types_by_name['RetrieveUnreadNotificationsResponseMessage'] = _RETRIEVEUNREADNOTIFICATIONSRESPONSEMESSAGE
-DESCRIPTOR.message_types_by_name['BindDataSourceRequestMessage'] = _BINDDATASOURCEREQUESTMESSAGE
-DESCRIPTOR.message_types_by_name['BindDataSourceResponseMessage'] = _BINDDATASOURCERESPONSEMESSAGE
-DESCRIPTOR.message_types_by_name['RetrieveAllDataSourcesRequestMessage'] = _RETRIEVEALLDATASOURCESREQUESTMESSAGE
-DESCRIPTOR.message_types_by_name['RetrieveAllDataSourcesResponseMessage'] = _RETRIEVEALLDATASOURCESRESPONSEMESSAGE
+_RETRIEVEDATASOURCES = _descriptor.Descriptor(
+    name='RetrieveDataSources',
+    full_name='RetrieveDataSources',
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+    ],
+    extensions=[
+    ],
+    nested_types=[_RETRIEVEDATASOURCES_REQUEST, _RETRIEVEDATASOURCES_RESPONSE, ],
+    enum_types=[
+    ],
+    serialized_options=None,
+    is_extendable=False,
+    syntax='proto3',
+    extension_ranges=[],
+    oneofs=[
+    ],
+    serialized_start=2081,
+    serialized_end=2249,
+)
+
+_SUBMITDATARECORD_REQUEST = _descriptor.Descriptor(
+    name='Request',
+    full_name='SubmitDataRecord.Request',
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name='userId', full_name='SubmitDataRecord.Request.userId', index=0,
+            number=1, type=5, cpp_type=1, label=1,
+            has_default_value=False, default_value=0,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='email', full_name='SubmitDataRecord.Request.email', index=1,
+            number=2, type=9, cpp_type=9, label=1,
+            has_default_value=False, default_value=b"".decode('utf-8'),
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='campaignId', full_name='SubmitDataRecord.Request.campaignId', index=2,
+            number=3, type=5, cpp_type=1, label=1,
+            has_default_value=False, default_value=0,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='timestamp', full_name='SubmitDataRecord.Request.timestamp', index=3,
+            number=4, type=3, cpp_type=2, label=1,
+            has_default_value=False, default_value=0,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='dataSource', full_name='SubmitDataRecord.Request.dataSource', index=4,
+            number=5, type=5, cpp_type=1, label=1,
+            has_default_value=False, default_value=0,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='accuracy', full_name='SubmitDataRecord.Request.accuracy', index=5,
+            number=6, type=2, cpp_type=6, label=1,
+            has_default_value=False, default_value=float(0),
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='values', full_name='SubmitDataRecord.Request.values', index=6,
+            number=7, type=9, cpp_type=9, label=1,
+            has_default_value=False, default_value=b"".decode('utf-8'),
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+    ],
+    extensions=[
+    ],
+    nested_types=[],
+    enum_types=[
+    ],
+    serialized_options=None,
+    is_extendable=False,
+    syntax='proto3',
+    extension_ranges=[],
+    oneofs=[
+    ],
+    serialized_start=2273,
+    serialized_end=2406,
+)
+
+_SUBMITDATARECORD_RESPONSE = _descriptor.Descriptor(
+    name='Response',
+    full_name='SubmitDataRecord.Response',
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name='success', full_name='SubmitDataRecord.Response.success', index=0,
+            number=1, type=8, cpp_type=7, label=1,
+            has_default_value=False, default_value=False,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+    ],
+    extensions=[
+    ],
+    nested_types=[],
+    enum_types=[
+    ],
+    serialized_options=None,
+    is_extendable=False,
+    syntax='proto3',
+    extension_ranges=[],
+    oneofs=[
+    ],
+    serialized_start=67,
+    serialized_end=94,
+)
+
+_SUBMITDATARECORD = _descriptor.Descriptor(
+    name='SubmitDataRecord',
+    full_name='SubmitDataRecord',
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+    ],
+    extensions=[
+    ],
+    nested_types=[_SUBMITDATARECORD_REQUEST, _SUBMITDATARECORD_RESPONSE, ],
+    enum_types=[
+    ],
+    serialized_options=None,
+    is_extendable=False,
+    syntax='proto3',
+    extension_ranges=[],
+    oneofs=[
+    ],
+    serialized_start=2252,
+    serialized_end=2435,
+)
+
+_SUBMITDATARECORDS_REQUEST = _descriptor.Descriptor(
+    name='Request',
+    full_name='SubmitDataRecords.Request',
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name='userId', full_name='SubmitDataRecords.Request.userId', index=0,
+            number=1, type=5, cpp_type=1, label=1,
+            has_default_value=False, default_value=0,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='email', full_name='SubmitDataRecords.Request.email', index=1,
+            number=2, type=9, cpp_type=9, label=1,
+            has_default_value=False, default_value=b"".decode('utf-8'),
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='campaignId', full_name='SubmitDataRecords.Request.campaignId', index=2,
+            number=3, type=5, cpp_type=1, label=1,
+            has_default_value=False, default_value=0,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='timestamp', full_name='SubmitDataRecords.Request.timestamp', index=3,
+            number=4, type=3, cpp_type=2, label=3,
+            has_default_value=False, default_value=[],
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='dataSource', full_name='SubmitDataRecords.Request.dataSource', index=4,
+            number=5, type=5, cpp_type=1, label=3,
+            has_default_value=False, default_value=[],
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='accuracy', full_name='SubmitDataRecords.Request.accuracy', index=5,
+            number=6, type=2, cpp_type=6, label=3,
+            has_default_value=False, default_value=[],
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='values', full_name='SubmitDataRecords.Request.values', index=6,
+            number=7, type=9, cpp_type=9, label=3,
+            has_default_value=False, default_value=[],
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+    ],
+    extensions=[
+    ],
+    nested_types=[],
+    enum_types=[
+    ],
+    serialized_options=None,
+    is_extendable=False,
+    syntax='proto3',
+    extension_ranges=[],
+    oneofs=[
+    ],
+    serialized_start=2460,
+    serialized_end=2593,
+)
+
+_SUBMITDATARECORDS_RESPONSE = _descriptor.Descriptor(
+    name='Response',
+    full_name='SubmitDataRecords.Response',
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name='success', full_name='SubmitDataRecords.Response.success', index=0,
+            number=1, type=8, cpp_type=7, label=1,
+            has_default_value=False, default_value=False,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+    ],
+    extensions=[
+    ],
+    nested_types=[],
+    enum_types=[
+    ],
+    serialized_options=None,
+    is_extendable=False,
+    syntax='proto3',
+    extension_ranges=[],
+    oneofs=[
+    ],
+    serialized_start=67,
+    serialized_end=94,
+)
+
+_SUBMITDATARECORDS = _descriptor.Descriptor(
+    name='SubmitDataRecords',
+    full_name='SubmitDataRecords',
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+    ],
+    extensions=[
+    ],
+    nested_types=[_SUBMITDATARECORDS_REQUEST, _SUBMITDATARECORDS_RESPONSE, ],
+    enum_types=[
+    ],
+    serialized_options=None,
+    is_extendable=False,
+    syntax='proto3',
+    extension_ranges=[],
+    oneofs=[
+    ],
+    serialized_start=2438,
+    serialized_end=2622,
+)
+
+_RETRIEVE100DATARECORDS_REQUEST = _descriptor.Descriptor(
+    name='Request',
+    full_name='Retrieve100DataRecords.Request',
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name='userId', full_name='Retrieve100DataRecords.Request.userId', index=0,
+            number=1, type=5, cpp_type=1, label=1,
+            has_default_value=False, default_value=0,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='email', full_name='Retrieve100DataRecords.Request.email', index=1,
+            number=2, type=9, cpp_type=9, label=1,
+            has_default_value=False, default_value=b"".decode('utf-8'),
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='targetEmail', full_name='Retrieve100DataRecords.Request.targetEmail', index=2,
+            number=3, type=9, cpp_type=9, label=1,
+            has_default_value=False, default_value=b"".decode('utf-8'),
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='targetCampaignId', full_name='Retrieve100DataRecords.Request.targetCampaignId', index=3,
+            number=4, type=5, cpp_type=1, label=1,
+            has_default_value=False, default_value=0,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='targetDataSourceId', full_name='Retrieve100DataRecords.Request.targetDataSourceId', index=4,
+            number=5, type=5, cpp_type=1, label=1,
+            has_default_value=False, default_value=0,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='fromTimestamp', full_name='Retrieve100DataRecords.Request.fromTimestamp', index=5,
+            number=6, type=3, cpp_type=2, label=1,
+            has_default_value=False, default_value=0,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+    ],
+    extensions=[
+    ],
+    nested_types=[],
+    enum_types=[
+    ],
+    serialized_options=None,
+    is_extendable=False,
+    syntax='proto3',
+    extension_ranges=[],
+    oneofs=[
+    ],
+    serialized_start=2652,
+    serialized_end=2790,
+)
+
+_RETRIEVE100DATARECORDS_RESPONSE = _descriptor.Descriptor(
+    name='Response',
+    full_name='Retrieve100DataRecords.Response',
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name='success', full_name='Retrieve100DataRecords.Response.success', index=0,
+            number=1, type=8, cpp_type=7, label=1,
+            has_default_value=False, default_value=False,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='timestamp', full_name='Retrieve100DataRecords.Response.timestamp', index=1,
+            number=2, type=3, cpp_type=2, label=3,
+            has_default_value=False, default_value=[],
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='dataSource', full_name='Retrieve100DataRecords.Response.dataSource', index=2,
+            number=3, type=5, cpp_type=1, label=3,
+            has_default_value=False, default_value=[],
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='value', full_name='Retrieve100DataRecords.Response.value', index=3,
+            number=4, type=9, cpp_type=9, label=3,
+            has_default_value=False, default_value=[],
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='moreDataAvailable', full_name='Retrieve100DataRecords.Response.moreDataAvailable', index=4,
+            number=5, type=8, cpp_type=7, label=1,
+            has_default_value=False, default_value=False,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+    ],
+    extensions=[
+    ],
+    nested_types=[],
+    enum_types=[
+    ],
+    serialized_options=None,
+    is_extendable=False,
+    syntax='proto3',
+    extension_ranges=[],
+    oneofs=[
+    ],
+    serialized_start=2792,
+    serialized_end=2900,
+)
+
+_RETRIEVE100DATARECORDS = _descriptor.Descriptor(
+    name='Retrieve100DataRecords',
+    full_name='Retrieve100DataRecords',
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+    ],
+    extensions=[
+    ],
+    nested_types=[_RETRIEVE100DATARECORDS_REQUEST, _RETRIEVE100DATARECORDS_RESPONSE, ],
+    enum_types=[
+    ],
+    serialized_options=None,
+    is_extendable=False,
+    syntax='proto3',
+    extension_ranges=[],
+    oneofs=[
+    ],
+    serialized_start=2625,
+    serialized_end=2900,
+)
+
+_RETRIEVEFILTEREDDATARECORDS_REQUEST = _descriptor.Descriptor(
+    name='Request',
+    full_name='RetrieveFilteredDataRecords.Request',
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name='userId', full_name='RetrieveFilteredDataRecords.Request.userId', index=0,
+            number=1, type=5, cpp_type=1, label=1,
+            has_default_value=False, default_value=0,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='email', full_name='RetrieveFilteredDataRecords.Request.email', index=1,
+            number=2, type=9, cpp_type=9, label=1,
+            has_default_value=False, default_value=b"".decode('utf-8'),
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='targetEmail', full_name='RetrieveFilteredDataRecords.Request.targetEmail', index=2,
+            number=3, type=9, cpp_type=9, label=1,
+            has_default_value=False, default_value=b"".decode('utf-8'),
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='targetCampaignId', full_name='RetrieveFilteredDataRecords.Request.targetCampaignId', index=3,
+            number=4, type=5, cpp_type=1, label=1,
+            has_default_value=False, default_value=0,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='targetDataSourceId', full_name='RetrieveFilteredDataRecords.Request.targetDataSourceId', index=4,
+            number=5, type=5, cpp_type=1, label=1,
+            has_default_value=False, default_value=0,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='fromTimestamp', full_name='RetrieveFilteredDataRecords.Request.fromTimestamp', index=5,
+            number=6, type=3, cpp_type=2, label=1,
+            has_default_value=False, default_value=0,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='tillTimestamp', full_name='RetrieveFilteredDataRecords.Request.tillTimestamp', index=6,
+            number=7, type=3, cpp_type=2, label=1,
+            has_default_value=False, default_value=0,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+    ],
+    extensions=[
+    ],
+    nested_types=[],
+    enum_types=[
+    ],
+    serialized_options=None,
+    is_extendable=False,
+    syntax='proto3',
+    extension_ranges=[],
+    oneofs=[
+    ],
+    serialized_start=2935,
+    serialized_end=3096,
+)
+
+_RETRIEVEFILTEREDDATARECORDS_RESPONSE = _descriptor.Descriptor(
+    name='Response',
+    full_name='RetrieveFilteredDataRecords.Response',
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name='success', full_name='RetrieveFilteredDataRecords.Response.success', index=0,
+            number=1, type=8, cpp_type=7, label=1,
+            has_default_value=False, default_value=False,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='timestamp', full_name='RetrieveFilteredDataRecords.Response.timestamp', index=1,
+            number=2, type=3, cpp_type=2, label=3,
+            has_default_value=False, default_value=[],
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='dataSource', full_name='RetrieveFilteredDataRecords.Response.dataSource', index=2,
+            number=3, type=5, cpp_type=1, label=3,
+            has_default_value=False, default_value=[],
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='value', full_name='RetrieveFilteredDataRecords.Response.value', index=3,
+            number=4, type=9, cpp_type=9, label=3,
+            has_default_value=False, default_value=[],
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+    ],
+    extensions=[
+    ],
+    nested_types=[],
+    enum_types=[
+    ],
+    serialized_options=None,
+    is_extendable=False,
+    syntax='proto3',
+    extension_ranges=[],
+    oneofs=[
+    ],
+    serialized_start=2792,
+    serialized_end=2873,
+)
+
+_RETRIEVEFILTEREDDATARECORDS = _descriptor.Descriptor(
+    name='RetrieveFilteredDataRecords',
+    full_name='RetrieveFilteredDataRecords',
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+    ],
+    extensions=[
+    ],
+    nested_types=[_RETRIEVEFILTEREDDATARECORDS_REQUEST, _RETRIEVEFILTEREDDATARECORDS_RESPONSE, ],
+    enum_types=[
+    ],
+    serialized_options=None,
+    is_extendable=False,
+    syntax='proto3',
+    extension_ranges=[],
+    oneofs=[
+    ],
+    serialized_start=2903,
+    serialized_end=3179,
+)
+
+_SUBMITHEARTBEAT_REQUEST = _descriptor.Descriptor(
+    name='Request',
+    full_name='SubmitHeartbeat.Request',
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name='userId', full_name='SubmitHeartbeat.Request.userId', index=0,
+            number=1, type=5, cpp_type=1, label=1,
+            has_default_value=False, default_value=0,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='email', full_name='SubmitHeartbeat.Request.email', index=1,
+            number=2, type=9, cpp_type=9, label=1,
+            has_default_value=False, default_value=b"".decode('utf-8'),
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='campaignId', full_name='SubmitHeartbeat.Request.campaignId', index=2,
+            number=3, type=5, cpp_type=1, label=1,
+            has_default_value=False, default_value=0,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+    ],
+    extensions=[
+    ],
+    nested_types=[],
+    enum_types=[
+    ],
+    serialized_options=None,
+    is_extendable=False,
+    syntax='proto3',
+    extension_ranges=[],
+    oneofs=[
+    ],
+    serialized_start=260,
+    serialized_end=320,
+)
+
+_SUBMITHEARTBEAT_RESPONSE = _descriptor.Descriptor(
+    name='Response',
+    full_name='SubmitHeartbeat.Response',
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name='success', full_name='SubmitHeartbeat.Response.success', index=0,
+            number=1, type=8, cpp_type=7, label=1,
+            has_default_value=False, default_value=False,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+    ],
+    extensions=[
+    ],
+    nested_types=[],
+    enum_types=[
+    ],
+    serialized_options=None,
+    is_extendable=False,
+    syntax='proto3',
+    extension_ranges=[],
+    oneofs=[
+    ],
+    serialized_start=67,
+    serialized_end=94,
+)
+
+_SUBMITHEARTBEAT = _descriptor.Descriptor(
+    name='SubmitHeartbeat',
+    full_name='SubmitHeartbeat',
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+    ],
+    extensions=[
+    ],
+    nested_types=[_SUBMITHEARTBEAT_REQUEST, _SUBMITHEARTBEAT_RESPONSE, ],
+    enum_types=[
+    ],
+    serialized_options=None,
+    is_extendable=False,
+    syntax='proto3',
+    extension_ranges=[],
+    oneofs=[
+    ],
+    serialized_start=3181,
+    serialized_end=3289,
+)
+
+_SUBMITDIRECTMESSAGE_REQUEST = _descriptor.Descriptor(
+    name='Request',
+    full_name='SubmitDirectMessage.Request',
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name='userId', full_name='SubmitDirectMessage.Request.userId', index=0,
+            number=1, type=5, cpp_type=1, label=1,
+            has_default_value=False, default_value=0,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='email', full_name='SubmitDirectMessage.Request.email', index=1,
+            number=2, type=9, cpp_type=9, label=1,
+            has_default_value=False, default_value=b"".decode('utf-8'),
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='targetEmail', full_name='SubmitDirectMessage.Request.targetEmail', index=2,
+            number=3, type=9, cpp_type=9, label=1,
+            has_default_value=False, default_value=b"".decode('utf-8'),
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='subject', full_name='SubmitDirectMessage.Request.subject', index=3,
+            number=4, type=9, cpp_type=9, label=1,
+            has_default_value=False, default_value=b"".decode('utf-8'),
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='content', full_name='SubmitDirectMessage.Request.content', index=4,
+            number=5, type=9, cpp_type=9, label=1,
+            has_default_value=False, default_value=b"".decode('utf-8'),
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+    ],
+    extensions=[
+    ],
+    nested_types=[],
+    enum_types=[
+    ],
+    serialized_options=None,
+    is_extendable=False,
+    syntax='proto3',
+    extension_ranges=[],
+    oneofs=[
+    ],
+    serialized_start=3315,
+    serialized_end=3410,
+)
+
+_SUBMITDIRECTMESSAGE_RESPONSE = _descriptor.Descriptor(
+    name='Response',
+    full_name='SubmitDirectMessage.Response',
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name='success', full_name='SubmitDirectMessage.Response.success', index=0,
+            number=1, type=8, cpp_type=7, label=1,
+            has_default_value=False, default_value=False,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+    ],
+    extensions=[
+    ],
+    nested_types=[],
+    enum_types=[
+    ],
+    serialized_options=None,
+    is_extendable=False,
+    syntax='proto3',
+    extension_ranges=[],
+    oneofs=[
+    ],
+    serialized_start=67,
+    serialized_end=94,
+)
+
+_SUBMITDIRECTMESSAGE = _descriptor.Descriptor(
+    name='SubmitDirectMessage',
+    full_name='SubmitDirectMessage',
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+    ],
+    extensions=[
+    ],
+    nested_types=[_SUBMITDIRECTMESSAGE_REQUEST, _SUBMITDIRECTMESSAGE_RESPONSE, ],
+    enum_types=[
+    ],
+    serialized_options=None,
+    is_extendable=False,
+    syntax='proto3',
+    extension_ranges=[],
+    oneofs=[
+    ],
+    serialized_start=3292,
+    serialized_end=3439,
+)
+
+_RETRIEVEUNREADDIRECTMESSAGES_REQUEST = _descriptor.Descriptor(
+    name='Request',
+    full_name='RetrieveUnreadDirectMessages.Request',
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name='userId', full_name='RetrieveUnreadDirectMessages.Request.userId', index=0,
+            number=1, type=5, cpp_type=1, label=1,
+            has_default_value=False, default_value=0,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='email', full_name='RetrieveUnreadDirectMessages.Request.email', index=1,
+            number=2, type=9, cpp_type=9, label=1,
+            has_default_value=False, default_value=b"".decode('utf-8'),
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+    ],
+    extensions=[
+    ],
+    nested_types=[],
+    enum_types=[
+    ],
+    serialized_options=None,
+    is_extendable=False,
+    syntax='proto3',
+    extension_ranges=[],
+    oneofs=[
+    ],
+    serialized_start=260,
+    serialized_end=300,
+)
+
+_RETRIEVEUNREADDIRECTMESSAGES_RESPONSE = _descriptor.Descriptor(
+    name='Response',
+    full_name='RetrieveUnreadDirectMessages.Response',
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name='success', full_name='RetrieveUnreadDirectMessages.Response.success', index=0,
+            number=1, type=8, cpp_type=7, label=1,
+            has_default_value=False, default_value=False,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='sourceEmail', full_name='RetrieveUnreadDirectMessages.Response.sourceEmail', index=1,
+            number=2, type=9, cpp_type=9, label=3,
+            has_default_value=False, default_value=[],
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='timestamp', full_name='RetrieveUnreadDirectMessages.Response.timestamp', index=2,
+            number=3, type=3, cpp_type=2, label=3,
+            has_default_value=False, default_value=[],
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='subject', full_name='RetrieveUnreadDirectMessages.Response.subject', index=3,
+            number=4, type=9, cpp_type=9, label=3,
+            has_default_value=False, default_value=[],
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='content', full_name='RetrieveUnreadDirectMessages.Response.content', index=4,
+            number=5, type=9, cpp_type=9, label=3,
+            has_default_value=False, default_value=[],
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+    ],
+    extensions=[
+    ],
+    nested_types=[],
+    enum_types=[
+    ],
+    serialized_options=None,
+    is_extendable=False,
+    syntax='proto3',
+    extension_ranges=[],
+    oneofs=[
+    ],
+    serialized_start=3516,
+    serialized_end=3617,
+)
+
+_RETRIEVEUNREADDIRECTMESSAGES = _descriptor.Descriptor(
+    name='RetrieveUnreadDirectMessages',
+    full_name='RetrieveUnreadDirectMessages',
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+    ],
+    extensions=[
+    ],
+    nested_types=[_RETRIEVEUNREADDIRECTMESSAGES_REQUEST, _RETRIEVEUNREADDIRECTMESSAGES_RESPONSE, ],
+    enum_types=[
+    ],
+    serialized_options=None,
+    is_extendable=False,
+    syntax='proto3',
+    extension_ranges=[],
+    oneofs=[
+    ],
+    serialized_start=3442,
+    serialized_end=3617,
+)
+
+_RETRIEVEUNREADNOTIFICATIONS_REQUEST = _descriptor.Descriptor(
+    name='Request',
+    full_name='RetrieveUnreadNotifications.Request',
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name='userId', full_name='RetrieveUnreadNotifications.Request.userId', index=0,
+            number=1, type=5, cpp_type=1, label=1,
+            has_default_value=False, default_value=0,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='email', full_name='RetrieveUnreadNotifications.Request.email', index=1,
+            number=2, type=9, cpp_type=9, label=1,
+            has_default_value=False, default_value=b"".decode('utf-8'),
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+    ],
+    extensions=[
+    ],
+    nested_types=[],
+    enum_types=[
+    ],
+    serialized_options=None,
+    is_extendable=False,
+    syntax='proto3',
+    extension_ranges=[],
+    oneofs=[
+    ],
+    serialized_start=260,
+    serialized_end=300,
+)
+
+_RETRIEVEUNREADNOTIFICATIONS_RESPONSE = _descriptor.Descriptor(
+    name='Response',
+    full_name='RetrieveUnreadNotifications.Response',
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name='success', full_name='RetrieveUnreadNotifications.Response.success', index=0,
+            number=1, type=8, cpp_type=7, label=1,
+            has_default_value=False, default_value=False,
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='notificationId', full_name='RetrieveUnreadNotifications.Response.notificationId', index=1,
+            number=2, type=5, cpp_type=1, label=3,
+            has_default_value=False, default_value=[],
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='campaignId', full_name='RetrieveUnreadNotifications.Response.campaignId', index=2,
+            number=3, type=5, cpp_type=1, label=3,
+            has_default_value=False, default_value=[],
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='timestamp', full_name='RetrieveUnreadNotifications.Response.timestamp', index=3,
+            number=4, type=3, cpp_type=2, label=3,
+            has_default_value=False, default_value=[],
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='subject', full_name='RetrieveUnreadNotifications.Response.subject', index=4,
+            number=5, type=9, cpp_type=9, label=3,
+            has_default_value=False, default_value=[],
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+        _descriptor.FieldDescriptor(
+            name='content', full_name='RetrieveUnreadNotifications.Response.content', index=5,
+            number=6, type=9, cpp_type=9, label=3,
+            has_default_value=False, default_value=[],
+            message_type=None, enum_type=None, containing_type=None,
+            is_extension=False, extension_scope=None,
+            serialized_options=None, file=DESCRIPTOR),
+    ],
+    extensions=[
+    ],
+    nested_types=[],
+    enum_types=[
+    ],
+    serialized_options=None,
+    is_extendable=False,
+    syntax='proto3',
+    extension_ranges=[],
+    oneofs=[
+    ],
+    serialized_start=3693,
+    serialized_end=3817,
+)
+
+_RETRIEVEUNREADNOTIFICATIONS = _descriptor.Descriptor(
+    name='RetrieveUnreadNotifications',
+    full_name='RetrieveUnreadNotifications',
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+    ],
+    extensions=[
+    ],
+    nested_types=[_RETRIEVEUNREADNOTIFICATIONS_REQUEST, _RETRIEVEUNREADNOTIFICATIONS_RESPONSE, ],
+    enum_types=[
+    ],
+    serialized_options=None,
+    is_extendable=False,
+    syntax='proto3',
+    extension_ranges=[],
+    oneofs=[
+    ],
+    serialized_start=3620,
+    serialized_end=3817,
+)
+
+_LOGINWITHGOOGLE_REQUEST.containing_type = _LOGINWITHGOOGLE
+_LOGINWITHGOOGLE_RESPONSE.containing_type = _LOGINWITHGOOGLE
+_LOGINDASHBOARD_REQUEST.containing_type = _LOGINDASHBOARD
+_LOGINDASHBOARD_RESPONSE.containing_type = _LOGINDASHBOARD
+_BINDUSERTOCAMPAIGN_REQUEST.containing_type = _BINDUSERTOCAMPAIGN
+_BINDUSERTOCAMPAIGN_RESPONSE.containing_type = _BINDUSERTOCAMPAIGN
+_RETRIEVEPARTICIPANTS_REQUEST.containing_type = _RETRIEVEPARTICIPANTS
+_RETRIEVEPARTICIPANTS_RESPONSE.containing_type = _RETRIEVEPARTICIPANTS
+_RETRIEVEPARTICIPANTSTATS_REQUEST.containing_type = _RETRIEVEPARTICIPANTSTATS
+_RETRIEVEPARTICIPANTSTATS_RESPONSE.containing_type = _RETRIEVEPARTICIPANTSTATS
+_REGISTERCAMPAIGN_REQUEST.containing_type = _REGISTERCAMPAIGN
+_REGISTERCAMPAIGN_RESPONSE.containing_type = _REGISTERCAMPAIGN
+_DELETECAMPAIGN_REQUEST.containing_type = _DELETECAMPAIGN
+_DELETECAMPAIGN_RESPONSE.containing_type = _DELETECAMPAIGN
+_RETRIEVECAMPAIGNS_REQUEST.containing_type = _RETRIEVECAMPAIGNS
+_RETRIEVECAMPAIGNS_RESPONSE.containing_type = _RETRIEVECAMPAIGNS
+_RETRIEVECAMPAIGN_REQUEST.containing_type = _RETRIEVECAMPAIGN
+_RETRIEVECAMPAIGN_RESPONSE.containing_type = _RETRIEVECAMPAIGN
+_BINDDATASOURCE_REQUEST.containing_type = _BINDDATASOURCE
+_BINDDATASOURCE_RESPONSE.containing_type = _BINDDATASOURCE
+_RETRIEVEDATASOURCES_REQUEST.containing_type = _RETRIEVEDATASOURCES
+_RETRIEVEDATASOURCES_RESPONSE.containing_type = _RETRIEVEDATASOURCES
+_SUBMITDATARECORD_REQUEST.containing_type = _SUBMITDATARECORD
+_SUBMITDATARECORD_RESPONSE.containing_type = _SUBMITDATARECORD
+_SUBMITDATARECORDS_REQUEST.containing_type = _SUBMITDATARECORDS
+_SUBMITDATARECORDS_RESPONSE.containing_type = _SUBMITDATARECORDS
+_RETRIEVE100DATARECORDS_REQUEST.containing_type = _RETRIEVE100DATARECORDS
+_RETRIEVE100DATARECORDS_RESPONSE.containing_type = _RETRIEVE100DATARECORDS
+_RETRIEVEFILTEREDDATARECORDS_REQUEST.containing_type = _RETRIEVEFILTEREDDATARECORDS
+_RETRIEVEFILTEREDDATARECORDS_RESPONSE.containing_type = _RETRIEVEFILTEREDDATARECORDS
+_SUBMITHEARTBEAT_REQUEST.containing_type = _SUBMITHEARTBEAT
+_SUBMITHEARTBEAT_RESPONSE.containing_type = _SUBMITHEARTBEAT
+_SUBMITDIRECTMESSAGE_REQUEST.containing_type = _SUBMITDIRECTMESSAGE
+_SUBMITDIRECTMESSAGE_RESPONSE.containing_type = _SUBMITDIRECTMESSAGE
+_RETRIEVEUNREADDIRECTMESSAGES_REQUEST.containing_type = _RETRIEVEUNREADDIRECTMESSAGES
+_RETRIEVEUNREADDIRECTMESSAGES_RESPONSE.containing_type = _RETRIEVEUNREADDIRECTMESSAGES
+_RETRIEVEUNREADNOTIFICATIONS_REQUEST.containing_type = _RETRIEVEUNREADNOTIFICATIONS
+_RETRIEVEUNREADNOTIFICATIONS_RESPONSE.containing_type = _RETRIEVEUNREADNOTIFICATIONS
+DESCRIPTOR.message_types_by_name['LoginWithGoogle'] = _LOGINWITHGOOGLE
+DESCRIPTOR.message_types_by_name['LoginDashboard'] = _LOGINDASHBOARD
+DESCRIPTOR.message_types_by_name['BindUserToCampaign'] = _BINDUSERTOCAMPAIGN
+DESCRIPTOR.message_types_by_name['RetrieveParticipants'] = _RETRIEVEPARTICIPANTS
+DESCRIPTOR.message_types_by_name['RetrieveParticipantStats'] = _RETRIEVEPARTICIPANTSTATS
+DESCRIPTOR.message_types_by_name['RegisterCampaign'] = _REGISTERCAMPAIGN
+DESCRIPTOR.message_types_by_name['DeleteCampaign'] = _DELETECAMPAIGN
+DESCRIPTOR.message_types_by_name['RetrieveCampaigns'] = _RETRIEVECAMPAIGNS
+DESCRIPTOR.message_types_by_name['RetrieveCampaign'] = _RETRIEVECAMPAIGN
+DESCRIPTOR.message_types_by_name['BindDataSource'] = _BINDDATASOURCE
+DESCRIPTOR.message_types_by_name['RetrieveDataSources'] = _RETRIEVEDATASOURCES
+DESCRIPTOR.message_types_by_name['SubmitDataRecord'] = _SUBMITDATARECORD
+DESCRIPTOR.message_types_by_name['SubmitDataRecords'] = _SUBMITDATARECORDS
+DESCRIPTOR.message_types_by_name['Retrieve100DataRecords'] = _RETRIEVE100DATARECORDS
+DESCRIPTOR.message_types_by_name['RetrieveFilteredDataRecords'] = _RETRIEVEFILTEREDDATARECORDS
+DESCRIPTOR.message_types_by_name['SubmitHeartbeat'] = _SUBMITHEARTBEAT
+DESCRIPTOR.message_types_by_name['SubmitDirectMessage'] = _SUBMITDIRECTMESSAGE
+DESCRIPTOR.message_types_by_name['RetrieveUnreadDirectMessages'] = _RETRIEVEUNREADDIRECTMESSAGES
+DESCRIPTOR.message_types_by_name['RetrieveUnreadNotifications'] = _RETRIEVEUNREADNOTIFICATIONS
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-DefaultResponseMessage = _reflection.GeneratedProtocolMessageType('DefaultResponseMessage', (_message.Message,), {
-    'DESCRIPTOR': _DEFAULTRESPONSEMESSAGE,
-    '__module__': 'et_service_pb2'
-    # @@protoc_insertion_point(class_scope:DefaultResponseMessage)
-})
-_sym_db.RegisterMessage(DefaultResponseMessage)
+LoginWithGoogle = _reflection.GeneratedProtocolMessageType('LoginWithGoogle', (_message.Message,), {
 
-LoginWithGoogleIdTokenRequestMessage = _reflection.GeneratedProtocolMessageType('LoginWithGoogleIdTokenRequestMessage', (_message.Message,), {
-    'DESCRIPTOR': _LOGINWITHGOOGLEIDTOKENREQUESTMESSAGE,
-    '__module__': 'et_service_pb2'
-    # @@protoc_insertion_point(class_scope:LoginWithGoogleIdTokenRequestMessage)
-})
-_sym_db.RegisterMessage(LoginWithGoogleIdTokenRequestMessage)
+    'Request': _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), {
+        'DESCRIPTOR': _LOGINWITHGOOGLE_REQUEST,
+        '__module__': 'et_service_pb2'
+        # @@protoc_insertion_point(class_scope:LoginWithGoogle.Request)
+    })
+    ,
 
-BindUserToCampaignRequestMessage = _reflection.GeneratedProtocolMessageType('BindUserToCampaignRequestMessage', (_message.Message,), {
-    'DESCRIPTOR': _BINDUSERTOCAMPAIGNREQUESTMESSAGE,
+    'Response': _reflection.GeneratedProtocolMessageType('Response', (_message.Message,), {
+        'DESCRIPTOR': _LOGINWITHGOOGLE_RESPONSE,
+        '__module__': 'et_service_pb2'
+        # @@protoc_insertion_point(class_scope:LoginWithGoogle.Response)
+    })
+    ,
+    'DESCRIPTOR': _LOGINWITHGOOGLE,
     '__module__': 'et_service_pb2'
-    # @@protoc_insertion_point(class_scope:BindUserToCampaignRequestMessage)
+    # @@protoc_insertion_point(class_scope:LoginWithGoogle)
 })
-_sym_db.RegisterMessage(BindUserToCampaignRequestMessage)
+_sym_db.RegisterMessage(LoginWithGoogle)
+_sym_db.RegisterMessage(LoginWithGoogle.Request)
+_sym_db.RegisterMessage(LoginWithGoogle.Response)
 
-BindUserToCampaignResponseMessage = _reflection.GeneratedProtocolMessageType('BindUserToCampaignResponseMessage', (_message.Message,), {
-    'DESCRIPTOR': _BINDUSERTOCAMPAIGNRESPONSEMESSAGE,
-    '__module__': 'et_service_pb2'
-    # @@protoc_insertion_point(class_scope:BindUserToCampaignResponseMessage)
-})
-_sym_db.RegisterMessage(BindUserToCampaignResponseMessage)
+LoginDashboard = _reflection.GeneratedProtocolMessageType('LoginDashboard', (_message.Message,), {
 
-DashboardLoginWithEmailRequestMessage = _reflection.GeneratedProtocolMessageType('DashboardLoginWithEmailRequestMessage', (_message.Message,), {
-    'DESCRIPTOR': _DASHBOARDLOGINWITHEMAILREQUESTMESSAGE,
-    '__module__': 'et_service_pb2'
-    # @@protoc_insertion_point(class_scope:DashboardLoginWithEmailRequestMessage)
-})
-_sym_db.RegisterMessage(DashboardLoginWithEmailRequestMessage)
+    'Request': _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), {
+        'DESCRIPTOR': _LOGINDASHBOARD_REQUEST,
+        '__module__': 'et_service_pb2'
+        # @@protoc_insertion_point(class_scope:LoginDashboard.Request)
+    })
+    ,
 
-LoginResponseMessage = _reflection.GeneratedProtocolMessageType('LoginResponseMessage', (_message.Message,), {
-    'DESCRIPTOR': _LOGINRESPONSEMESSAGE,
+    'Response': _reflection.GeneratedProtocolMessageType('Response', (_message.Message,), {
+        'DESCRIPTOR': _LOGINDASHBOARD_RESPONSE,
+        '__module__': 'et_service_pb2'
+        # @@protoc_insertion_point(class_scope:LoginDashboard.Response)
+    })
+    ,
+    'DESCRIPTOR': _LOGINDASHBOARD,
     '__module__': 'et_service_pb2'
-    # @@protoc_insertion_point(class_scope:LoginResponseMessage)
+    # @@protoc_insertion_point(class_scope:LoginDashboard)
 })
-_sym_db.RegisterMessage(LoginResponseMessage)
+_sym_db.RegisterMessage(LoginDashboard)
+_sym_db.RegisterMessage(LoginDashboard.Request)
+_sym_db.RegisterMessage(LoginDashboard.Response)
 
-RegisterCampaignRequestMessage = _reflection.GeneratedProtocolMessageType('RegisterCampaignRequestMessage', (_message.Message,), {
-    'DESCRIPTOR': _REGISTERCAMPAIGNREQUESTMESSAGE,
-    '__module__': 'et_service_pb2'
-    # @@protoc_insertion_point(class_scope:RegisterCampaignRequestMessage)
-})
-_sym_db.RegisterMessage(RegisterCampaignRequestMessage)
+BindUserToCampaign = _reflection.GeneratedProtocolMessageType('BindUserToCampaign', (_message.Message,), {
 
-RegisterCampaignResponseMessage = _reflection.GeneratedProtocolMessageType('RegisterCampaignResponseMessage', (_message.Message,), {
-    'DESCRIPTOR': _REGISTERCAMPAIGNRESPONSEMESSAGE,
-    '__module__': 'et_service_pb2'
-    # @@protoc_insertion_point(class_scope:RegisterCampaignResponseMessage)
-})
-_sym_db.RegisterMessage(RegisterCampaignResponseMessage)
+    'Request': _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), {
+        'DESCRIPTOR': _BINDUSERTOCAMPAIGN_REQUEST,
+        '__module__': 'et_service_pb2'
+        # @@protoc_insertion_point(class_scope:BindUserToCampaign.Request)
+    })
+    ,
 
-DeleteCampaignRequestMessage = _reflection.GeneratedProtocolMessageType('DeleteCampaignRequestMessage', (_message.Message,), {
-    'DESCRIPTOR': _DELETECAMPAIGNREQUESTMESSAGE,
+    'Response': _reflection.GeneratedProtocolMessageType('Response', (_message.Message,), {
+        'DESCRIPTOR': _BINDUSERTOCAMPAIGN_RESPONSE,
+        '__module__': 'et_service_pb2'
+        # @@protoc_insertion_point(class_scope:BindUserToCampaign.Response)
+    })
+    ,
+    'DESCRIPTOR': _BINDUSERTOCAMPAIGN,
     '__module__': 'et_service_pb2'
-    # @@protoc_insertion_point(class_scope:DeleteCampaignRequestMessage)
+    # @@protoc_insertion_point(class_scope:BindUserToCampaign)
 })
-_sym_db.RegisterMessage(DeleteCampaignRequestMessage)
+_sym_db.RegisterMessage(BindUserToCampaign)
+_sym_db.RegisterMessage(BindUserToCampaign.Request)
+_sym_db.RegisterMessage(BindUserToCampaign.Response)
 
-RetrieveCampaignsRequestMessage = _reflection.GeneratedProtocolMessageType('RetrieveCampaignsRequestMessage', (_message.Message,), {
-    'DESCRIPTOR': _RETRIEVECAMPAIGNSREQUESTMESSAGE,
-    '__module__': 'et_service_pb2'
-    # @@protoc_insertion_point(class_scope:RetrieveCampaignsRequestMessage)
-})
-_sym_db.RegisterMessage(RetrieveCampaignsRequestMessage)
+RetrieveParticipants = _reflection.GeneratedProtocolMessageType('RetrieveParticipants', (_message.Message,), {
 
-RetrieveCampaignsResponseMessage = _reflection.GeneratedProtocolMessageType('RetrieveCampaignsResponseMessage', (_message.Message,), {
-    'DESCRIPTOR': _RETRIEVECAMPAIGNSRESPONSEMESSAGE,
-    '__module__': 'et_service_pb2'
-    # @@protoc_insertion_point(class_scope:RetrieveCampaignsResponseMessage)
-})
-_sym_db.RegisterMessage(RetrieveCampaignsResponseMessage)
+    'Request': _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), {
+        'DESCRIPTOR': _RETRIEVEPARTICIPANTS_REQUEST,
+        '__module__': 'et_service_pb2'
+        # @@protoc_insertion_point(class_scope:RetrieveParticipants.Request)
+    })
+    ,
 
-RetrieveCampaignRequestMessage = _reflection.GeneratedProtocolMessageType('RetrieveCampaignRequestMessage', (_message.Message,), {
-    'DESCRIPTOR': _RETRIEVECAMPAIGNREQUESTMESSAGE,
+    'Response': _reflection.GeneratedProtocolMessageType('Response', (_message.Message,), {
+        'DESCRIPTOR': _RETRIEVEPARTICIPANTS_RESPONSE,
+        '__module__': 'et_service_pb2'
+        # @@protoc_insertion_point(class_scope:RetrieveParticipants.Response)
+    })
+    ,
+    'DESCRIPTOR': _RETRIEVEPARTICIPANTS,
     '__module__': 'et_service_pb2'
-    # @@protoc_insertion_point(class_scope:RetrieveCampaignRequestMessage)
+    # @@protoc_insertion_point(class_scope:RetrieveParticipants)
 })
-_sym_db.RegisterMessage(RetrieveCampaignRequestMessage)
+_sym_db.RegisterMessage(RetrieveParticipants)
+_sym_db.RegisterMessage(RetrieveParticipants.Request)
+_sym_db.RegisterMessage(RetrieveParticipants.Response)
 
-RetrieveCampaignResponseMessage = _reflection.GeneratedProtocolMessageType('RetrieveCampaignResponseMessage', (_message.Message,), {
-    'DESCRIPTOR': _RETRIEVECAMPAIGNRESPONSEMESSAGE,
-    '__module__': 'et_service_pb2'
-    # @@protoc_insertion_point(class_scope:RetrieveCampaignResponseMessage)
-})
-_sym_db.RegisterMessage(RetrieveCampaignResponseMessage)
+RetrieveParticipantStats = _reflection.GeneratedProtocolMessageType('RetrieveParticipantStats', (_message.Message,), {
 
-SubmitDataRecordRequestMessage = _reflection.GeneratedProtocolMessageType('SubmitDataRecordRequestMessage', (_message.Message,), {
-    'DESCRIPTOR': _SUBMITDATARECORDREQUESTMESSAGE,
-    '__module__': 'et_service_pb2'
-    # @@protoc_insertion_point(class_scope:SubmitDataRecordRequestMessage)
-})
-_sym_db.RegisterMessage(SubmitDataRecordRequestMessage)
+    'Request': _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), {
+        'DESCRIPTOR': _RETRIEVEPARTICIPANTSTATS_REQUEST,
+        '__module__': 'et_service_pb2'
+        # @@protoc_insertion_point(class_scope:RetrieveParticipantStats.Request)
+    })
+    ,
 
-SubmitDataRecordsRequestMessage = _reflection.GeneratedProtocolMessageType('SubmitDataRecordsRequestMessage', (_message.Message,), {
-    'DESCRIPTOR': _SUBMITDATARECORDSREQUESTMESSAGE,
+    'Response': _reflection.GeneratedProtocolMessageType('Response', (_message.Message,), {
+        'DESCRIPTOR': _RETRIEVEPARTICIPANTSTATS_RESPONSE,
+        '__module__': 'et_service_pb2'
+        # @@protoc_insertion_point(class_scope:RetrieveParticipantStats.Response)
+    })
+    ,
+    'DESCRIPTOR': _RETRIEVEPARTICIPANTSTATS,
     '__module__': 'et_service_pb2'
-    # @@protoc_insertion_point(class_scope:SubmitDataRecordsRequestMessage)
+    # @@protoc_insertion_point(class_scope:RetrieveParticipantStats)
 })
-_sym_db.RegisterMessage(SubmitDataRecordsRequestMessage)
+_sym_db.RegisterMessage(RetrieveParticipantStats)
+_sym_db.RegisterMessage(RetrieveParticipantStats.Request)
+_sym_db.RegisterMessage(RetrieveParticipantStats.Response)
 
-SubmitHeartbeatRequestMessage = _reflection.GeneratedProtocolMessageType('SubmitHeartbeatRequestMessage', (_message.Message,), {
-    'DESCRIPTOR': _SUBMITHEARTBEATREQUESTMESSAGE,
-    '__module__': 'et_service_pb2'
-    # @@protoc_insertion_point(class_scope:SubmitHeartbeatRequestMessage)
-})
-_sym_db.RegisterMessage(SubmitHeartbeatRequestMessage)
+RegisterCampaign = _reflection.GeneratedProtocolMessageType('RegisterCampaign', (_message.Message,), {
 
-SubmitDirectMessageRequestMessage = _reflection.GeneratedProtocolMessageType('SubmitDirectMessageRequestMessage', (_message.Message,), {
-    'DESCRIPTOR': _SUBMITDIRECTMESSAGEREQUESTMESSAGE,
-    '__module__': 'et_service_pb2'
-    # @@protoc_insertion_point(class_scope:SubmitDirectMessageRequestMessage)
-})
-_sym_db.RegisterMessage(SubmitDirectMessageRequestMessage)
+    'Request': _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), {
+        'DESCRIPTOR': _REGISTERCAMPAIGN_REQUEST,
+        '__module__': 'et_service_pb2'
+        # @@protoc_insertion_point(class_scope:RegisterCampaign.Request)
+    })
+    ,
 
-RetrieveParticipantsRequestMessage = _reflection.GeneratedProtocolMessageType('RetrieveParticipantsRequestMessage', (_message.Message,), {
-    'DESCRIPTOR': _RETRIEVEPARTICIPANTSREQUESTMESSAGE,
+    'Response': _reflection.GeneratedProtocolMessageType('Response', (_message.Message,), {
+        'DESCRIPTOR': _REGISTERCAMPAIGN_RESPONSE,
+        '__module__': 'et_service_pb2'
+        # @@protoc_insertion_point(class_scope:RegisterCampaign.Response)
+    })
+    ,
+    'DESCRIPTOR': _REGISTERCAMPAIGN,
     '__module__': 'et_service_pb2'
-    # @@protoc_insertion_point(class_scope:RetrieveParticipantsRequestMessage)
+    # @@protoc_insertion_point(class_scope:RegisterCampaign)
 })
-_sym_db.RegisterMessage(RetrieveParticipantsRequestMessage)
+_sym_db.RegisterMessage(RegisterCampaign)
+_sym_db.RegisterMessage(RegisterCampaign.Request)
+_sym_db.RegisterMessage(RegisterCampaign.Response)
 
-RetrieveParticipantsResponseMessage = _reflection.GeneratedProtocolMessageType('RetrieveParticipantsResponseMessage', (_message.Message,), {
-    'DESCRIPTOR': _RETRIEVEPARTICIPANTSRESPONSEMESSAGE,
-    '__module__': 'et_service_pb2'
-    # @@protoc_insertion_point(class_scope:RetrieveParticipantsResponseMessage)
-})
-_sym_db.RegisterMessage(RetrieveParticipantsResponseMessage)
+DeleteCampaign = _reflection.GeneratedProtocolMessageType('DeleteCampaign', (_message.Message,), {
 
-RetrieveParticipantStatisticsRequestMessage = _reflection.GeneratedProtocolMessageType('RetrieveParticipantStatisticsRequestMessage', (_message.Message,), {
-    'DESCRIPTOR': _RETRIEVEPARTICIPANTSTATISTICSREQUESTMESSAGE,
-    '__module__': 'et_service_pb2'
-    # @@protoc_insertion_point(class_scope:RetrieveParticipantStatisticsRequestMessage)
-})
-_sym_db.RegisterMessage(RetrieveParticipantStatisticsRequestMessage)
+    'Request': _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), {
+        'DESCRIPTOR': _DELETECAMPAIGN_REQUEST,
+        '__module__': 'et_service_pb2'
+        # @@protoc_insertion_point(class_scope:DeleteCampaign.Request)
+    })
+    ,
 
-RetrieveParticipantStatisticsResponseMessage = _reflection.GeneratedProtocolMessageType('RetrieveParticipantStatisticsResponseMessage', (_message.Message,), {
-    'DESCRIPTOR': _RETRIEVEPARTICIPANTSTATISTICSRESPONSEMESSAGE,
+    'Response': _reflection.GeneratedProtocolMessageType('Response', (_message.Message,), {
+        'DESCRIPTOR': _DELETECAMPAIGN_RESPONSE,
+        '__module__': 'et_service_pb2'
+        # @@protoc_insertion_point(class_scope:DeleteCampaign.Response)
+    })
+    ,
+    'DESCRIPTOR': _DELETECAMPAIGN,
     '__module__': 'et_service_pb2'
-    # @@protoc_insertion_point(class_scope:RetrieveParticipantStatisticsResponseMessage)
+    # @@protoc_insertion_point(class_scope:DeleteCampaign)
 })
-_sym_db.RegisterMessage(RetrieveParticipantStatisticsResponseMessage)
+_sym_db.RegisterMessage(DeleteCampaign)
+_sym_db.RegisterMessage(DeleteCampaign.Request)
+_sym_db.RegisterMessage(DeleteCampaign.Response)
 
-Retrieve100DataRecordsRequestMessage = _reflection.GeneratedProtocolMessageType('Retrieve100DataRecordsRequestMessage', (_message.Message,), {
-    'DESCRIPTOR': _RETRIEVE100DATARECORDSREQUESTMESSAGE,
-    '__module__': 'et_service_pb2'
-    # @@protoc_insertion_point(class_scope:Retrieve100DataRecordsRequestMessage)
-})
-_sym_db.RegisterMessage(Retrieve100DataRecordsRequestMessage)
+RetrieveCampaigns = _reflection.GeneratedProtocolMessageType('RetrieveCampaigns', (_message.Message,), {
 
-Retrieve100DataRecordsResponseMessage = _reflection.GeneratedProtocolMessageType('Retrieve100DataRecordsResponseMessage', (_message.Message,), {
-    'DESCRIPTOR': _RETRIEVE100DATARECORDSRESPONSEMESSAGE,
-    '__module__': 'et_service_pb2'
-    # @@protoc_insertion_point(class_scope:Retrieve100DataRecordsResponseMessage)
-})
-_sym_db.RegisterMessage(Retrieve100DataRecordsResponseMessage)
+    'Request': _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), {
+        'DESCRIPTOR': _RETRIEVECAMPAIGNS_REQUEST,
+        '__module__': 'et_service_pb2'
+        # @@protoc_insertion_point(class_scope:RetrieveCampaigns.Request)
+    })
+    ,
 
-RetrieveFilteredDataRecordsRequestMessage = _reflection.GeneratedProtocolMessageType('RetrieveFilteredDataRecordsRequestMessage', (_message.Message,), {
-    'DESCRIPTOR': _RETRIEVEFILTEREDDATARECORDSREQUESTMESSAGE,
+    'Response': _reflection.GeneratedProtocolMessageType('Response', (_message.Message,), {
+        'DESCRIPTOR': _RETRIEVECAMPAIGNS_RESPONSE,
+        '__module__': 'et_service_pb2'
+        # @@protoc_insertion_point(class_scope:RetrieveCampaigns.Response)
+    })
+    ,
+    'DESCRIPTOR': _RETRIEVECAMPAIGNS,
     '__module__': 'et_service_pb2'
-    # @@protoc_insertion_point(class_scope:RetrieveFilteredDataRecordsRequestMessage)
+    # @@protoc_insertion_point(class_scope:RetrieveCampaigns)
 })
-_sym_db.RegisterMessage(RetrieveFilteredDataRecordsRequestMessage)
+_sym_db.RegisterMessage(RetrieveCampaigns)
+_sym_db.RegisterMessage(RetrieveCampaigns.Request)
+_sym_db.RegisterMessage(RetrieveCampaigns.Response)
 
-RetrieveFilteredDataRecordsResponseMessage = _reflection.GeneratedProtocolMessageType('RetrieveFilteredDataRecordsResponseMessage', (_message.Message,), {
-    'DESCRIPTOR': _RETRIEVEFILTEREDDATARECORDSRESPONSEMESSAGE,
-    '__module__': 'et_service_pb2'
-    # @@protoc_insertion_point(class_scope:RetrieveFilteredDataRecordsResponseMessage)
-})
-_sym_db.RegisterMessage(RetrieveFilteredDataRecordsResponseMessage)
+RetrieveCampaign = _reflection.GeneratedProtocolMessageType('RetrieveCampaign', (_message.Message,), {
 
-RetrieveUnreadDirectMessagesRequestMessage = _reflection.GeneratedProtocolMessageType('RetrieveUnreadDirectMessagesRequestMessage', (_message.Message,), {
-    'DESCRIPTOR': _RETRIEVEUNREADDIRECTMESSAGESREQUESTMESSAGE,
-    '__module__': 'et_service_pb2'
-    # @@protoc_insertion_point(class_scope:RetrieveUnreadDirectMessagesRequestMessage)
-})
-_sym_db.RegisterMessage(RetrieveUnreadDirectMessagesRequestMessage)
+    'Request': _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), {
+        'DESCRIPTOR': _RETRIEVECAMPAIGN_REQUEST,
+        '__module__': 'et_service_pb2'
+        # @@protoc_insertion_point(class_scope:RetrieveCampaign.Request)
+    })
+    ,
 
-RetrieveUnreadDirectMessagesResponseMessage = _reflection.GeneratedProtocolMessageType('RetrieveUnreadDirectMessagesResponseMessage', (_message.Message,), {
-    'DESCRIPTOR': _RETRIEVEUNREADDIRECTMESSAGESRESPONSEMESSAGE,
+    'Response': _reflection.GeneratedProtocolMessageType('Response', (_message.Message,), {
+        'DESCRIPTOR': _RETRIEVECAMPAIGN_RESPONSE,
+        '__module__': 'et_service_pb2'
+        # @@protoc_insertion_point(class_scope:RetrieveCampaign.Response)
+    })
+    ,
+    'DESCRIPTOR': _RETRIEVECAMPAIGN,
     '__module__': 'et_service_pb2'
-    # @@protoc_insertion_point(class_scope:RetrieveUnreadDirectMessagesResponseMessage)
+    # @@protoc_insertion_point(class_scope:RetrieveCampaign)
 })
-_sym_db.RegisterMessage(RetrieveUnreadDirectMessagesResponseMessage)
+_sym_db.RegisterMessage(RetrieveCampaign)
+_sym_db.RegisterMessage(RetrieveCampaign.Request)
+_sym_db.RegisterMessage(RetrieveCampaign.Response)
 
-RetrieveUnreadNotificationsRequestMessage = _reflection.GeneratedProtocolMessageType('RetrieveUnreadNotificationsRequestMessage', (_message.Message,), {
-    'DESCRIPTOR': _RETRIEVEUNREADNOTIFICATIONSREQUESTMESSAGE,
-    '__module__': 'et_service_pb2'
-    # @@protoc_insertion_point(class_scope:RetrieveUnreadNotificationsRequestMessage)
-})
-_sym_db.RegisterMessage(RetrieveUnreadNotificationsRequestMessage)
+BindDataSource = _reflection.GeneratedProtocolMessageType('BindDataSource', (_message.Message,), {
 
-RetrieveUnreadNotificationsResponseMessage = _reflection.GeneratedProtocolMessageType('RetrieveUnreadNotificationsResponseMessage', (_message.Message,), {
-    'DESCRIPTOR': _RETRIEVEUNREADNOTIFICATIONSRESPONSEMESSAGE,
-    '__module__': 'et_service_pb2'
-    # @@protoc_insertion_point(class_scope:RetrieveUnreadNotificationsResponseMessage)
-})
-_sym_db.RegisterMessage(RetrieveUnreadNotificationsResponseMessage)
+    'Request': _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), {
+        'DESCRIPTOR': _BINDDATASOURCE_REQUEST,
+        '__module__': 'et_service_pb2'
+        # @@protoc_insertion_point(class_scope:BindDataSource.Request)
+    })
+    ,
 
-BindDataSourceRequestMessage = _reflection.GeneratedProtocolMessageType('BindDataSourceRequestMessage', (_message.Message,), {
-    'DESCRIPTOR': _BINDDATASOURCEREQUESTMESSAGE,
+    'Response': _reflection.GeneratedProtocolMessageType('Response', (_message.Message,), {
+        'DESCRIPTOR': _BINDDATASOURCE_RESPONSE,
+        '__module__': 'et_service_pb2'
+        # @@protoc_insertion_point(class_scope:BindDataSource.Response)
+    })
+    ,
+    'DESCRIPTOR': _BINDDATASOURCE,
     '__module__': 'et_service_pb2'
-    # @@protoc_insertion_point(class_scope:BindDataSourceRequestMessage)
+    # @@protoc_insertion_point(class_scope:BindDataSource)
 })
-_sym_db.RegisterMessage(BindDataSourceRequestMessage)
+_sym_db.RegisterMessage(BindDataSource)
+_sym_db.RegisterMessage(BindDataSource.Request)
+_sym_db.RegisterMessage(BindDataSource.Response)
 
-BindDataSourceResponseMessage = _reflection.GeneratedProtocolMessageType('BindDataSourceResponseMessage', (_message.Message,), {
-    'DESCRIPTOR': _BINDDATASOURCERESPONSEMESSAGE,
-    '__module__': 'et_service_pb2'
-    # @@protoc_insertion_point(class_scope:BindDataSourceResponseMessage)
-})
-_sym_db.RegisterMessage(BindDataSourceResponseMessage)
+RetrieveDataSources = _reflection.GeneratedProtocolMessageType('RetrieveDataSources', (_message.Message,), {
 
-RetrieveAllDataSourcesRequestMessage = _reflection.GeneratedProtocolMessageType('RetrieveAllDataSourcesRequestMessage', (_message.Message,), {
-    'DESCRIPTOR': _RETRIEVEALLDATASOURCESREQUESTMESSAGE,
-    '__module__': 'et_service_pb2'
-    # @@protoc_insertion_point(class_scope:RetrieveAllDataSourcesRequestMessage)
-})
-_sym_db.RegisterMessage(RetrieveAllDataSourcesRequestMessage)
+    'Request': _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), {
+        'DESCRIPTOR': _RETRIEVEDATASOURCES_REQUEST,
+        '__module__': 'et_service_pb2'
+        # @@protoc_insertion_point(class_scope:RetrieveDataSources.Request)
+    })
+    ,
 
-RetrieveAllDataSourcesResponseMessage = _reflection.GeneratedProtocolMessageType('RetrieveAllDataSourcesResponseMessage', (_message.Message,), {
-    'DESCRIPTOR': _RETRIEVEALLDATASOURCESRESPONSEMESSAGE,
+    'Response': _reflection.GeneratedProtocolMessageType('Response', (_message.Message,), {
+        'DESCRIPTOR': _RETRIEVEDATASOURCES_RESPONSE,
+        '__module__': 'et_service_pb2'
+        # @@protoc_insertion_point(class_scope:RetrieveDataSources.Response)
+    })
+    ,
+    'DESCRIPTOR': _RETRIEVEDATASOURCES,
     '__module__': 'et_service_pb2'
-    # @@protoc_insertion_point(class_scope:RetrieveAllDataSourcesResponseMessage)
+    # @@protoc_insertion_point(class_scope:RetrieveDataSources)
 })
-_sym_db.RegisterMessage(RetrieveAllDataSourcesResponseMessage)
+_sym_db.RegisterMessage(RetrieveDataSources)
+_sym_db.RegisterMessage(RetrieveDataSources.Request)
+_sym_db.RegisterMessage(RetrieveDataSources.Response)
+
+SubmitDataRecord = _reflection.GeneratedProtocolMessageType('SubmitDataRecord', (_message.Message,), {
+
+    'Request': _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), {
+        'DESCRIPTOR': _SUBMITDATARECORD_REQUEST,
+        '__module__': 'et_service_pb2'
+        # @@protoc_insertion_point(class_scope:SubmitDataRecord.Request)
+    })
+    ,
+
+    'Response': _reflection.GeneratedProtocolMessageType('Response', (_message.Message,), {
+        'DESCRIPTOR': _SUBMITDATARECORD_RESPONSE,
+        '__module__': 'et_service_pb2'
+        # @@protoc_insertion_point(class_scope:SubmitDataRecord.Response)
+    })
+    ,
+    'DESCRIPTOR': _SUBMITDATARECORD,
+    '__module__': 'et_service_pb2'
+    # @@protoc_insertion_point(class_scope:SubmitDataRecord)
+})
+_sym_db.RegisterMessage(SubmitDataRecord)
+_sym_db.RegisterMessage(SubmitDataRecord.Request)
+_sym_db.RegisterMessage(SubmitDataRecord.Response)
+
+SubmitDataRecords = _reflection.GeneratedProtocolMessageType('SubmitDataRecords', (_message.Message,), {
+
+    'Request': _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), {
+        'DESCRIPTOR': _SUBMITDATARECORDS_REQUEST,
+        '__module__': 'et_service_pb2'
+        # @@protoc_insertion_point(class_scope:SubmitDataRecords.Request)
+    })
+    ,
+
+    'Response': _reflection.GeneratedProtocolMessageType('Response', (_message.Message,), {
+        'DESCRIPTOR': _SUBMITDATARECORDS_RESPONSE,
+        '__module__': 'et_service_pb2'
+        # @@protoc_insertion_point(class_scope:SubmitDataRecords.Response)
+    })
+    ,
+    'DESCRIPTOR': _SUBMITDATARECORDS,
+    '__module__': 'et_service_pb2'
+    # @@protoc_insertion_point(class_scope:SubmitDataRecords)
+})
+_sym_db.RegisterMessage(SubmitDataRecords)
+_sym_db.RegisterMessage(SubmitDataRecords.Request)
+_sym_db.RegisterMessage(SubmitDataRecords.Response)
+
+Retrieve100DataRecords = _reflection.GeneratedProtocolMessageType('Retrieve100DataRecords', (_message.Message,), {
+
+    'Request': _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), {
+        'DESCRIPTOR': _RETRIEVE100DATARECORDS_REQUEST,
+        '__module__': 'et_service_pb2'
+        # @@protoc_insertion_point(class_scope:Retrieve100DataRecords.Request)
+    })
+    ,
+
+    'Response': _reflection.GeneratedProtocolMessageType('Response', (_message.Message,), {
+        'DESCRIPTOR': _RETRIEVE100DATARECORDS_RESPONSE,
+        '__module__': 'et_service_pb2'
+        # @@protoc_insertion_point(class_scope:Retrieve100DataRecords.Response)
+    })
+    ,
+    'DESCRIPTOR': _RETRIEVE100DATARECORDS,
+    '__module__': 'et_service_pb2'
+    # @@protoc_insertion_point(class_scope:Retrieve100DataRecords)
+})
+_sym_db.RegisterMessage(Retrieve100DataRecords)
+_sym_db.RegisterMessage(Retrieve100DataRecords.Request)
+_sym_db.RegisterMessage(Retrieve100DataRecords.Response)
+
+RetrieveFilteredDataRecords = _reflection.GeneratedProtocolMessageType('RetrieveFilteredDataRecords', (_message.Message,), {
+
+    'Request': _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), {
+        'DESCRIPTOR': _RETRIEVEFILTEREDDATARECORDS_REQUEST,
+        '__module__': 'et_service_pb2'
+        # @@protoc_insertion_point(class_scope:RetrieveFilteredDataRecords.Request)
+    })
+    ,
+
+    'Response': _reflection.GeneratedProtocolMessageType('Response', (_message.Message,), {
+        'DESCRIPTOR': _RETRIEVEFILTEREDDATARECORDS_RESPONSE,
+        '__module__': 'et_service_pb2'
+        # @@protoc_insertion_point(class_scope:RetrieveFilteredDataRecords.Response)
+    })
+    ,
+    'DESCRIPTOR': _RETRIEVEFILTEREDDATARECORDS,
+    '__module__': 'et_service_pb2'
+    # @@protoc_insertion_point(class_scope:RetrieveFilteredDataRecords)
+})
+_sym_db.RegisterMessage(RetrieveFilteredDataRecords)
+_sym_db.RegisterMessage(RetrieveFilteredDataRecords.Request)
+_sym_db.RegisterMessage(RetrieveFilteredDataRecords.Response)
+
+SubmitHeartbeat = _reflection.GeneratedProtocolMessageType('SubmitHeartbeat', (_message.Message,), {
+
+    'Request': _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), {
+        'DESCRIPTOR': _SUBMITHEARTBEAT_REQUEST,
+        '__module__': 'et_service_pb2'
+        # @@protoc_insertion_point(class_scope:SubmitHeartbeat.Request)
+    })
+    ,
+
+    'Response': _reflection.GeneratedProtocolMessageType('Response', (_message.Message,), {
+        'DESCRIPTOR': _SUBMITHEARTBEAT_RESPONSE,
+        '__module__': 'et_service_pb2'
+        # @@protoc_insertion_point(class_scope:SubmitHeartbeat.Response)
+    })
+    ,
+    'DESCRIPTOR': _SUBMITHEARTBEAT,
+    '__module__': 'et_service_pb2'
+    # @@protoc_insertion_point(class_scope:SubmitHeartbeat)
+})
+_sym_db.RegisterMessage(SubmitHeartbeat)
+_sym_db.RegisterMessage(SubmitHeartbeat.Request)
+_sym_db.RegisterMessage(SubmitHeartbeat.Response)
+
+SubmitDirectMessage = _reflection.GeneratedProtocolMessageType('SubmitDirectMessage', (_message.Message,), {
+
+    'Request': _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), {
+        'DESCRIPTOR': _SUBMITDIRECTMESSAGE_REQUEST,
+        '__module__': 'et_service_pb2'
+        # @@protoc_insertion_point(class_scope:SubmitDirectMessage.Request)
+    })
+    ,
+
+    'Response': _reflection.GeneratedProtocolMessageType('Response', (_message.Message,), {
+        'DESCRIPTOR': _SUBMITDIRECTMESSAGE_RESPONSE,
+        '__module__': 'et_service_pb2'
+        # @@protoc_insertion_point(class_scope:SubmitDirectMessage.Response)
+    })
+    ,
+    'DESCRIPTOR': _SUBMITDIRECTMESSAGE,
+    '__module__': 'et_service_pb2'
+    # @@protoc_insertion_point(class_scope:SubmitDirectMessage)
+})
+_sym_db.RegisterMessage(SubmitDirectMessage)
+_sym_db.RegisterMessage(SubmitDirectMessage.Request)
+_sym_db.RegisterMessage(SubmitDirectMessage.Response)
+
+RetrieveUnreadDirectMessages = _reflection.GeneratedProtocolMessageType('RetrieveUnreadDirectMessages', (_message.Message,), {
+
+    'Request': _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), {
+        'DESCRIPTOR': _RETRIEVEUNREADDIRECTMESSAGES_REQUEST,
+        '__module__': 'et_service_pb2'
+        # @@protoc_insertion_point(class_scope:RetrieveUnreadDirectMessages.Request)
+    })
+    ,
+
+    'Response': _reflection.GeneratedProtocolMessageType('Response', (_message.Message,), {
+        'DESCRIPTOR': _RETRIEVEUNREADDIRECTMESSAGES_RESPONSE,
+        '__module__': 'et_service_pb2'
+        # @@protoc_insertion_point(class_scope:RetrieveUnreadDirectMessages.Response)
+    })
+    ,
+    'DESCRIPTOR': _RETRIEVEUNREADDIRECTMESSAGES,
+    '__module__': 'et_service_pb2'
+    # @@protoc_insertion_point(class_scope:RetrieveUnreadDirectMessages)
+})
+_sym_db.RegisterMessage(RetrieveUnreadDirectMessages)
+_sym_db.RegisterMessage(RetrieveUnreadDirectMessages.Request)
+_sym_db.RegisterMessage(RetrieveUnreadDirectMessages.Response)
+
+RetrieveUnreadNotifications = _reflection.GeneratedProtocolMessageType('RetrieveUnreadNotifications', (_message.Message,), {
+
+    'Request': _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), {
+        'DESCRIPTOR': _RETRIEVEUNREADNOTIFICATIONS_REQUEST,
+        '__module__': 'et_service_pb2'
+        # @@protoc_insertion_point(class_scope:RetrieveUnreadNotifications.Request)
+    })
+    ,
+
+    'Response': _reflection.GeneratedProtocolMessageType('Response', (_message.Message,), {
+        'DESCRIPTOR': _RETRIEVEUNREADNOTIFICATIONS_RESPONSE,
+        '__module__': 'et_service_pb2'
+        # @@protoc_insertion_point(class_scope:RetrieveUnreadNotifications.Response)
+    })
+    ,
+    'DESCRIPTOR': _RETRIEVEUNREADNOTIFICATIONS,
+    '__module__': 'et_service_pb2'
+    # @@protoc_insertion_point(class_scope:RetrieveUnreadNotifications)
+})
+_sym_db.RegisterMessage(RetrieveUnreadNotifications)
+_sym_db.RegisterMessage(RetrieveUnreadNotifications.Request)
+_sym_db.RegisterMessage(RetrieveUnreadNotifications.Response)
 
 DESCRIPTOR._options = None
 
@@ -2060,124 +2884,124 @@ _ETSERVICE = _descriptor.ServiceDescriptor(
     file=DESCRIPTOR,
     index=0,
     serialized_options=None,
-    serialized_start=4221,
-    serialized_end=6071,
+    serialized_start=3820,
+    serialized_end=5456,
     methods=[
         _descriptor.MethodDescriptor(
-            name='loginWithGoogleId',
-            full_name='ETService.loginWithGoogleId',
+            name='loginWithGoogle',
+            full_name='ETService.loginWithGoogle',
             index=0,
             containing_service=None,
-            input_type=_LOGINWITHGOOGLEIDTOKENREQUESTMESSAGE,
-            output_type=_LOGINRESPONSEMESSAGE,
+            input_type=_LOGINWITHGOOGLE_REQUEST,
+            output_type=_LOGINWITHGOOGLE_RESPONSE,
+            serialized_options=None,
+        ),
+        _descriptor.MethodDescriptor(
+            name='loginDashboard',
+            full_name='ETService.loginDashboard',
+            index=1,
+            containing_service=None,
+            input_type=_LOGINDASHBOARD_REQUEST,
+            output_type=_LOGINDASHBOARD_RESPONSE,
             serialized_options=None,
         ),
         _descriptor.MethodDescriptor(
             name='bindUserToCampaign',
             full_name='ETService.bindUserToCampaign',
-            index=1,
-            containing_service=None,
-            input_type=_BINDUSERTOCAMPAIGNREQUESTMESSAGE,
-            output_type=_BINDUSERTOCAMPAIGNRESPONSEMESSAGE,
-            serialized_options=None,
-        ),
-        _descriptor.MethodDescriptor(
-            name='dashboardLoginWithEmail',
-            full_name='ETService.dashboardLoginWithEmail',
             index=2,
             containing_service=None,
-            input_type=_DASHBOARDLOGINWITHEMAILREQUESTMESSAGE,
-            output_type=_LOGINRESPONSEMESSAGE,
-            serialized_options=None,
-        ),
-        _descriptor.MethodDescriptor(
-            name='registerCampaign',
-            full_name='ETService.registerCampaign',
-            index=3,
-            containing_service=None,
-            input_type=_REGISTERCAMPAIGNREQUESTMESSAGE,
-            output_type=_REGISTERCAMPAIGNRESPONSEMESSAGE,
-            serialized_options=None,
-        ),
-        _descriptor.MethodDescriptor(
-            name='deleteCampaign',
-            full_name='ETService.deleteCampaign',
-            index=4,
-            containing_service=None,
-            input_type=_DELETECAMPAIGNREQUESTMESSAGE,
-            output_type=_DEFAULTRESPONSEMESSAGE,
-            serialized_options=None,
-        ),
-        _descriptor.MethodDescriptor(
-            name='retrieveCampaigns',
-            full_name='ETService.retrieveCampaigns',
-            index=5,
-            containing_service=None,
-            input_type=_RETRIEVECAMPAIGNSREQUESTMESSAGE,
-            output_type=_RETRIEVECAMPAIGNSRESPONSEMESSAGE,
-            serialized_options=None,
-        ),
-        _descriptor.MethodDescriptor(
-            name='retrieveCampaign',
-            full_name='ETService.retrieveCampaign',
-            index=6,
-            containing_service=None,
-            input_type=_RETRIEVECAMPAIGNREQUESTMESSAGE,
-            output_type=_RETRIEVECAMPAIGNRESPONSEMESSAGE,
-            serialized_options=None,
-        ),
-        _descriptor.MethodDescriptor(
-            name='submitDataRecord',
-            full_name='ETService.submitDataRecord',
-            index=7,
-            containing_service=None,
-            input_type=_SUBMITDATARECORDREQUESTMESSAGE,
-            output_type=_DEFAULTRESPONSEMESSAGE,
-            serialized_options=None,
-        ),
-        _descriptor.MethodDescriptor(
-            name='submitDataRecords',
-            full_name='ETService.submitDataRecords',
-            index=8,
-            containing_service=None,
-            input_type=_SUBMITDATARECORDSREQUESTMESSAGE,
-            output_type=_DEFAULTRESPONSEMESSAGE,
-            serialized_options=None,
-        ),
-        _descriptor.MethodDescriptor(
-            name='submitHeartbeat',
-            full_name='ETService.submitHeartbeat',
-            index=9,
-            containing_service=None,
-            input_type=_SUBMITHEARTBEATREQUESTMESSAGE,
-            output_type=_DEFAULTRESPONSEMESSAGE,
-            serialized_options=None,
-        ),
-        _descriptor.MethodDescriptor(
-            name='submitDirectMessage',
-            full_name='ETService.submitDirectMessage',
-            index=10,
-            containing_service=None,
-            input_type=_SUBMITDIRECTMESSAGEREQUESTMESSAGE,
-            output_type=_DEFAULTRESPONSEMESSAGE,
+            input_type=_BINDUSERTOCAMPAIGN_REQUEST,
+            output_type=_BINDUSERTOCAMPAIGN_RESPONSE,
             serialized_options=None,
         ),
         _descriptor.MethodDescriptor(
             name='retrieveParticipants',
             full_name='ETService.retrieveParticipants',
-            index=11,
+            index=3,
             containing_service=None,
-            input_type=_RETRIEVEPARTICIPANTSREQUESTMESSAGE,
-            output_type=_RETRIEVEPARTICIPANTSRESPONSEMESSAGE,
+            input_type=_RETRIEVEPARTICIPANTS_REQUEST,
+            output_type=_RETRIEVEPARTICIPANTS_RESPONSE,
             serialized_options=None,
         ),
         _descriptor.MethodDescriptor(
-            name='retrieveParticipantStatistics',
-            full_name='ETService.retrieveParticipantStatistics',
+            name='retrieveParticipantStats',
+            full_name='ETService.retrieveParticipantStats',
+            index=4,
+            containing_service=None,
+            input_type=_RETRIEVEPARTICIPANTSTATS_REQUEST,
+            output_type=_RETRIEVEPARTICIPANTSTATS_RESPONSE,
+            serialized_options=None,
+        ),
+        _descriptor.MethodDescriptor(
+            name='registerCampaign',
+            full_name='ETService.registerCampaign',
+            index=5,
+            containing_service=None,
+            input_type=_REGISTERCAMPAIGN_REQUEST,
+            output_type=_REGISTERCAMPAIGN_RESPONSE,
+            serialized_options=None,
+        ),
+        _descriptor.MethodDescriptor(
+            name='deleteCampaign',
+            full_name='ETService.deleteCampaign',
+            index=6,
+            containing_service=None,
+            input_type=_DELETECAMPAIGN_REQUEST,
+            output_type=_DELETECAMPAIGN_RESPONSE,
+            serialized_options=None,
+        ),
+        _descriptor.MethodDescriptor(
+            name='retrieveCampaigns',
+            full_name='ETService.retrieveCampaigns',
+            index=7,
+            containing_service=None,
+            input_type=_RETRIEVECAMPAIGNS_REQUEST,
+            output_type=_RETRIEVECAMPAIGNS_RESPONSE,
+            serialized_options=None,
+        ),
+        _descriptor.MethodDescriptor(
+            name='retrieveCampaign',
+            full_name='ETService.retrieveCampaign',
+            index=8,
+            containing_service=None,
+            input_type=_RETRIEVECAMPAIGN_REQUEST,
+            output_type=_RETRIEVECAMPAIGN_RESPONSE,
+            serialized_options=None,
+        ),
+        _descriptor.MethodDescriptor(
+            name='bindDataSource',
+            full_name='ETService.bindDataSource',
+            index=9,
+            containing_service=None,
+            input_type=_BINDDATASOURCE_REQUEST,
+            output_type=_BINDDATASOURCE_RESPONSE,
+            serialized_options=None,
+        ),
+        _descriptor.MethodDescriptor(
+            name='retrieveDataSources',
+            full_name='ETService.retrieveDataSources',
+            index=10,
+            containing_service=None,
+            input_type=_RETRIEVEDATASOURCES_REQUEST,
+            output_type=_RETRIEVEDATASOURCES_RESPONSE,
+            serialized_options=None,
+        ),
+        _descriptor.MethodDescriptor(
+            name='submitDataRecord',
+            full_name='ETService.submitDataRecord',
+            index=11,
+            containing_service=None,
+            input_type=_SUBMITDATARECORD_REQUEST,
+            output_type=_SUBMITDATARECORD_RESPONSE,
+            serialized_options=None,
+        ),
+        _descriptor.MethodDescriptor(
+            name='submitDataRecords',
+            full_name='ETService.submitDataRecords',
             index=12,
             containing_service=None,
-            input_type=_RETRIEVEPARTICIPANTSTATISTICSREQUESTMESSAGE,
-            output_type=_RETRIEVEPARTICIPANTSTATISTICSRESPONSEMESSAGE,
+            input_type=_SUBMITDATARECORDS_REQUEST,
+            output_type=_SUBMITDATARECORDS_RESPONSE,
             serialized_options=None,
         ),
         _descriptor.MethodDescriptor(
@@ -2185,8 +3009,8 @@ _ETSERVICE = _descriptor.ServiceDescriptor(
             full_name='ETService.retrieve100DataRecords',
             index=13,
             containing_service=None,
-            input_type=_RETRIEVE100DATARECORDSREQUESTMESSAGE,
-            output_type=_RETRIEVE100DATARECORDSRESPONSEMESSAGE,
+            input_type=_RETRIEVE100DATARECORDS_REQUEST,
+            output_type=_RETRIEVE100DATARECORDS_RESPONSE,
             serialized_options=None,
         ),
         _descriptor.MethodDescriptor(
@@ -2194,44 +3018,44 @@ _ETSERVICE = _descriptor.ServiceDescriptor(
             full_name='ETService.retrieveFilteredDataRecords',
             index=14,
             containing_service=None,
-            input_type=_RETRIEVEFILTEREDDATARECORDSREQUESTMESSAGE,
-            output_type=_RETRIEVEFILTEREDDATARECORDSRESPONSEMESSAGE,
+            input_type=_RETRIEVEFILTEREDDATARECORDS_REQUEST,
+            output_type=_RETRIEVEFILTEREDDATARECORDS_RESPONSE,
+            serialized_options=None,
+        ),
+        _descriptor.MethodDescriptor(
+            name='submitHeartbeat',
+            full_name='ETService.submitHeartbeat',
+            index=15,
+            containing_service=None,
+            input_type=_SUBMITHEARTBEAT_REQUEST,
+            output_type=_SUBMITHEARTBEAT_RESPONSE,
+            serialized_options=None,
+        ),
+        _descriptor.MethodDescriptor(
+            name='submitDirectMessage',
+            full_name='ETService.submitDirectMessage',
+            index=16,
+            containing_service=None,
+            input_type=_SUBMITDIRECTMESSAGE_REQUEST,
+            output_type=_SUBMITDIRECTMESSAGE_RESPONSE,
             serialized_options=None,
         ),
         _descriptor.MethodDescriptor(
             name='retrieveUnreadDirectMessages',
             full_name='ETService.retrieveUnreadDirectMessages',
-            index=15,
+            index=17,
             containing_service=None,
-            input_type=_RETRIEVEUNREADDIRECTMESSAGESREQUESTMESSAGE,
-            output_type=_RETRIEVEUNREADDIRECTMESSAGESRESPONSEMESSAGE,
+            input_type=_RETRIEVEUNREADDIRECTMESSAGES_REQUEST,
+            output_type=_RETRIEVEUNREADDIRECTMESSAGES_RESPONSE,
             serialized_options=None,
         ),
         _descriptor.MethodDescriptor(
             name='retrieveUnreadNotifications',
             full_name='ETService.retrieveUnreadNotifications',
-            index=16,
-            containing_service=None,
-            input_type=_RETRIEVEUNREADNOTIFICATIONSREQUESTMESSAGE,
-            output_type=_RETRIEVEUNREADNOTIFICATIONSRESPONSEMESSAGE,
-            serialized_options=None,
-        ),
-        _descriptor.MethodDescriptor(
-            name='bindDataSource',
-            full_name='ETService.bindDataSource',
-            index=17,
-            containing_service=None,
-            input_type=_BINDDATASOURCEREQUESTMESSAGE,
-            output_type=_BINDDATASOURCERESPONSEMESSAGE,
-            serialized_options=None,
-        ),
-        _descriptor.MethodDescriptor(
-            name='retrieveAllDataSources',
-            full_name='ETService.retrieveAllDataSources',
             index=18,
             containing_service=None,
-            input_type=_RETRIEVEALLDATASOURCESREQUESTMESSAGE,
-            output_type=_RETRIEVEALLDATASOURCESRESPONSEMESSAGE,
+            input_type=_RETRIEVEUNREADNOTIFICATIONS_REQUEST,
+            output_type=_RETRIEVEUNREADNOTIFICATIONS_RESPONSE,
             serialized_options=None,
         ),
     ])

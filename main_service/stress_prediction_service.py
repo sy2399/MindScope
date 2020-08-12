@@ -41,10 +41,10 @@ FLAG_EMA_ORDER_4 = 3
 FLAG_INITIAL_MODEL_TRAIN = -1
 
 PREDICTION_HOURS = [11, 15, 19, 23]
-SURVEY_DURATION = 3  # in days  ####### 변결될 부분
+SURVEY_DURATION = 4  # in days  ####### 변결될 부분
 
 SERVER_IP_PORT = '165.246.21.202:50051'
-CAMPAIGN_ID = 15 ####### 변결될 부분
+CAMPAIGN_ID = 23 ####### 변결될 부분
 
 MANAGER_ID = 21
 MANAGER_EMAIL = 'mindscope.nsl@gmail.com'
@@ -72,29 +72,29 @@ def stop():
 
 
 def service_routine():
-    #prediction_task(FLAG_EMA_ORDER_1) ##for test
+    prediction_task(FLAG_INITIAL_MODEL_TRAIN) ##for test
 
-    job_regular_at_11 = schedule.every().day.at("10:45").do(prediction_task, FLAG_EMA_ORDER_1)
-    job_regular_at_15 = schedule.every().day.at("14:45").do(prediction_task, FLAG_EMA_ORDER_2)
-    job_regular_at_19 = schedule.every().day.at("18:45").do(prediction_task, FLAG_EMA_ORDER_3)
-    job_regular_at_23 = schedule.every().day.at("22:45").do(prediction_task, FLAG_EMA_ORDER_4)
-
-    #TODO ----> 실제 테스트에선 23:15로 변경
-    job_initial_train = schedule.every().day.at("23:15").do(prediction_task, FLAG_INITIAL_MODEL_TRAIN) # 23:15
-
-
-    while run_service:
-       try:
-           schedule.run_pending()
-           time.sleep(1)
-       except KeyboardInterrupt:
-           stop()
-
-    schedule.cancel_job(job=job_regular_at_11)
-    schedule.cancel_job(job=job_regular_at_15)
-    schedule.cancel_job(job=job_regular_at_19)
-    schedule.cancel_job(job=job_regular_at_23)
-    schedule.cancel_job(job=job_initial_train)
+    # job_regular_at_11 = schedule.every().day.at("10:45").do(prediction_task, FLAG_EMA_ORDER_1)
+    # job_regular_at_15 = schedule.every().day.at("14:45").do(prediction_task, FLAG_EMA_ORDER_2)
+    # job_regular_at_19 = schedule.every().day.at("18:45").do(prediction_task, FLAG_EMA_ORDER_3)
+    # job_regular_at_23 = schedule.every().day.at("22:45").do(prediction_task, FLAG_EMA_ORDER_4)
+    #
+    # #TODO ----> 실제 테스트에선 23:15로 변경
+    # job_initial_train = schedule.every().day.at("23:15").do(prediction_task, FLAG_INITIAL_MODEL_TRAIN) # 23:15
+    #
+    #
+    # while run_service:
+    #    try:
+    #        schedule.run_pending()
+    #        time.sleep(1)
+    #    except KeyboardInterrupt:
+    #        stop()
+    #
+    # schedule.cancel_job(job=job_regular_at_11)
+    # schedule.cancel_job(job=job_regular_at_15)
+    # schedule.cancel_job(job=job_regular_at_19)
+    # schedule.cancel_job(job=job_regular_at_23)
+    # schedule.cancel_job(job=job_initial_train)
 
     exit(0)
 
@@ -141,7 +141,7 @@ def prediction_task(i):
 
     for user_email, id_jointime in users_info.items():
         # TODO: temporarily check for one user
-        #if user_email == 'raon0172@gmail.com': #, "fkdfkd98@nmsl.kaist.ac.kr"]: #hyunsungcho@nmsl.kaist.ac.kr
+        # if user_email == 'ter194@ajou.ac.kr': #, "fkdfkd98@nmsl.kaist.ac.kr"]: #hyunsungcho@nmsl.kaist.ac.kr
         user_current_cnt += 1
         user_id = id_jointime['uid']
         day_num = fromNowToGivenTimeToDayNum(id_jointime['joinedTime'])
@@ -158,17 +158,12 @@ def prediction_task(i):
                 break
 
         sm = StressModel(user_email, day_num, ema_order, float(stress_lv0_max), float(stress_lv1_max), float(stress_lv2_min))
-
-
-
         ## System
         # 1. Check if the users day num is 14 and job is for initial model training
 
-
-
         # # TODO --> 실제 테스트에선 day_num == SURVEY_DURATION 으로 변경
         # # 데이터 수집 마지막 날, feature extraction & Model init
-        if day_num == SURVEY_DURATION and i == FLAG_INITIAL_MODEL_TRAIN:
+        if day_num <= SURVEY_DURATION and i == FLAG_INITIAL_MODEL_TRAIN:
         #if day_num >= SURVEY_DURATION :
             print("1. Initial model training...")
             from_time = 0  # from the very beginning of data collection
@@ -217,6 +212,7 @@ def prediction_task(i):
                 with open('data_result/' + str(user_email) + "_features.p", 'rb') as file:
                     step1_preprocessed = pickle.load(file)
                     print("User {} , features saved".format(user_email))
+
 
                 if step1_preprocessed.shape[0] == 0:  ## feature extraction  이 제대로 안된 경우 대비, 한번 더 체크
                     initialModelTraining(data, user_email, id_jointime['joinedTime'], sm)
@@ -283,6 +279,7 @@ def prediction_task(i):
 
                 # 10. Construct a result message and send it to gRPC server with "STRESS_PREDICTION" data source id
                 result_data = {}
+
                 for model_result in model_results:
                     result_data[str(model_result.prediction_result)] = {
                         "day_num": model_result.day_num,
@@ -291,9 +288,32 @@ def prediction_task(i):
                         "feature_ids": model_result.feature_ids,
                         "model_tag": model_result.model_tag
                     }
-                # if result_data:
-                #     grpc_handler.grpc_send_user_data(user_id, user_email, data_sources[Features.STRESS_PREDICTION],
-                #                                     now_time, str(result_data))
+                try:
+                    for i in range(3):
+                        tmp_daynum = -1
+                        tmp_emaorder = -1
+
+                        if model_results[i]:
+                            print("result", i)
+                            tmp_daynum = model_results[i].day_num
+                            tmp_emaorder = model_results[i].ema_order
+                        else:
+                            model_result.append({
+                                "day_num":tmp_daynum,
+                                "ema_order":tmp_emaorder,
+                                "accuracy":0,
+                                "feature_ids":"NO_FEATURES",
+                                "model_tag":False
+                            })
+
+                except Exception as e:
+                    print("Exception during...수정내용")
+
+                if result_data:
+                    print("Send to gRPC: result data ===> ", result_data.values())
+
+                    grpc_handler.grpc_send_user_data(user_id, user_email, data_sources[Features.STRESS_PREDICTION],
+                                                    now_time, str(result_data))
 
                 # 11. Lastly, check if user self reported his stress, then update the DB of pre-processed features with reported stress label
 
@@ -306,6 +326,8 @@ def prediction_task(i):
 
         else:
             print("3. Waiting until survey completion day ({} days)...".format(SURVEY_DURATION))
+
+
 
     grpc_handler.grpc_close()
 
