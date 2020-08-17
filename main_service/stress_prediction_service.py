@@ -40,8 +40,11 @@ FLAG_EMA_ORDER_3 = 2
 FLAG_EMA_ORDER_4 = 3
 FLAG_INITIAL_MODEL_TRAIN = -1
 
+
 PREDICTION_HOURS = [11, 15, 19, 23]
-SURVEY_DURATION = 4  # in days  ####### 변결될 부분
+SURVEY_DURATION = 3
+
+# in days  ####### 변결될 부분
 
 SERVER_IP_PORT = '165.246.21.202:50051'
 CAMPAIGN_ID = 23 ####### 변결될 부분
@@ -72,29 +75,30 @@ def stop():
 
 
 def service_routine():
-    prediction_task(FLAG_INITIAL_MODEL_TRAIN) ##for test
+    #prediction_task(FLAG_EMA_ORDER_1) ##for test
 
-    # job_regular_at_11 = schedule.every().day.at("10:45").do(prediction_task, FLAG_EMA_ORDER_1)
-    # job_regular_at_15 = schedule.every().day.at("14:45").do(prediction_task, FLAG_EMA_ORDER_2)
-    # job_regular_at_19 = schedule.every().day.at("18:45").do(prediction_task, FLAG_EMA_ORDER_3)
-    # job_regular_at_23 = schedule.every().day.at("22:45").do(prediction_task, FLAG_EMA_ORDER_4)
-    #
-    # #TODO ----> 실제 테스트에선 23:15로 변경
-    # job_initial_train = schedule.every().day.at("23:15").do(prediction_task, FLAG_INITIAL_MODEL_TRAIN) # 23:15
-    #
-    #
-    # while run_service:
-    #    try:
-    #        schedule.run_pending()
-    #        time.sleep(1)
-    #    except KeyboardInterrupt:
-    #        stop()
-    #
-    # schedule.cancel_job(job=job_regular_at_11)
-    # schedule.cancel_job(job=job_regular_at_15)
-    # schedule.cancel_job(job=job_regular_at_19)
-    # schedule.cancel_job(job=job_regular_at_23)
-    # schedule.cancel_job(job=job_initial_train)
+    job_regular_at_11 = schedule.every().day.at("10:45").do(prediction_task, FLAG_EMA_ORDER_1)
+    job_regular_at_15 = schedule.every().day.at("14:45").do(prediction_task, FLAG_EMA_ORDER_2)
+    job_regular_at_19 = schedule.every().day.at("18:45").do(prediction_task, FLAG_EMA_ORDER_3)
+    job_regular_at_23 = schedule.every().day.at("22:45").do(prediction_task, FLAG_EMA_ORDER_4)
+
+    #TODO ----> 실제 테스트에선 23:15로 변경
+    job_initial_train = schedule.every().day.at("22:00").do(prediction_task, FLAG_INITIAL_MODEL_TRAIN) # 23:15
+
+
+    while run_service:
+       try:
+           schedule.run_pending()
+           time.sleep(1)
+       except KeyboardInterrupt:
+           stop()
+
+    schedule.cancel_job(job=job_regular_at_11)
+    schedule.cancel_job(job=job_regular_at_15)
+    schedule.cancel_job(job=job_regular_at_19)
+    schedule.cancel_job(job=job_regular_at_23)
+    schedule.cancel_job(job=job_initial_train)
+
 
     exit(0)
 
@@ -141,191 +145,179 @@ def prediction_task(i):
 
     for user_email, id_jointime in users_info.items():
         # TODO: temporarily check for one user
-        # if user_email == 'ter194@ajou.ac.kr': #, "fkdfkd98@nmsl.kaist.ac.kr"]: #hyunsungcho@nmsl.kaist.ac.kr
-        user_current_cnt += 1
-        user_id = id_jointime['uid']
-        day_num = fromNowToGivenTimeToDayNum(id_jointime['joinedTime'])
-        print("\n\nUser {}/{} : {}, Day num : {}".format(user_current_cnt, users_total_cnt, user_email, day_num))
+        if user_email != "qubic98@gmail.com":
+        #if user_email == "nslabinha@gmail.com":
+            user_current_cnt += 1
+            user_id = id_jointime['uid']
+            day_num = fromNowToGivenTimeToDayNum(id_jointime['joinedTime'])
+            print("\n\nUser {}/{} : {}, Day num : {}".format(user_current_cnt, users_total_cnt, user_email, day_num))
 
-        threshold_data = grpc_handler.grpc_load_user_data(from_ts=0, uid=user_email, data_sources={Features.STRESS_LVL_THRESHOLDS: data_sources[Features.STRESS_LVL_THRESHOLDS]}, data_src_for_sleep_detection=None)
-        stress_lv0_max = 0
-        stress_lv1_max = 0
-        stress_lv2_min = 0
+            threshold_data = grpc_handler.grpc_load_user_data(from_ts=0, uid=user_email, data_sources={Features.STRESS_LVL_THRESHOLDS: data_sources[Features.STRESS_LVL_THRESHOLDS]}, data_src_for_sleep_detection=None)
+            stress_lv0_max = 0
+            stress_lv1_max = 0
+            stress_lv2_min = 0
 
-        if list(threshold_data[Features.STRESS_LVL_THRESHOLDS]).__len__() > 0:
-            for item in reversed(threshold_data[Features.STRESS_LVL_THRESHOLDS]):
-                stress_lv0_max, stress_lv1_max, stress_lv2_min = item[1].split(" ")
-                break
+            if list(threshold_data[Features.STRESS_LVL_THRESHOLDS]).__len__() > 0:
+                for item in reversed(threshold_data[Features.STRESS_LVL_THRESHOLDS]):
+                    stress_lv0_max, stress_lv1_max, stress_lv2_min = item[1].split(" ")
+                    break
 
-        sm = StressModel(user_email, day_num, ema_order, float(stress_lv0_max), float(stress_lv1_max), float(stress_lv2_min))
-        ## System
-        # 1. Check if the users day num is 14 and job is for initial model training
+            sm = StressModel(user_email, day_num, ema_order, float(stress_lv0_max), float(stress_lv1_max), float(stress_lv2_min))
+            ## System
+            # 1. Check if the users day num is 14 and job is for initial model training
 
-        # # TODO --> 실제 테스트에선 day_num == SURVEY_DURATION 으로 변경
-        # # 데이터 수집 마지막 날, feature extraction & Model init
-        if day_num <= SURVEY_DURATION and i == FLAG_INITIAL_MODEL_TRAIN:
-        #if day_num >= SURVEY_DURATION :
-            print("1. Initial model training...")
-            from_time = 0  # from the very beginning of data collection
-            data = grpc_handler.grpc_load_user_data(from_ts=from_time, uid=user_email, data_sources=data_sources,
-                                                    data_src_for_sleep_detection=Features.SCREEN_ON_OFF)
-            initialModelTraining(data, user_email, id_jointime['joinedTime'], sm)
+            # # TODO --> 실제 테스트에선 day_num == SURVEY_DURATION 으로 변경
+            # # 데이터 수집 마지막 날, feature extraction & Model init
+            if day_num == (SURVEY_DURATION-1) and i == FLAG_INITIAL_MODEL_TRAIN:
+            #if day_num >= SURVEY_DURATION :
 
-        # 2. Check if users day num is more than SURVEY_DURATION, only then extract features and make prediction
-        # TODO --> 실제 테스트에선 day_num > SURVEY_DURATION 으로 변경
-        elif day_num > SURVEY_DURATION and i != FLAG_INITIAL_MODEL_TRAIN:
+                print("1. Initial model training...")
+                from_time = 0  # from the very beginning of data collection
+                try:
+                    data = grpc_handler.grpc_load_user_data(from_ts=from_time, uid=user_email, data_sources=data_sources,
+                                                            data_src_for_sleep_detection=Features.SCREEN_ON_OFF)
+                    if list(data[Features.SURVEY_EMA]).__len__() >= 3:
+                        initialModelTraining(data, user_email, id_jointime['joinedTime'], sm)
+                    else:
+                        print("Too Less Data!!")
+                        continue
+                except Exception as e:
+                    print("Error in initioalModel", e)
 
-        ## TODO : Test Update
-        ######TEST UPDATE ######################################################################
-        #     try:
-        #         data = grpc_handler.grpc_load_user_data(from_ts=from_time, uid=user_email, data_sources=data_sources,data_src_for_sleep_detection=Features.SCREEN_ON_OFF)
-        #         with open('data_result/' + str(user_email) + "_features.p", 'rb') as file:
-        #             step1_preprocessed = pickle.load(file)
-        #             print("User {} , features saved".format(user_email))
-        #
-        #             features = Features(uid=user_email, dataset=data, joinTimestamp=id_jointime['joinedTime'])
-        #             df = pd.DataFrame(
-        #                 features.extract_regular(start_ts=from_time, end_ts=now_time, ema_order=ema_order))
-        #             new_row_preprocessed = sm.preprocessing(df=df, prep_type=None)
-        #             new_row_preprocessed['Stress_label'] = 0
-        #             update_df = pd.concat([step1_preprocessed.reset_index(drop=True), new_row_preprocessed.reset_index(drop=True)])
-        #
-        #             with open('data_result/' + str(user_email) + "_features.p", 'wb') as file:
-        #                     pickle.dump(update_df, file)
-        #
-        #         check_and_handle_self_report(user_email, data, sm)
-        #     except Exception as e:
-        #         print(e)
-        # ###################################################################################################
+            # 2. Check if users day num is more than SURVEY_DURATION, only then extract features and make prediction
+            # TODO --> 실제 테스트에선 day_num > SURVEY_DURATION 으로 변경
+            elif (day_num >= SURVEY_DURATION and i != FLAG_INITIAL_MODEL_TRAIN):
 
 
-        #  6. Get trained stress prediction model
-            try:
-                print("2. Regular prediction...")
-                print("User  {}, Day num : {}".format(user_email, day_num))
-                # 3. Retrieve the last 4 hours data from the gRPC server
-                data = grpc_handler.grpc_load_user_data(from_ts=from_time, uid=user_email,
-                                                        data_sources=data_sources,
-                                                        data_src_for_sleep_detection=Features.SCREEN_ON_OFF)
+            # #  6. Get trained stress prediction model
+                try:
+                    print("2. Regular prediction...")
+                    print("Start", datetime.datetime.now())
+                    print("User  {}, Day num : {}".format(user_email, day_num))
+                    # 3. Retrieve the last 4 hours data from the gRPC server
+                    from_time = now_time - (4 * 3600 * 1000)  # from 4 hours before now time
 
-                # 4. Extract features from retrieved data
-                with open('data_result/' + str(user_email) + "_features.p", 'rb') as file:
-                    step1_preprocessed = pickle.load(file)
-                    print("User {} , features saved".format(user_email))
+                    data = grpc_handler.grpc_load_user_data(from_ts=from_time, uid=user_email,
+                                                            data_sources=data_sources,
+                                                            data_src_for_sleep_detection=Features.SCREEN_ON_OFF)
 
-
-                if step1_preprocessed.shape[0] == 0:  ## feature extraction  이 제대로 안된 경우 대비, 한번 더 체크
-                    initialModelTraining(data, user_email, id_jointime['joinedTime'], sm)
-
+                    # 4. Extract features from retrieved data
                     with open('data_result/' + str(user_email) + "_features.p", 'rb') as file:
                         step1_preprocessed = pickle.load(file)
-                        print("User {} , features Reload ".format(user_email))
 
-                features = Features(uid=user_email, dataset=data, joinTimestamp=id_jointime['joinedTime'])
-                df = pd.DataFrame(
-                    features.extract_regular(start_ts=from_time, end_ts=now_time, ema_order=ema_order, user_email = user_email, day_num=day_num))
+                    if step1_preprocessed.shape[0] == 0:  ## feature extraction  이 제대로 안된 경우 대비, 한번 더 체크
+                        initialModelTraining(data, user_email, id_jointime['joinedTime'], sm)
 
-                # 5. Pre-process and normalize the extracted features
-                new_row_preprocessed = sm.preprocessing(df=df, prep_type=None)
-                norm_df = sm.normalizing("new", step1_preprocessed, new_row_preprocessed, user_email, day_num,
-                                         ema_order)
-                new_row_for_test = norm_df[
-                    (norm_df['Day'] == day_num) & (norm_df['EMA order'] == ema_order)]  # get test data
-            except Exception as e:  # Exception during get Feature
-                print("Exception during get Feature...maybe location related...", e)
+                        with open('data_result/' + str(user_email) + "_features.p", 'rb') as file:
+                            step1_preprocessed = pickle.load(file)
 
-            try:
+                    features = Features(uid=user_email, dataset=data, joinTimestamp=id_jointime['joinedTime'])
 
-                with open('model_result/' + str(user_email) + "_model.p", 'rb') as file:
-                    initModel = pickle.load(file)
-                    print("User {} , Model load".format(user_email))
+                    df = pd.DataFrame(
+                        features.extract_regular(start_ts=from_time, end_ts=now_time, ema_order=ema_order, user_email = user_email, day_num=day_num))
 
-            except Exception as e:
-                # 모델이 저장 안된 경우 대비
-                print("Excpetion during getInitModel", e)
-                from_time = 0  # from the very beginning of data collection
-                data = grpc_handler.grpc_load_user_data(from_ts=from_time, uid=user_email,
-                                                        data_sources=data_sources,
-                                                        data_src_for_sleep_detection=Features.SCREEN_ON_OFF)
-                ## Check if EMA response is more than 3
-                if list(data[Features.SURVEY_EMA]).__len__() >= 3:
-                    initialModelTraining(data, user_email, id_jointime['joinedTime'], sm)
+                    # 5. Pre-process and normalize the extracted features
+                    new_row_preprocessed = sm.preprocessing(df=df, prep_type=None)
+                    norm_df = sm.normalizing("new", step1_preprocessed, new_row_preprocessed, user_email, day_num,
+                                             ema_order)
+                    new_row_for_test = norm_df[
+                        (norm_df['Day'] == day_num) & (norm_df['EMA order'] == ema_order)]  # get test data
+                except Exception as e:  # Exception during get Feature
+                    print("Exception during get Feature...maybe location related...", e)
+
+                try:
+
                     with open('model_result/' + str(user_email) + "_model.p", 'rb') as file:
                         initModel = pickle.load(file)
                         print("User {} , Model load".format(user_email))
-                else:
-                    continue
-            try:
-                features = StressModel.feature_df_with_state['features'].values
-
-                y_pred = initModel.predict(new_row_for_test[features])
-                if len(y_pred) > 1:
-                    y_pred = y_pred[0]
-
-                new_row_preprocessed['Stress_label'] = y_pred
-
-                # 8. Insert a new pre-processed feature entry together with it's predicted label in DB for further model re-train
-                update_df = pd.concat(
-                    [step1_preprocessed.reset_index(drop=True), new_row_preprocessed.reset_index(drop=True)])
-                update_df = update_df.reset_index(drop=True)
-
-                with open('data_result/' + str(user_email) + "_features.p", 'wb') as file:
-                    pickle.dump(update_df, file)
-
-                # 9. Save prediction and important features in DB
-                user_all_labels = list(set(step1_preprocessed['Stress_label']))
-                model_results = list(sm.saveAndGetSHAP(user_all_label=user_all_labels, pred=y_pred, new_row_raw = new_row_preprocessed, new_row_norm =new_row_for_test,
-                                                       initModel=initModel))  # saves results on ModelResult table in DB
-
-                # 10. Construct a result message and send it to gRPC server with "STRESS_PREDICTION" data source id
-                result_data = {}
-
-                for model_result in model_results:
-                    result_data[str(model_result.prediction_result)] = {
-                        "day_num": model_result.day_num,
-                        "ema_order": model_result.ema_order,
-                        "accuracy": model_result.accuracy,
-                        "feature_ids": model_result.feature_ids,
-                        "model_tag": model_result.model_tag
-                    }
-                try:
-                    for i in range(3):
-                        tmp_daynum = -1
-                        tmp_emaorder = -1
-
-                        if model_results[i]:
-                            print("result", i)
-                            tmp_daynum = model_results[i].day_num
-                            tmp_emaorder = model_results[i].ema_order
-                        else:
-                            model_result.append({
-                                "day_num":tmp_daynum,
-                                "ema_order":tmp_emaorder,
-                                "accuracy":0,
-                                "feature_ids":"NO_FEATURES",
-                                "model_tag":False
-                            })
 
                 except Exception as e:
-                    print("Exception during...수정내용")
+                    # 모델이 저장 안된 경우 대비
+                    print("Excpetion during getInitModel", e)
+                    from_time = 0  # from the very beginning of data collection
+                    data = grpc_handler.grpc_load_user_data(from_ts=from_time, uid=user_email,
+                                                            data_sources=data_sources,
+                                                            data_src_for_sleep_detection=Features.SCREEN_ON_OFF)
+                    ## Check if EMA response is more than 3
+                    if list(data[Features.SURVEY_EMA]).__len__() >= 3:
+                        initialModelTraining(data, user_email, id_jointime['joinedTime'], sm)
+                        with open('model_result/' + str(user_email) + "_model.p", 'rb') as file:
+                            initModel = pickle.load(file)
+                    else:
+                        print("Too less Data")
+                        continue
+                try:
+                    features = StressModel.feature_df_with_state['features'].values
 
-                if result_data:
-                    print("Send to gRPC: result data ===> ", result_data.values())
+                    y_pred = initModel.predict(new_row_for_test[features])
+                    if len(y_pred) > 1:
+                        y_pred = y_pred[0]
 
-                    grpc_handler.grpc_send_user_data(user_id, user_email, data_sources[Features.STRESS_PREDICTION],
-                                                    now_time, str(result_data))
+                    new_row_preprocessed['Stress_label'] = y_pred
 
-                # 11. Lastly, check if user self reported his stress, then update the DB of pre-processed features with reported stress label
+                    # 8. Insert a new pre-processed feature entry together with it's predicted label in DB for further model re-train
+                    update_df = pd.concat(
+                        [step1_preprocessed.reset_index(drop=True), new_row_preprocessed.reset_index(drop=True)])
+                    update_df = update_df.reset_index(drop=True)
 
-                check_and_handle_self_report(user_email, data, sm)
+                    with open('data_result/' + str(user_email) + "_features.p", 'wb') as file:
+                        pickle.dump(update_df, file)
 
-            except Exception as e:
-                print("Exception during saving model result", e)
-            # 7. Make prediction using current extracted features
+                    # 9. Save prediction and important features in DB
+                    user_all_labels = list(set(step1_preprocessed['Stress_label']))
+                    model_results = list(sm.saveAndGetSHAP(user_all_label=user_all_labels, pred=y_pred, new_row_raw = new_row_preprocessed, new_row_norm =new_row_for_test,
+                                                           initModel=initModel))  # saves results on ModelResult table in DB
+
+                    # 10. Construct a result message and send it to gRPC server with "STRESS_PREDICTION" data source id
+                    result_data = {}
+
+                    for model_result in model_results:
+                        result_data[str(model_result.prediction_result)] = {
+                            "day_num": model_result.day_num,
+                            "ema_order": model_result.ema_order,
+                            "accuracy": model_result.accuracy,
+                            "feature_ids": model_result.feature_ids,
+                            "model_tag": model_result.model_tag
+                        }
+                    print("AFTER GETSHAP RESULT_DATA", result_data)
+                    try:
+                        for i in range(3):
+                            if str(i) in result_data.keys():
+                                print("result", i)
+
+                            else:
+
+                                result_data[str(i)] = {
+                                    "day_num": day_num,
+                                    "ema_order":ema_order,
+                                    "accuracy":0,
+                                    "feature_ids":"NO_FEATURES",
+                                    "model_tag":False
+                                }
 
 
-        else:
-            print("3. Waiting until survey completion day ({} days)...".format(SURVEY_DURATION))
+                        print("Exception Handling - 3 result", result_data)
+                    except Exception as e:
+                        print("Exception during...수정내용", e)
+
+                    if result_data:
+                        print("Send to gRPC: result data ===> ", result_data.values())
+
+                        # grpc_handler.grpc_send_user_data(user_id, user_email, data_sources[Features.STRESS_PREDICTION],
+                        #                                 now_time, str(result_data))
+                        print("Upload Complete", datetime.datetime.now())
+
+                    # 11. Lastly, check if user self reported his stress, then update the DB of pre-processed features with reported stress label
+
+                    check_and_handle_self_report(user_email, data, sm)
+
+                except Exception as e:
+                    print("Exception during saving model result", e)
+                # 7. Make prediction using current extracted features
+
+                print("End", datetime.datetime.now())
+            else:
+                print("3. Waiting until survey completion day ({} days)...".format(SURVEY_DURATION))
 
 
 

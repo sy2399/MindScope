@@ -205,7 +205,7 @@ class StressModel:
             features = StressModel.feature_df_with_state['features'].values
             feature_state_df = StressModel.feature_df_with_state
 
-            shap_values = explainer.shap_values(new_row_norm[features], check_additivity = False)
+            shap_values = explainer.shap_values(new_row_norm[features])
             # print(shap_values)
             expected_value = explainer.expected_value
 
@@ -213,6 +213,7 @@ class StressModel:
         try:
             ## changed 0723
             check_label = [0 for i in range(3)]
+
 
             for label in user_all_label:  # 유저한테 있는 Stress label 에 따라
                 check_label[label] = 1
@@ -222,7 +223,11 @@ class StressModel:
                 shap_accuracy = expected_value[index]
                 shap_list = shap_values[index]
 
-                shap_dict = dict(zip(features, shap_list[0]))
+                if len(shap_list.shape) == 1:
+                    shap_dict = dict(zip(features, shap_list))
+                else:
+                    shap_dict = dict(zip(features, shap_list[0]))
+
                 shap_dict_sorted = sorted(shap_dict.items(), key=(lambda x: x[1]), reverse=True)
 
                 act_features = ['Duration WALKING', 'Duration RUNNING', 'Duration BICYCLE', 'Duration ON_FOOT', 'Duration VEHICLE']

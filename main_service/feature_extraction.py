@@ -344,7 +344,11 @@ class Features:
         if data.__len__() > 0:
             for item in data:
                 start, end, pckg_name = item[1].split(" ")
-                duration = (int(end) - int(start)) / 1000
+                try:
+                    duration = (int(end) - int(start)) / 1000
+                except Exception as e :
+                    print("get_app_category_usage_at_fist", e)
+                    duration = 0
                 if number_in_range(int(start), start_time, end_time) and number_in_range(int(end), start_time,
                                                                                          end_time):
                     if pckg_name in self.pckg_to_cat_map:
@@ -434,7 +438,7 @@ class Features:
         data = list(dataset)
         app_pkg_dict = {"Entertainment_Music":{}, "Utilities" : {}, "Shopping": {}, "Games_Comics": {}, "Others" : {}, "Health_Wellness":{},
                         "Social_Communication":{}, "Education":{}, "Travel": {}, "Art_Photo":{}, "News_Magazine": {}, "Food_Drink":{}}
-       #d[x] = d.get(x, 0) + 1
+
         # TODO : Application package
         if data.__len__() > 0:
             for item in data:
@@ -633,66 +637,76 @@ class Features:
         lat_data = []
         lng_data = []
         data = list(dataset)
-        if data.__len__() > 0:
-            for index in range(0, len(data) - 1):
-                values_current = data[index][1].split(" ")
-                values_next = data[index + 1][1].split(" ")
-                time1 = values_current[0]
-                lat1 = values_current[1]
-                lng1 = values_current[2]
+        try:
+            if data.__len__() > 0:
+                for index in range(0, len(data) - 1):
+                    values_current = data[index][1].split(" ")
+                    values_next = data[index + 1][1].split(" ")
+                    time1 = values_current[0]
+                    lat1 = values_current[1]
+                    lng1 = values_current[2]
 
-                time2 = values_next[0]
-                lat2 = values_next[1]
-                lng2 = values_next[2]
+                    time2 = values_next[0]
+                    lat2 = values_next[1]
+                    lng2 = values_next[2]
 
-                if number_in_range(int(time1), start_time, end_time) and number_in_range(int(time2), start_time, end_time):
-                    # distance between current location and next one
-                    lat_data.append(float(lat1))
-                    lng_data.append(float(lng1))
-                    distance = get_distance(float(lat1), float(lng1), float(lat2), float(lng2))
-                    result['total_distance'] += distance  # total distance calculated
-                    if distance > result['max_dist_two_location']:
-                        result['max_dist_two_location'] = distance  # max dist between two locations calculated
+                    if number_in_range(int(time1), start_time, end_time) and number_in_range(int(time2), start_time, end_time):
+                        # distance between current location and next one
+                        lat_data.append(float(lat1))
+                        lng_data.append(float(lng1))
+                        distance = get_distance(float(lat1), float(lng1), float(lat2), float(lng2))
+                        result['total_distance'] += distance  # total distance calculated
+                        if distance > result['max_dist_two_location']:
+                            result['max_dist_two_location'] = distance  # max dist between two locations calculated
 
-                    # distance between home location and current location
-                    if not location_coordinates["lat"] == -1:  # enough to check only lat
-                        distance_from_home = get_distance(location_coordinates["lat"], location_coordinates["lng"], float(lat1), float(lng1))
-                        if distance_from_home > result['max_dist_from_home']:
-                            result['max_dist_from_home'] = distance_from_home  # max dist from home calculated
-                    else:
-                        result['max_dist_from_home'] = '-'  # max dist from home is unknown if lat or lng of location is -1
+                        # distance between home location and current location
+                        if not location_coordinates["lat"] == -1:  # enough to check only lat
+                            distance_from_home = get_distance(location_coordinates["lat"], location_coordinates["lng"], float(lat1), float(lng1))
+                            if distance_from_home > result['max_dist_from_home']:
+                                result['max_dist_from_home'] = distance_from_home  # max dist from home calculated
+                        else:
+                            result['max_dist_from_home'] = '-'  # max dist from home is unknown if lat or lng of location is -1
 
-                    centroid["lat"] += float(lat1)
-                    centroid["lng"] += float(lng1)
-                    total_time_in_locations += int((int(time2) - int(time1)) / 1000)
-                    locations.append({"time": int(time1), "lat": float(lat1), "lng": float(lng1)})
+                        centroid["lat"] += float(lat1)
+                        centroid["lng"] += float(lng1)
+                        total_time_in_locations += int((int(time2) - int(time1)) / 1000)
+                        locations.append({"time": int(time1), "lat": float(lat1), "lng": float(lng1)})
 
-            result['number_of_places'] = locations.__len__()
-            if locations.__len__() > 0:
-                centroid["lat"] = centroid["lat"] / locations.__len__()
-                centroid["lng"] = centroid["lng"] / locations.__len__()
+                result['number_of_places'] = locations.__len__()
+                if locations.__len__() > 0:
+                    centroid["lat"] = centroid["lat"] / locations.__len__()
+                    centroid["lng"] = centroid["lng"] / locations.__len__()
 
-                avg_displacement = result['total_distance'] / locations.__len__()
+                    avg_displacement = result['total_distance'] / locations.__len__()
 
-                for i in range(0, locations.__len__() - 1):
-                    distance_to_centroid = get_distance(locations[i]['lat'], locations[i]['lng'], centroid['lat'],
-                                                        centroid['lng'])
+                    for i in range(0, locations.__len__() - 1):
+                        distance_to_centroid = get_distance(locations[i]['lat'], locations[i]['lng'], centroid['lat'],
+                                                            centroid['lng'])
 
-                    sum_gyration += int((locations[i + 1]['time'] - locations[i]['time']) / 1000) * math.pow(
-                        distance_to_centroid, 2)
+                        sum_gyration += int((locations[i + 1]['time'] - locations[i]['time']) / 1000) * math.pow(
+                            distance_to_centroid, 2)
 
-                    distance_std = get_distance(locations[i]['lat'], locations[i]['lng'], locations[i + 1]['lat'],
-                                                locations[i + 1]['lng'], )
-                    sum_std += math.pow(distance_std - avg_displacement, 2)
+                        distance_std = get_distance(locations[i]['lat'], locations[i]['lng'], locations[i + 1]['lat'],
+                                                    locations[i + 1]['lng'], )
+                        sum_std += math.pow(distance_std - avg_displacement, 2)
 
-                result['gyration'] = float(math.sqrt(sum_gyration / total_time_in_locations))
+                    result['gyration'] = float(math.sqrt(sum_gyration / total_time_in_locations))
+                else:
+                    result['total_distance'] = '-'
+                    result['max_dist_two_location'] = '-'
+                    result['gyration'] = '-'
+                    result['max_dist_from_home'] = '-'
+
             else:
-                result['total_distance'] = '-'
-                result['max_dist_two_location'] = '-'
-                result['gyration'] = '-'
-                result['max_dist_from_home'] = '-'
-
-        else:
+                result = {
+                    "total_distance": '-',
+                    "max_dist_two_location": '-',
+                    "gyration": '-',
+                    "max_dist_from_home": '-',
+                    "number_of_places": 0
+                }
+        except Exception as e:
+            print("GPS Error :", e)
             result = {
                 "total_distance": '-',
                 "max_dist_two_location": '-',
@@ -700,6 +714,7 @@ class Features:
                 "max_dist_from_home": '-',
                 "number_of_places": 0
             }
+
         return result
 
     # audio features during phone calls
@@ -710,35 +725,35 @@ class Features:
             "mean": 0
         }
         audio_data = []
-        data_calls = list(dataset_calls)
-        call_cnt = 0
-        if data_calls.__len__() > 0:
-            for index in range(0, len(data_calls)):
-                call_start_time, call_end_time, call_type, duration = data_calls[index][1].split(" ")
-                if number_in_range(int(call_start_time), start_time, end_time) and number_in_range(int(call_end_time), start_time, end_time):
-                    call_cnt += 1
-                    data_audio = list(dataset_audio)
-                    for item in data_audio:
-                        timestamp, loudness = item[1].split(" ")
-                        if number_in_range(int(timestamp), int(call_start_time), int(call_end_time)):
-                            audio_data.append(float(loudness))
-
-                    total_audio_samples = audio_data.__len__()
-                    result['minimum'] = min(audio_data) if total_audio_samples > 0 else "-"
-                    result['maximum'] = max(audio_data) if total_audio_samples > 0 else "-"
-                    result['mean'] = sum(audio_data) / total_audio_samples if total_audio_samples > 0 else "-"
-
-                # if no calls in start_time and end_time range then no features exist for this time
-                if call_cnt == 0:
-                    result['minimum'] = "-"
-                    result['maximum'] = "-"
-                    result['mean'] = "-"
-
-
-        else:
-            result['minimum'] = "-"
-            result['maximum'] = "-"
-            result['mean'] = "-"
+        # data_calls = list(dataset_calls)
+        # call_cnt = 0
+        # if data_calls.__len__() > 0:
+        #     for index in range(0, len(data_calls)):
+        #         call_start_time, call_end_time, call_type, duration = data_calls[index][1].split(" ")
+        #         if number_in_range(int(call_start_time), start_time, end_time) and number_in_range(int(call_end_time), start_time, end_time):
+        #             call_cnt += 1
+        #             data_audio = list(dataset_audio)
+        #             for item in data_audio:
+        #                 timestamp, loudness = item[1].split(" ")
+        #                 if number_in_range(int(timestamp), int(call_start_time), int(call_end_time)):
+        #                     audio_data.append(float(loudness))
+        #
+        #             total_audio_samples = audio_data.__len__()
+        #             result['minimum'] = min(audio_data) if total_audio_samples > 0 else "-"
+        #             result['maximum'] = max(audio_data) if total_audio_samples > 0 else "-"
+        #             result['mean'] = sum(audio_data) / total_audio_samples if total_audio_samples > 0 else "-"
+        #
+        #         # if no calls in start_time and end_time range then no features exist for this time
+        #         if call_cnt == 0:
+        #             result['minimum'] = "-"
+        #             result['maximum'] = "-"
+        #             result['mean'] = "-"
+        #
+        #
+        # else:
+        #     result['minimum'] = "-"
+        #     result['maximum'] = "-"
+        #     result['mean'] = "-"
 
         return result
 
@@ -786,6 +801,7 @@ class Features:
 
     def extract_regular(self, start_ts, end_ts, ema_order, user_email, day_num):
         global df
+        print("EXTRACK_REGUlar ===> day_num", day_num)
         try:
             columns = ['User id',
                        'Stress lvl',
@@ -855,10 +871,10 @@ class Features:
                 self.dataset[self.UNLOCK_DURATION],
                 start_ts, end_ts, self.LOCATION_HOME)
 
-            pc_audio_data = self.get_pc_audio_data_result(
-                self.dataset[self.CALLS],
-                self.dataset[self.AUDIO_LOUDNESS],
-                start_ts, end_ts)
+            # pc_audio_data = self.get_pc_audio_data_result(
+            #     self.dataset[self.CALLS],
+            #     self.dataset[self.AUDIO_LOUDNESS],
+            #     start_ts, end_ts)
             #self, dataset, start_time, end_time, user_email, day_num, ema_no
             app_usage = self.get_app_category_usage(dataset = self.dataset[self.APPLICATION_USAGE],start_time =  start_ts, end_time = end_ts, user_email = user_email, day_num = day_num, ema_no = ema_order)
 
@@ -875,7 +891,7 @@ class Features:
             data = {'User id': self.uid,
                     'Stress lvl': "-",
                     'EMA order': ema_order,
-                    'Day': timestampToDayNum(int(end_ts), self.joinTimestamp),
+                    'Day': day_num,
                     'Unlock duration': unlock_data,
                     'Phonecall duration': phonecall_data["phone_calls_total_dur"],
                     'Phonecall number': phonecall_data["phone_calls_total_number"],
@@ -919,14 +935,15 @@ class Features:
                     'News & Magazine': app_usage['News & Magazine'],
                     'Food & Drink': app_usage['Food & Drink'],
                     'Unknown & Background': app_usage['Unknown & Background'],
-                    'Phonecall audio min.': pc_audio_data['minimum'],
-                    'Phonecall audio max.': pc_audio_data['maximum'],
-                    'Phonecall audio mean': pc_audio_data['mean'],
+                    'Phonecall audio min.': 0,
+                    'Phonecall audio max.': 0,
+                    'Phonecall audio mean': 0,
                     'Sleep dur.': sleep_duration}
 
             # Finally, save the file here
             df = pd.DataFrame(data, index=[0])
             df = df[columns]
+
             return df
         except Exception as e:
             print("Ex: ", e)
@@ -1019,10 +1036,10 @@ class Features:
                         self.dataset[self.UNLOCK_DURATION],
                         start_time, end_time, self.LOCATION_HOME)
 
-                    pc_audio_data = self.get_pc_audio_data_result(
-                        self.dataset[self.CALLS],
-                        self.dataset[self.AUDIO_LOUDNESS],
-                        start_time, end_time)
+                    # pc_audio_data = self.get_pc_audio_data_result(
+                    #     self.dataset[self.CALLS],
+                    #     self.dataset[self.AUDIO_LOUDNESS],
+                    #     start_time, end_time)
 
                     app_usage = self.get_app_category_usage_at_first(self.dataset[self.APPLICATION_USAGE], start_time, end_time)
 
@@ -1082,9 +1099,9 @@ class Features:
                             'News & Magazine': app_usage['News & Magazine'],
                             'Food & Drink': app_usage['Food & Drink'],
                             'Unknown & Background': app_usage['Unknown & Background'],
-                            'Phonecall audio min.': pc_audio_data['minimum'],
-                            'Phonecall audio max.': pc_audio_data['maximum'],
-                            'Phonecall audio mean': pc_audio_data['mean'],
+                            'Phonecall audio min.': 0,
+                            'Phonecall audio max.': 0,
+                            'Phonecall audio mean': 0,
                             'Sleep dur.': sleep_duration}
 
                     datasets.append(data)  # dataset of rows
