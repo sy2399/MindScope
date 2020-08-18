@@ -34,7 +34,16 @@ def get_distance(lat1, lng1, lat2, lng2):
 
 
 def timestampToDayNum(timestamp, joinTimestamp):
-    return int((timestamp - joinTimestamp) / 1000 / 3600 / 24)
+    # origin = int((timestamp - joinTimestamp) / 1000 / 3600 / 24)
+
+    joindate = datetime.datetime.fromtimestamp(joinTimestamp / 1000)
+    joindateAtStart = joindate.replace(hour=0, minute=0)
+    nowDate = datetime.datetime.fromtimestamp(timestamp/1000)
+
+
+    return int((nowDate - joindateAtStart).days)
+
+
 
 
 class Features:
@@ -1043,6 +1052,7 @@ class Features:
 
                     app_usage = self.get_app_category_usage_at_first(self.dataset[self.APPLICATION_USAGE], start_time, end_time)
 
+                    ## Sleep duration 계산
                     day_hour_start = 18
                     day_hour_end = 10
                     date_start = datetime.datetime.fromtimestamp(end_time / 1000)
@@ -1112,4 +1122,4 @@ class Features:
             df = df[columns]
             return df
         except Exception as e:
-            print("Ex: ", e)
+            print("feature_extraction.py _ extract_after_survey function Except : ", e)

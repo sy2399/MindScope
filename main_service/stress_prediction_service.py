@@ -42,7 +42,7 @@ FLAG_INITIAL_MODEL_TRAIN = -1
 
 
 PREDICTION_HOURS = [11, 15, 19, 23]
-SURVEY_DURATION = 3
+SURVEY_DURATION = 10
 
 # in days  ####### 변결될 부분
 
@@ -75,16 +75,17 @@ def stop():
 
 
 def service_routine():
-    #prediction_task(FLAG_EMA_ORDER_1) ##for test
+    ## TODO : Debugging
+    # prediction_task(FLAG_EMA_ORDER_3) ## for test
 
+    # TODO : Debugging 시에 주석처리
     job_regular_at_11 = schedule.every().day.at("10:45").do(prediction_task, FLAG_EMA_ORDER_1)
     job_regular_at_15 = schedule.every().day.at("14:45").do(prediction_task, FLAG_EMA_ORDER_2)
     job_regular_at_19 = schedule.every().day.at("18:45").do(prediction_task, FLAG_EMA_ORDER_3)
     job_regular_at_23 = schedule.every().day.at("22:45").do(prediction_task, FLAG_EMA_ORDER_4)
 
-    #TODO ----> 실제 테스트에선 23:15로 변경
-    job_initial_train = schedule.every().day.at("22:00").do(prediction_task, FLAG_INITIAL_MODEL_TRAIN) # 23:15
-
+    #TODO  : SURVEY_DURATION-1 일차, 밤 11 30분에 모델 초기화
+    job_initial_train = schedule.every().day.at("23:30").do(prediction_task, FLAG_INITIAL_MODEL_TRAIN) # 23:15
 
     while run_service:
        try:
@@ -97,7 +98,7 @@ def service_routine():
     schedule.cancel_job(job=job_regular_at_15)
     schedule.cancel_job(job=job_regular_at_19)
     schedule.cancel_job(job=job_regular_at_23)
-    schedule.cancel_job(job=job_initial_train)
+    schedule.cancel_job(job=job_initial_train) # 마지막날 10시
 
 
     exit(0)
@@ -137,7 +138,7 @@ def prediction_task(i):
     # check if the study duration day is more one day to the SURVEY_DURATION day then do following
     # get SURVEY_EMA data of all participants and pass it to StreesModel.makeLabel() function
     # to initialize some stress thresholds
-    if fromNowToGivenTimeToDayNum(campaign_start_time) == SURVEY_DURATION  and ema_order == 4:
+    if fromNowToGivenTimeToDayNum(campaign_start_time) == (SURVEY_DURATION-1)  and ema_order == 4:
         initStressThresholds(users_info, data_sources)
 
     users_total_cnt = users_info.__len__()
@@ -145,8 +146,8 @@ def prediction_task(i):
 
     for user_email, id_jointime in users_info.items():
         # TODO: temporarily check for one user
-        if user_email != "qubic98@gmail.com":
-        #if user_email == "nslabinha@gmail.com":
+        if user_email != "qubic98@gmail.com": # 인하대측 당분간 제외
+        # if user_email == 'woghrnt2@ajou.ac.kr':
             user_current_cnt += 1
             user_id = id_jointime['uid']
             day_num = fromNowToGivenTimeToDayNum(id_jointime['joinedTime'])
@@ -165,12 +166,9 @@ def prediction_task(i):
             sm = StressModel(user_email, day_num, ema_order, float(stress_lv0_max), float(stress_lv1_max), float(stress_lv2_min))
             ## System
             # 1. Check if the users day num is 14 and job is for initial model training
-
-            # # TODO --> 실제 테스트에선 day_num == SURVEY_DURATION 으로 변경
             # # 데이터 수집 마지막 날, feature extraction & Model init
             if day_num == (SURVEY_DURATION-1) and i == FLAG_INITIAL_MODEL_TRAIN:
             #if day_num >= SURVEY_DURATION :
-
                 print("1. Initial model training...")
                 from_time = 0  # from the very beginning of data collection
                 try:
@@ -182,13 +180,11 @@ def prediction_task(i):
                         print("Too Less Data!!")
                         continue
                 except Exception as e:
-                    print("Error in initioalModel", e)
+                    print("stress_prediction_service.py .....Error in initioalModel", e)
 
             # 2. Check if users day num is more than SURVEY_DURATION, only then extract features and make prediction
-            # TODO --> 실제 테스트에선 day_num > SURVEY_DURATION 으로 변경
+            # TODO --> day_num >= SURVEY_DURATION  : EMA 수집 마지막날, 서버에 제대로 올라가는지 확인하기 위해
             elif (day_num >= SURVEY_DURATION and i != FLAG_INITIAL_MODEL_TRAIN):
-
-
             # #  6. Get trained stress prediction model
                 try:
                     print("2. Regular prediction...")
@@ -216,6 +212,8 @@ def prediction_task(i):
                     df = pd.DataFrame(
                         features.extract_regular(start_ts=from_time, end_ts=now_time, ema_order=ema_order, user_email = user_email, day_num=day_num))
 
+
+
                     # 5. Pre-process and normalize the extracted features
                     new_row_preprocessed = sm.preprocessing(df=df, prep_type=None)
                     norm_df = sm.normalizing("new", step1_preprocessed, new_row_preprocessed, user_email, day_num,
@@ -223,17 +221,16 @@ def prediction_task(i):
                     new_row_for_test = norm_df[
                         (norm_df['Day'] == day_num) & (norm_df['EMA order'] == ema_order)]  # get test data
                 except Exception as e:  # Exception during get Feature
-                    print("Exception during get Feature...maybe location related...", e)
+                    print("stress_prediction_service.py ..... Exception during get Feature...maybe location related...", e)
 
                 try:
 
                     with open('model_result/' + str(user_email) + "_model.p", 'rb') as file:
                         initModel = pickle.load(file)
                         print("User {} , Model load".format(user_email))
-
                 except Exception as e:
                     # 모델이 저장 안된 경우 대비
-                    print("Excpetion during getInitModel", e)
+                    print("stress_prediction_service.py .....Excpetion during getInitModel", e)
                     from_time = 0  # from the very beginning of data collection
                     data = grpc_handler.grpc_load_user_data(from_ts=from_time, uid=user_email,
                                                             data_sources=data_sources,
@@ -279,14 +276,12 @@ def prediction_task(i):
                             "feature_ids": model_result.feature_ids,
                             "model_tag": model_result.model_tag
                         }
-                    print("AFTER GETSHAP RESULT_DATA", result_data)
                     try:
                         for i in range(3):
                             if str(i) in result_data.keys():
                                 print("result", i)
 
                             else:
-
                                 result_data[str(i)] = {
                                     "day_num": day_num,
                                     "ema_order":ema_order,
@@ -296,21 +291,20 @@ def prediction_task(i):
                                 }
 
 
-                        print("Exception Handling - 3 result", result_data)
+                        print("stress_prediction_service.py .....Handling result", result_data)
                     except Exception as e:
-                        print("Exception during...수정내용", e)
+                        print("stress_prediction_service.py .....Exception during...수정내용", e)
 
                     if result_data:
                         print("Send to gRPC: result data ===> ", result_data.values())
-
-                        # grpc_handler.grpc_send_user_data(user_id, user_email, data_sources[Features.STRESS_PREDICTION],
-                        #                                 now_time, str(result_data))
+                        ## TODO : 만약 Test할 때, 서버에 안 올라가게 하려면, grpc_send_user_data 주석처리
+                        grpc_handler.grpc_send_user_data(user_id, user_email, data_sources[Features.STRESS_PREDICTION],
+                                                        now_time, str(result_data))
                         print("Upload Complete", datetime.datetime.now())
 
                     # 11. Lastly, check if user self reported his stress, then update the DB of pre-processed features with reported stress label
 
                     check_and_handle_self_report(user_email, data, sm)
-
                 except Exception as e:
                     print("Exception during saving model result", e)
                 # 7. Make prediction using current extracted features

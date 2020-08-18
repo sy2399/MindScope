@@ -192,6 +192,7 @@ class StressModel:
         #print(shap_values)
         expected_value = explainer.expected_value
 
+        ## TODO : SHAP Exception 발생 가능 부분 ==> SHAP 에서 적은 빈도수의 Label 해석 안줄때/...혹시나 해서 모델 한번 더 학습
         if len(expected_value) != len(user_all_label):
             with open('data_result/' + str(self.uid) + "_features.p", 'rb') as file:
                 preprocessed = pickle.load(file)
@@ -211,10 +212,7 @@ class StressModel:
 
 
         try:
-            ## changed 0723
             check_label = [0 for i in range(3)]
-
-
             for label in user_all_label:  # 유저한테 있는 Stress label 에 따라
                 check_label[label] = 1
                 feature_list = ""
@@ -223,14 +221,14 @@ class StressModel:
                 shap_accuracy = expected_value[index]
                 shap_list = shap_values[index]
 
-                if len(shap_list.shape) == 1:
+                if len(shap_list.shape) == 1: ## EXCEPTION CASE..
                     shap_dict = dict(zip(features, shap_list))
                 else:
                     shap_dict = dict(zip(features, shap_list[0]))
 
                 shap_dict_sorted = sorted(shap_dict.items(), key=(lambda x: x[1]), reverse=True)
 
-                act_features = ['Duration WALKING', 'Duration RUNNING', 'Duration BICYCLE', 'Duration ON_FOOT', 'Duration VEHICLE']
+                # act_features = ['Duration WALKING', 'Duration RUNNING', 'Duration BICYCLE', 'Duration ON_FOOT', 'Duration VEHICLE']
                 app_features = ['Social & Communication','Entertainment & Music','Utilities','Shopping', 'Games & Comics', 'Health & Wellness', 'Education', 'Travel', 'Art & Design & Photo', 'News & Magazine', 'Food & Drink']
 
                 act_tmp = ""
@@ -238,16 +236,18 @@ class StressModel:
                     if s_value > 0:
                         feature_id = feature_state_df[feature_state_df['features'] == feature_name]['feature_id'].values[0]
                         feature_value = new_row_norm[feature_name].values[0]
+                        ## TODO : 데이터가 전부 다 0인 경우..추가 작업이 필요할 수 있음
                         if new_row_raw[feature_name].values[0] != 0:
-                            if feature_name in act_features:
-                                if act_tmp == "":
-                                    act_tmp += feature_name
-
-                                    if feature_value >= 0.5:
-                                        feature_list += str(feature_id) + '-high '
-                                    else:
-                                        feature_list += str(feature_id) + '-low '
-                            elif feature_name in app_features:
+                            # ACT FEATURE
+                            # if feature_name in act_features:
+                            #     if act_tmp == "":
+                            #         act_tmp += feature_name
+                            #
+                            #         if feature_value >= 0.5:
+                            #             feature_list += str(feature_id) + '-high '
+                            #         else:
+                            #             feature_list += str(feature_id) + '-low '
+                            if feature_name in app_features:
                                 # Add package
                                 try:
                                     pkg_result = AppUsed.objects.get(uid=self.uid, day_num=self.dayNo,
@@ -337,10 +337,9 @@ class StressModel:
         with open('data_result/' + str(self.uid) + "_features.p", 'rb') as file:
             preprocessed = pickle.load(file)
 
-            # TODO : iloc 이나 다른 방법 사용해보기
             #preprocessed[(preprocessed['Day'] == day_num) and (preprocessed['EMA order'] == ema_order)]['Stress_label'] = user_response
             try:
-
+                # TODO : iloc 이나 다른 방법 사용해보기
                 preprocessed.loc[(preprocessed['Day'] == day_num) & (preprocessed['EMA order'] == ema_order), 'Stress_label'] = user_response
 
                 print("Changed!!!!!")
