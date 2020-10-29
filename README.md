@@ -14,7 +14,7 @@ MyPart : Stress Prediction Model (Server part)
   - 데이터 수집 종료 이후, 초기화된 스트레스 예측 모델을 기반으로 하루 4번 스트레스 예측
   - 스트레스 예측 결과 및 스트레스 예측에 영향을 미친 Feature 정보 제공
   - 스트레스 예측 결과에 대한 사용자의 피드백 수집
-  <p align="center"><img width="397" alt="그림2" src="https://user-images.githubusercontent.com/25919167/97528300-b84f9200-19f0-11eb-9c73-b0da491c18a9.png"></p>
+  <p align="center"><img width="674" alt="그림3" src="https://user-images.githubusercontent.com/25919167/97532337-7bd46400-19f9-11eb-91a5-a6ca60db89a5.png"></p>
 
 ***
 
