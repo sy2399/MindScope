@@ -3,8 +3,8 @@ MyPart : Stress Prediction Model (Server part)
 
 ## 프로젝트 소개 [Link](http://haesookim.info/MindScope/index.html)
 
-
-<img width="682" alt="그림1" src="https://user-images.githubusercontent.com/25919167/97527692-47f44100-19ef-11eb-81be-3b6e5be516d6.png">
+<img width="676" alt="mindscope-intro" src="https://user-images.githubusercontent.com/25919167/97529377-21d0a000-19f3-11eb-9360-98c0d0579617.png">
+<img width="842" alt="experiment" src="https://user-images.githubusercontent.com/25919167/97529382-2301cd00-19f3-11eb-80dd-27aa3f9b3bd7.png">
 
 **Overall Flow of Project**
 
@@ -15,6 +15,11 @@ MyPart : Stress Prediction Model (Server part)
   - 스트레스 예측 결과 및 스트레스 예측에 영향을 미친 Feature 정보 제공
   - 스트레스 예측 결과에 대한 사용자의 피드백 수집
   <img width="397" alt="그림2" src="https://user-images.githubusercontent.com/25919167/97528300-b84f9200-19f0-11eb-9c73-b0da491c18a9.png">
+
+***
+
+## My Part : Stress Prediction
+<img width="682" alt="그림1" src="https://user-images.githubusercontent.com/25919167/97527692-47f44100-19ef-11eb-81be-3b6e5be516d6.png">
 
 **Role of Stress Prediction**
 
