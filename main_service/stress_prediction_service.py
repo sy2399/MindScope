@@ -369,6 +369,9 @@ def fromNowToGivenTimeToDayNum(givenTimestamp):
 def initStressThresholds(users_info, data_sources):
     global grpc_handler
     all_stress_level_values = []
+    
+    ## TODO : 모든 유저의 데이터를 불러오는 유일한 함수! 여기서 모델 초기화를 했어야 함
+   
     for user_email, id_jointime in users_info.items():
 
         data = grpc_handler.grpc_load_user_data(from_ts=0, uid=user_email, data_sources={Features.SURVEY_EMA: data_sources[Features.SURVEY_EMA]}, data_src_for_sleep_detection=None)
