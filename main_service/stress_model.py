@@ -148,7 +148,8 @@ class StressModel:
             Y = norm_df['Stress_label'].values
 
             X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.20, random_state=42)
-
+            # TODO : n_estimators should be small number..at initializing (because of small number of init Data)
+            
             model = RandomForestClassifier(n_estimators=100, oob_score=True, random_state=100)
             # TODO split_num is 2 ==> related to stress prediction check(3)
             split_num = 2
