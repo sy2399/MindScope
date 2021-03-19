@@ -4,7 +4,7 @@ beautifulsoup4==4.9.1
 colorama==0.4.3
 decorator==4.4.2
 Django==2.2.12
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 google==2.0.3
 grpcio==1.29.0
 ipython==7.9.0
